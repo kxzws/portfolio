@@ -111,6 +111,7 @@
   --bg-dark: #030303;
   --dark-red: #710707;
   --font-gold: #9d8665;
+  --font-br-gold: #7E6C51;
   --font1: 80px;
   --font2: 32px;
   --font3: 28px;
@@ -191,6 +192,14 @@ body {
   letter-spacing: 2px;
   color: #fff;
   text-decoration: none;
+}
+
+.header__item-link:hover {
+  color: var(--font-gold);
+}
+
+.header__item-link:active {
+  color: var(--font-br-gold);
 }
 /*nav end*/
 /*header end*/

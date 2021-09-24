@@ -139,6 +139,7 @@ body {
 
 .container {
   margin: 0 auto;
+  position: relative;
   max-width: 1440px;
 }
 
@@ -245,6 +246,10 @@ body {
 
 .welcome__title {
   margin-bottom: 25px;
+}
+
+.welcome__title-break {
+  display: block;
 }
 
 .welcome__subtitle {
@@ -357,6 +362,7 @@ body {
   margin-right: 20px;
   align-items: baseline;
   cursor: pointer;
+  color: #fff;
 }
 
 .carousel__control:last-child {

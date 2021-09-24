@@ -94,16 +94,16 @@
   font-family: "Forum";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/forum-v11-latin-regular.eot"); /* IE9 Compat Modes */
+  src: url("../assets/fonts/forum-v11-latin-regular.eot"); /* IE9 Compat Modes */
   src: local(""),
-    url("../fonts/forum-v11-latin-regular.eot?#iefix")
+    url("../assets/fonts/forum-v11-latin-regular.eot?#iefix")
       format("embedded-opentype"),
-    /* IE6-IE8 */ url("../fonts/forum-v11-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("../fonts/forum-v11-latin-regular.woff")
+    /* IE6-IE8 */ url("../assets/fonts/forum-v11-latin-regular.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../assets/fonts/forum-v11-latin-regular.woff")
       format("woff"),
-    /* Modern Browsers */ url("../fonts/forum-v11-latin-regular.ttf")
+    /* Modern Browsers */ url("../assets/fonts/forum-v11-latin-regular.ttf")
       format("truetype"),
-    /* Safari, Android, iOS */ url("../fonts/forum-v11-latin-regular.svg#Forum")
+    /* Safari, Android, iOS */ url("../assets/fonts/forum-v11-latin-regular.svg#Forum")
       format("svg"); /* Legacy iOS */
 }
 
@@ -186,7 +186,7 @@ body {
 }
 
 .header__item {
-  margin-right: 55px;
+  margin-right: 56px;
 }
 
 .header__item:last-child {
@@ -246,6 +246,7 @@ body {
 
 .welcome__title {
   margin-bottom: 25px;
+
 }
 
 .welcome__title-break {
@@ -256,8 +257,8 @@ body {
   margin-bottom: 75px;
   font-family: "Roboto", sans-serif;
   font-style: normal;
-  font-weight: 300;
-  font-size: 28px;
+  font-weight: 100;
+  font-size:var(--font3);
   line-height: 33px;
   letter-spacing: 2px;
   color: #ffffff;
@@ -285,15 +286,15 @@ body {
 .carousel {
   position: relative;
   left: 30.5%;
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 20%
-  );
   -webkit-mask-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 20%
+    rgba(0, 0, 0, 1) 30%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 30%
   );
 }
 
@@ -332,8 +333,9 @@ body {
 }
 
 .carousel__all-digit::before {
-  content: "|";
   margin: 0 10px;
+  font-weight: 100;
+  content: "|";
 }
 
 .carousel__checkbox {
@@ -360,8 +362,8 @@ body {
 
 .carousel__control {
   margin-right: 20px;
-  align-items: baseline;
   cursor: pointer;
+  font-size: 30px;
   color: #fff;
 }
 

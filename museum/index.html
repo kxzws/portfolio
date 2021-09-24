@@ -11,7 +11,8 @@
   </head>
   <body>
     <header class="header">
-      <div class="container container-flex">
+      <div class="container header-flex">
+        <!-- TODO: add logo and logo text links -->
         <div class="header__logo">
           <img
             src="assets/svg/logo.svg"
@@ -49,7 +50,78 @@
 
     <main class="main">
       <section class="welcome">
-        <div class="container"></div>
+        <div class="container welcome-flex">
+          <div class="welcome__side-bar">
+            <h1 class="welcome__title section-title-dk">
+              Welcome<br />to the louvre
+            </h1>
+            <p class="welcome__subtitle">From the castle to the museum</p>
+            <!-- TODO: add click animation and html page-->
+            <a href="#" class="welcome__btn" target="_blank"
+              >Discover the Louvre</a
+            >
+          </div>
+
+          <div class="carousel">
+            <div class="carousel-container">
+              <div class="carousel__item item-active">
+                <img
+                  class="carousel__img"
+                  src="assets/img/welcome-slider/1.jpg"
+                  alt="carousel: pic 1"
+                />
+              </div>
+              <div class="carousel__item">
+                <img
+                  class="carousel__img"
+                  src="assets/img/welcome-slider/2.jpg"
+                  alt="carousel: pic 2"
+                />
+              </div>
+              <div class="carousel__item">
+                <img
+                  class="carousel__img"
+                  src="assets/img/welcome-slider/3.jpg"
+                  alt="carousel: pic 3"
+                />
+              </div>
+              <div class="carousel__item">
+                <img
+                  class="carousel__img"
+                  src="assets/img/welcome-slider/4.jpg"
+                  alt="carousel: pic 4"
+                />
+              </div>
+              <div class="carousel__item">
+                <img
+                  class="carousel__img"
+                  src="assets/img/welcome-slider/5.jpg"
+                  alt="carousel: pic 5"
+                />
+              </div>
+            </div>
+            <!-- /.carousel-container -->
+            <div class="carousel__control-panel">
+              <div class="carousel__order">
+                <span class="carousel__order-digit">01</span>
+                <span class="carousel__all-digit">05</span>
+              </div>
+
+              <ul class="carousel__checkbox">
+                <li class="carousel__check check-active"></li>
+                <li class="carousel__check"></li>
+                <li class="carousel__check"></li>
+                <li class="carousel__check"></li>
+                <li class="carousel__check"></li>
+              </ul>
+
+              <div class="carousel__control control-left">&larr;</div>
+              <div class="carousel__control control-right">&rarr;</div>
+            </div>
+            <!-- /.carousel__control-panel -->
+          </div>
+          <!-- /.carousel -->
+        </div>
         <!-- /.container -->
       </section>
       <!-- /.welcome -->

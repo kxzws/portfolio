@@ -426,6 +426,8 @@ a {
 
 .visiting__card-img {
   margin-bottom: 25px;
+  height: 285px;
+  width: 440px;
 }
 
 .visiting__card-name {
@@ -469,6 +471,105 @@ a {
 
 /*explore start*/
 .explore {
+  padding-top: 75px;
+  padding-bottom: 75px;
+  background-color: var(--bg-dark);
+}
+
+.explore-flex {
+  display: flex;
+  justify-items: space-between;
+}
+
+.explore__side-bar {
+  margin-right: 60px;
+  max-width: 660px;
+}
+
+.explore__title {
+  margin-bottom: 103px;
+  position: relative;
+}
+
+.explore__title::after {
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-color: var(--dark-red);
+  position: absolute;
+  left: 0;
+  bottom: -27px;
+}
+
+.explore__subtitle {
+  margin-bottom: 27px;
+  line-height: 38px;
+  color: #fff;
+}
+
+.explore__subtitle-wrap {
+  color: #caaa7d;
+}
+
+.explore__img-before {
+  margin-top: 15px;
+  position: relative;
+  background: url("../assets/img/explore-slider/after.jpg") no-repeat;
+}
+
+.explore__img-line {
+  width: 4px;
+  height: 47.5%;
+  position: absolute;
+  top: 0;
+  left: 440px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.down {
+  top: 52.5%;
+}
+
+.explore__img-circle {
+  width: 39px;
+  height: 39px;
+  position: absolute;
+  top: 330px;
+  left: 422px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.explore__img-after {
+  position: relative;
+  left: -280px;
+  object-fit: cover;
+  object-position: 280px 0;
 }
 /*explore end*/
+
+/*video start*/
+.video {
+  padding-top: 75px;
+}
+
+.video__sect-descr {
+  margin-bottom: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video__title {
+  display: inline-block;
+  color: var(--font-gold);
+}
+
+.video__subtitle {
+  max-width: 720px;
+  line-height: 38px;
+}
+/*video end*/
 /*main end*/

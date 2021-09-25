@@ -571,5 +571,71 @@ a {
   max-width: 720px;
   line-height: 38px;
 }
+/*slider start*/
+.slider {
+  margin-bottom: 75px;
+  position: relative;
+}
+
+.video__video {
+  margin: 0 auto;
+  margin-bottom: 40px;
+  height: 735px;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.video__control-panel {
+  height: 85px;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  bottom: 346px;
+  background-color: var(--bg-dark);
+}
+
+.slider-flex {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 42px;
+}
+
+.slide {
+  margin-bottom: 40px;
+  display: none;
+}
+
+.slide-active {
+  display: block;
+}
+
+.dots-wrapper {
+  margin: 0 auto;
+  max-width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.dot {
+  display: block;
+  height: 12px;
+  width: 12px;
+  background-color: #999;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot-active {
+  background-color: #333;
+}
+
+.slider-arrow {
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+}
+/*slider end*/
 /*video end*/
 /*main end*/

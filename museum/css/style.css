@@ -577,7 +577,7 @@ button {
 }
 /*slider start*/
 .slider {
-  margin-bottom: 75px;
+  margin-bottom: 66px;
   position: relative;
 }
 
@@ -716,5 +716,80 @@ button {
 /*video end*/
 
 /*gallery start*/
+.gallery {
+  padding-top: 75px;
+  max-height: 2200px;
+  position: relative;
+  overflow-y: hidden;
+  background-color: var(--bg-dark);
+}
+
+.gallery::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+  background-color: #000;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.gallery__title {
+  margin-bottom: 75px;
+}
+
+.masonry {
+  height: 3200px;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-between;
+  row-gap: 24px;
+  position: relative;
+}
+
+.masonry::before,
+.masonry::after {
+  content: "";
+  flex-basis: 100%;
+  width: 0;
+  order: 2;
+}
+
+.masonry__item:nth-child(3n + 1) {
+  order: 1;
+}
+.masonry__item:nth-child(3n + 2) {
+  order: 2;
+}
+.masonry__item:nth-child(3n) {
+  order: 3;
+}
+
+.item-top {
+  position: relative;
+  top: 50px;
+}
+
+.masonry__item-img {
+  max-height: 570px;
+  max-width: 456px;
+}
 /*gallery end*/
+
+/*tickets start*/
+.tickets {
+  padding-top: 75px;
+}
+/*tickets end*/
 /*main end*/

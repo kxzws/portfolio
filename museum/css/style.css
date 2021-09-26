@@ -355,11 +355,11 @@ button {
   width: 16px;
   background-color: #fff;
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .carousel__check:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .carousel__check:last-child {
@@ -614,7 +614,7 @@ button {
 }
 
 .video__btn-big-play:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .video__btn-big-play-img {
@@ -642,7 +642,7 @@ button {
 }
 
 .video__btn:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .video__btn-play {
@@ -724,7 +724,7 @@ button {
   background-color: #999;
   border-radius: 50%;
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .dot:hover {
@@ -740,7 +740,7 @@ button {
   color: #999;
   cursor: pointer;
   background-color: #fff;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .slider-arrow:hover {
@@ -824,7 +824,12 @@ button {
 /*tickets start*/
 .tickets {
   padding: 75px 0;
+}
+
+.tickets__title {
+  margin-bottom: 103px;
   position: relative;
+  color: var(--font-gold);
 }
 
 .tickets__title::after {
@@ -837,9 +842,28 @@ button {
   bottom: -27px;
 }
 
-.tickets__title {
-  margin-bottom: 103px;
-  color: var(--font-gold);
+.tickets-flex {
+  display: flex;
+}
+
+.tickets__img {
+  margin-right: 60px;
+  height: 550px;
+  width: 720px;
+}
+
+.tickets__subtitle {
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: var(--font3);
+  line-height: 33px;
+}
+
+.tickets__type {
+}
+
+.tickets__amount {
+  margin-left: auto;
 }
 /*tickets end*/
 
@@ -895,7 +919,7 @@ button {
 
 .contacts__item-link {
   color: #000;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .contacts__item-link:hover {

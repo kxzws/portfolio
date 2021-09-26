@@ -357,6 +357,10 @@ button {
   cursor: pointer;
 }
 
+.carousel__check:hover {
+  opacity: .8;
+}
+
 .carousel__check:last-child {
   margin-right: 0;
 }
@@ -367,8 +371,15 @@ button {
 
 .carousel__control {
   margin-right: 20px;
-  color: #fff;
   background-color: #000;
+}
+
+.carousel__control:hover {
+  color: var(--font-gold);
+}
+
+.carousel__control:active {
+  color: var(--font-gold);
 }
 
 .carousel__control:last-child {
@@ -623,6 +634,10 @@ button {
 
 .video__btn {
   background-color: #000;
+}
+
+.btn-off {
+  display: none;
 }
 
 .video__btn:hover {

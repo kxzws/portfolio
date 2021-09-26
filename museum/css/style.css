@@ -355,6 +355,7 @@ button {
   width: 16px;
   background-color: #fff;
   cursor: pointer;
+  transition: all .5s ease;
 }
 
 .carousel__check:hover {
@@ -723,6 +724,11 @@ button {
   background-color: #999;
   border-radius: 50%;
   cursor: pointer;
+  transition: all .5s ease;
+}
+
+.dot:hover {
+  background-color: var(--dark-red);
 }
 
 .dot-active {
@@ -734,6 +740,11 @@ button {
   color: #999;
   cursor: pointer;
   background-color: #fff;
+  transition: all .5s ease;
+}
+
+.slider-arrow:hover {
+  color: var(--dark-red);
 }
 /*slider end*/
 /*video end*/
@@ -884,6 +895,7 @@ button {
 
 .contacts__item-link {
   color: #000;
+  transition: all .5s ease;
 }
 
 .contacts__item-link:hover {

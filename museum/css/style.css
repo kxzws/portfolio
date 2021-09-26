@@ -142,6 +142,11 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 0;
+  border: none;
+}
+
 .container {
   margin: 0 auto;
   position: relative;
@@ -333,7 +338,7 @@ a {
 }
 
 .carousel__all-digit::before {
-  margin: 0 10px;
+  margin: 0 11px;
   font-weight: 100;
   content: "|";
 }
@@ -362,9 +367,8 @@ a {
 
 .carousel__control {
   margin-right: 20px;
-  cursor: pointer;
-  font-size: 30px;
   color: #fff;
+  background-color: #000;
 }
 
 .carousel__control:last-child {
@@ -586,13 +590,84 @@ a {
   object-fit: cover;
 }
 
+.video__btn-big-play {
+  width: 220px;
+  height: 220px;
+  position: absolute;
+  top: 19.8%;
+  left: 42.3%;
+  background-color: rgba(0, 0, 0, 0);
+  border: 8px solid #fff;
+  border-radius: 50%;
+}
+
+.video__btn-big-play-img {
+  position: relative;
+  left: 15px;
+}
+
 .video__control-panel {
-  height: 85px;
+  padding: 27px 30px;
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
-  bottom: 346px;
+  bottom: 356px;
   background-color: var(--bg-dark);
+}
+
+.video__btn {
+  background-color: #000;
+}
+
+.video__btn-play {
+  width: 23px;
+  opacity: 0.73;
+}
+
+.video__progress {
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    var(--dark-red) 0%,
+    var(--dark-red) 0%,
+    #c4c4c4 0%,
+    #c4c4c4 100%
+  );
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+}
+
+.video__progress::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  -webkit-appearance: none;
+  cursor: ew-resize;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.video__progress::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  color: var(--dark-red);
+}
+
+.play-progress {
+  width: 67%;
+}
+
+.volume-progress {
+  width: 10.7%;
+}
+
+.video__btn-volume {
+  width: 38px;
+}
+
+.video__btn-fullscr {
+  width: 35px;
 }
 
 .slider-flex {
@@ -602,7 +677,7 @@ a {
 }
 
 .slide {
-  margin-bottom: 40px;
+  margin-bottom: 28px;
   display: none;
 }
 
@@ -612,7 +687,7 @@ a {
 
 .dots-wrapper {
   margin: 0 auto;
-  max-width: 200px;
+  max-width: 206px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -635,7 +710,11 @@ a {
   font-size: 24px;
   color: #999;
   cursor: pointer;
+  background-color: #fff;
 }
 /*slider end*/
 /*video end*/
+
+/*gallery start*/
+/*gallery end*/
 /*main end*/

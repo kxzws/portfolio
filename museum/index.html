@@ -56,7 +56,7 @@
               <span class="title-break">Welcome</span>to the louvre
             </h1>
             <p class="welcome__subtitle">From the castle to the museum</p>
-            <!-- TODO: add click animation and html page-->
+            <!-- TODO: add click animation -->
             <a href="/tours/tour1.html" class="welcome__btn" target="_blank"
               >Discover the Louvre</a
             >
@@ -356,9 +356,8 @@
                 <iframe
                   width="452"
                   height="254"
-                  src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0"
+                  src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0?modestbranding=1"
                   title="YouTube video player"
-                  frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   loading="lazy"
                   allowfullscreen
@@ -368,9 +367,8 @@
                 <iframe
                   width="452"
                   height="254"
-                  src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
+                  src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0?modestbranding=1"
                   title="YouTube video player"
-                  frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   loading="lazy"
                   allowfullscreen
@@ -380,9 +378,8 @@
                 <iframe
                   width="452"
                   height="254"
-                  src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
+                  src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0?modestbranding=1"
                   title="YouTube video player"
-                  frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   loading="lazy"
                   allowfullscreen
@@ -392,9 +389,8 @@
                 <iframe
                   width="452"
                   height="254"
-                  src="https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0"
+                  src="https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0?modestbranding=1"
                   title="YouTube video player"
-                  frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   loading="lazy"
                   allowfullscreen
@@ -404,9 +400,8 @@
                 <iframe
                   width="452"
                   height="254"
-                  src="https://www.youtube.com/embed/2OR0OCr6uRE?controls=0"
+                  src="https://www.youtube.com/embed/2OR0OCr6uRE?controls=0?modestbranding=1"
                   title="YouTube video player"
-                  frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   loading="lazy"
                   allowfullscreen
@@ -545,13 +540,50 @@
       <!-- /.gallery -->
 
       <section id="tickets" class="tickets">
-        <div class="container"></div>
+        <div class="container">
+          <h2 class="tickets__title section-title">Buy tickets</h2>
+        </div>
         <!-- /.container -->
       </section>
       <!-- /.tickets -->
 
+      <div class="parallax"></div>
+
       <section id="contacts" class="contacts">
-        <div class="container"></div>
+        <div class="container">
+          <h2 class="contacts__title section-title">Contacts</h2>
+          <div class="contacts-flex">
+            <div class="contacts__info">
+              <h3 class="contacts__name">
+                <span class="title-break">Palais Royal</span>Musee du Louvre
+              </h3>
+              <p class="contacts__item">
+                address:
+                <a href="#" class="contacts__item-link">75001 Paris, France</a>
+              </p>
+              <p class="contacts__item">
+                phone:
+                <a href="tel:+330140205050" class="contacts__item-link"
+                  >+33(0) 1 40 20 50 50</a
+                >
+              </p>
+              <p class="contacts__item">
+                mail:
+                <a href="mailto:info@louvre.fr" class="contacts__item-link"
+                  >info@louvre.fr</a
+                >
+              </p>
+            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5100.195163631703!2d2.335730375234767!3d48.86162122650459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e25d0482b3d%3A0x1c0b82c6e1d85100!2zNzUwMDEg0J_QsNGA0LjQtiwg0KTRgNCw0L3RhtC40Y8!5e0!3m2!1sru!2sby!4v1632683283373!5m2!1sru!2sby"
+              width="960"
+              height="620"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
         <!-- /.container -->
       </section>
       <!-- /.contacts -->
@@ -559,8 +591,128 @@
     <!-- /.main -->
 
     <footer class="footer">
-      <div class="container"></div>
-      <!-- /.container -->
+      <div class="footer__top">
+        <div class="container footer-flex-top">
+          <div class="footer__logo">
+            <img
+              src="assets/svg/logo.svg"
+              alt="logo: LOUVRE"
+              class="footer__logo-img"
+            />
+            <span class="footer__logo-text">Louvre</span>
+          </div>
+
+          <nav class="footer__nav">
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="#visiting" class="footer__item-link footer__link"
+                  >Visiting</a
+                >
+              </li>
+              <li class="footer__item">
+                <a href="#explore" class="footer__item-link footer__link"
+                  >Explore</a
+                >
+              </li>
+              <li class="footer__item">
+                <a href="#video" class="footer__item-link footer__link"
+                  >Video</a
+                >
+              </li>
+              <li class="footer__item">
+                <a href="#gallery" class="footer__item-link footer__link"
+                  >Gallery</a
+                >
+              </li>
+              <li class="footer__item">
+                <a href="#tickets" class="footer__item-link footer__link"
+                  >Tickets</a
+                >
+              </li>
+              <li class="footer__item">
+                <a href="#contacts" class="footer__item-link footer__link"
+                  >Contacts</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <ul class="footer__soc-list">
+            <li class="footer__soc-item">
+              <a
+                href="https://www.youtube.com/user/louvre"
+                class="footer__soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/youtube.svg"
+                  alt="icon: youtube"
+                  class="footer__soc-img"
+              /></a>
+            </li>
+            <li class="footer__soc-item">
+              <a
+                href="https://www.instagram.com/museelouvre/"
+                class="footer__soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/insta.svg"
+                  alt="icon: instagram"
+                  class="footer__soc-img"
+              /></a>
+            </li>
+            <li class="footer__soc-item">
+              <a
+                href="https://www.facebook.com/museedulouvre"
+                class="footer__soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/facebook.svg"
+                  alt="icon: facebook"
+                  class="footer__soc-img"
+              /></a>
+            </li>
+            <li class="footer__soc-item">
+              <a
+                href="http://twitter.com/museelouvre"
+                class="footer__soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/twitter.svg"
+                  alt="icon: twitter"
+                  class="footer__soc-img"
+              /></a>
+            </li>
+            <li class="footer__soc-item">
+              <a
+                href="https://www.pinterest.fr/museedulouvre/"
+                class="footer__soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/pint.svg"
+                  alt="icon: pinterest"
+                  class="footer__soc-img"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__line"></div>
+      <div class="footer__bottom">
+        <div class="container footer-flex-bottom">
+          <time datetime="2021-09-27">© 2021</time>
+          <a href="https://rs.school/js" class="footer__link" target="_blank">
+            The Rolling Scopes School
+          </a>
+          <a
+            href="https://github.com/kxzws"
+            class="footer__link"
+            target="_blank"
+            >kxzws</a
+          >
+        </div>
+        <!-- /.container -->
+      </div>
+      <!-- /.footer__bottom -->
     </footer>
 
     <script src="script.js"></script>

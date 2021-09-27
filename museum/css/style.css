@@ -595,8 +595,8 @@ button {
 
 .video__video {
   margin: 0 auto;
-  margin-bottom: 40px;
-  height: 735px;
+  margin-bottom: 125px;
+  height: 650px;
   width: 100%;
   display: block;
   object-fit: cover;
@@ -1044,7 +1044,7 @@ button {
 }
 /*footer__top start*/
 .footer__top {
-  padding-top: 75px;
+  padding-top: 84px;
   padding-bottom: 50px;
   max-height: 265px;
 }
@@ -1087,8 +1087,8 @@ button {
 }
 
 .footer__item {
-  margin-bottom: 25px;
-  margin-right: 150px;
+  margin-bottom: 26px;
+  margin-right: 170px;
 }
 
 .footer__item:nth-child(3n) {

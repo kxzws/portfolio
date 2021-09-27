@@ -654,7 +654,7 @@ button {
   background: linear-gradient(
     to right,
     var(--dark-red) 0%,
-    var(--dark-red) 0%,
+    var(--dark-red) 54%,
     #c4c4c4 0%,
     #c4c4c4 100%
   );
@@ -683,6 +683,13 @@ button {
 
 .volume-progress {
   width: 10.7%;
+  background: linear-gradient(
+    to right,
+    var(--dark-red) 0%,
+    var(--dark-red) 42%,
+    #c4c4c4 0%,
+    #c4c4c4 100%
+  );
 }
 
 .video__btn-volume {

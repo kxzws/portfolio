@@ -559,12 +559,86 @@
         <div class="container">
           <h2 class="tickets__title section-title">Buy tickets</h2>
           <div class="tickets-flex">
-            <img src="assets/img/tickets.jpg" alt="pic: tickets picture" class="tickets__img">
+            <img
+              src="assets/img/tickets.jpg"
+              alt="pic: tickets picture"
+              class="tickets__img"
+            />
             <div class="tickets__type">
               <h3 class="tickets__subtitle">Ticket Type</h3>
+              <label class="tickets__radio-cont"
+                >Permanent exhibition
+                <input type="radio" checked="checked" name="ttype" />
+                <span class="checkmark"></span>
+              </label>
+              <label class="tickets__radio-cont"
+                >Temporary exhibition
+                <input type="radio" name="ttype" />
+                <span class="checkmark"></span>
+              </label>
+              <label class="tickets__radio-cont"
+                >Combined Admission
+                <input type="radio" name="ttype" />
+                <span class="checkmark"></span>
+              </label>
             </div>
             <div class="tickets__amount">
               <h3 class="tickets__subtitle">Amount</h3>
+              <p class="tickets__inp-descr">Basic 18+</p>
+              <div class="tickets__btn-group">
+                <button
+                  class="tickets__amount-btn"
+                  type="button"
+                  onclick="this.nextElementSibling.stepDown()"
+                >
+                  –
+                </button>
+                <input
+                  class="tickets__amount-num"
+                  type="number"
+                  min="0"
+                  max="20"
+                  value="1"
+                  readonly
+                />
+                <button
+                  class="tickets__amount-btn"
+                  type="button"
+                  onclick="this.previousElementSibling.stepUp()"
+                >
+                  +
+                </button>
+              </div>
+              <!-- /.tickets__btn-group -->
+
+              <p class="tickets__inp-descr">Senior 65+</p>
+              <div class="tickets__btn-group">
+                <button
+                  class="tickets__amount-btn"
+                  type="button"
+                  onclick="this.nextElementSibling.stepDown()"
+                >
+                  –
+                </button>
+                <input
+                  class="tickets__amount-num"
+                  type="number"
+                  min="0"
+                  max="20"
+                  value="1"
+                  readonly
+                />
+                <button
+                  class="tickets__amount-btn"
+                  type="button"
+                  onclick="this.previousElementSibling.stepUp()"
+                >
+                  +
+                </button>
+              </div>
+              <!-- /.tickets__btn-group -->
+              <h3 class="tickets__subtitle subtitle-total">Total €220</h3>
+              <button class="tickets__btn">Buy Now</button>
             </div>
           </div>
         </div>
@@ -741,6 +815,6 @@
       <!-- /.footer__bottom -->
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/script.js"></script>
   </body>
 </html>

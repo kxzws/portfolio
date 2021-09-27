@@ -859,11 +859,112 @@ button {
   line-height: 33px;
 }
 
-.tickets__type {
+.subtitle-total {
+  margin-bottom: 60px;
+  letter-spacing: 1.65px;
+}
+/*tickets type inuput start*/
+.tickets__radio-cont {
+  display: block;
+  position: relative;
+  margin-top: 25px;
+  padding-left: 40px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
+.tickets__radio-cont:first-of-type {
+  margin-top: 50px;
+}
+
+.tickets__radio-cont input {
+  /*position: absolute;*/
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+
+.tickets__radio-cont:hover input ~ .checkmark {
+  background-color: #f1f1f1;
+}
+
+.tickets__radio-cont input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.tickets__radio-cont input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.tickets__radio-cont .checkmark:after {
+  top: 3px;
+  left: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+}
+/*tickets type inuput end*/
 .tickets__amount {
   margin-left: auto;
+  text-align: right;
+}
+
+.tickets__inp-descr {
+  margin-bottom: 15px;
+  margin-left: 26px;
+  text-align: left;
+}
+
+.tickets__btn-group {
+  margin-bottom: 10px;
+  margin-left: auto;
+  padding: 5px 14px;
+  width: 150px;
+  border: 3.5px solid #000;
+}
+
+.tickets__btn-group:last-of-type {
+  margin-bottom: 50px;
+}
+
+.tickets__amount-btn {
+  font-size: var(--font3);
+  background-color: transparent;
+}
+
+.tickets__amount-num {
+  width: 72px;
+  font: inherit;
+  text-align: center;
+  border: none;
+}
+
+.tickets__btn {
+  padding: 12px 38px;
+  font: inherit;
+  color: #fff;
+  letter-spacing: 2px;
+  background-color: var(--bg-dark);
 }
 /*tickets end*/
 

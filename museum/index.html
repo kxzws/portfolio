@@ -1,3 +1,5 @@
+<!-- TODO: add arrows hover -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,7 +58,6 @@
               <span class="title-break">Welcome</span>to the louvre
             </h1>
             <p class="welcome__subtitle">From the castle to the museum</p>
-            <!-- TODO: add click animation -->
             <a href="/tours/tour1.html" class="welcome__btn" target="_blank"
               >Discover the Louvre</a
             >
@@ -117,7 +118,6 @@
               <li class="carousel__check"></li>
             </ul>
 
-            <!-- TODO: add arrows hover -->
             <button class="carousel__control control-left">
               <img
                 src="assets/svg/left-arrow.svg"
@@ -638,13 +638,266 @@
               </div>
               <!-- /.tickets__btn-group -->
               <h3 class="tickets__subtitle subtitle-total">Total €220</h3>
-              <button class="tickets__btn">Buy Now</button>
+              <a class="tickets__btn" href="#openModal">Buy Now</a>
             </div>
           </div>
         </div>
         <!-- /.container -->
       </section>
       <!-- /.tickets -->
+
+      <div id="openModal" class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <a href="#close" class="close"></a>
+            </div>
+            <div class="modal-body">
+              <div class="modal-body-left">
+                <img
+                  src="assets/svg/booking-page/book-logo.svg"
+                  alt="logo: Louvre"
+                  class="modal-logo"
+                />
+                <h3 class="modal-title">Booking tickets</h3>
+                <h4 class="modal-subtitle">Tour to Louvre</h4>
+                <form class="modal-form" name="ticket-booking" action="get">
+                  <div class="modal-date-time">
+                    <div class="modal-booking-inp-cont inp-top">
+                      <img
+                        src="assets/svg/booking-page/date.svg"
+                        alt="icon: name"
+                        class="modal-inp-img"
+                      />
+                      <input
+                        class="modal-booking-inp"
+                        type="date"
+                        name="date"
+                        placeholder="Date"
+                      />
+                    </div>
+
+                    <div class="modal-booking-inp-cont inp-top">
+                      <img
+                        src="assets/svg/booking-page/time.svg"
+                        alt="icon: name"
+                        class="modal-inp-img"
+                      />
+                      <input
+                        class="modal-booking-inp"
+                        type="time"
+                        name="time"
+                        placeholder="Time"
+                      />
+                    </div>
+                  </div>
+                  <div class="modal-booking-inp-cont">
+                    <img
+                      src="assets/svg/booking-page/name.svg"
+                      alt="icon: name"
+                      class="modal-inp-img"
+                    />
+                    <input
+                      class="modal-booking-inp"
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                    />
+                  </div>
+
+                  <div class="modal-booking-inp-cont">
+                    <img
+                      src="assets/svg/booking-page/email.svg"
+                      alt="icon: name"
+                      class="modal-inp-img"
+                    />
+                    <input
+                      class="modal-booking-inp"
+                      type="email"
+                      name="email"
+                      placeholder="E-mail"
+                    />
+                  </div>
+
+                  <div class="modal-booking-inp-cont">
+                    <img
+                      src="assets/svg/booking-page/phone.svg"
+                      alt="icon: name"
+                      class="modal-inp-img"
+                    />
+                    <input
+                      class="modal-booking-inp"
+                      type="tel"
+                      name="tel"
+                      placeholder="Phone"
+                    />
+                  </div>
+
+                  <div class="modal-booking-inp-cont">
+                    <img
+                      src="assets/svg/booking-page/ballot.svg"
+                      alt="icon: name"
+                      class="modal-inp-img"
+                    />
+                    <select class="modal-booking-inp" name="ticket-type">
+                      <option value="">Ticket type</option>
+                      <option>Permanent exhibition</option>
+                      <option>Temporary exhibition</option>
+                      <option>Combined Admission</option>
+                    </select>
+                  </div>
+
+                  <div class="modal-entry">
+                    <h5 class="modal-entry-title">Entry ticket</h5>
+                    <div class="modal-entry-container">
+                      <p class="modal-entry-text">Basic 18+ (20 €)</p>
+                      <div class="modal-btn-group">
+                        <button
+                          class="modal-amount-btn"
+                          type="button"
+                          onclick="this.nextElementSibling.stepDown()"
+                        >
+                          –
+                        </button>
+                        <input
+                          class="modal-amount-num"
+                          type="number"
+                          min="0"
+                          max="20"
+                          value="1"
+                          readonly
+                        />
+                        <button
+                          class="modal-amount-btn"
+                          type="button"
+                          onclick="this.previousElementSibling.stepUp()"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <!-- /.modal-btn-group -->
+                    </div>
+                    <div class="modal-entry-container">
+                      <p class="modal-entry-text">Senior 65+ (10 €)</p>
+                      <div class="modal-btn-group">
+                        <button
+                          class="modal-amount-btn"
+                          type="button"
+                          onclick="this.nextElementSibling.stepDown()"
+                        >
+                          –
+                        </button>
+                        <input
+                          class="modal-amount-num"
+                          type="number"
+                          min="0"
+                          max="20"
+                          value="1"
+                          readonly
+                        />
+                        <button
+                          class="modal-amount-btn"
+                          type="button"
+                          onclick="this.previousElementSibling.stepUp()"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <!-- /.modal-btn-group -->
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- /.modal-body-left -->
+              <div class="modal-body-right">
+                <div class="modal-overview-cont">
+                  <div class="modal-overview">
+                    <h4 class="modal-overview-title">Overview</h4>
+                    <h5 class="modal-overview-subtitle">Tour to Louvre</h5>
+                    <ul class="modal-overview-list">
+                      <li class="modal-overview-item">
+                        <img
+                          src="assets/svg/booking-page/date.svg"
+                          alt="icon: date"
+                          class="modal-overview-img"
+                        />
+                        <span class="modal-overview-text"
+                          >Friday, August 19</span
+                        >
+                      </li>
+                      <li class="modal-overview-item">
+                        <img
+                          src="assets/svg/booking-page/time.svg"
+                          alt="icon: time"
+                          class="modal-overview-img"
+                        />
+                        <span class="modal-overview-text">16 : 30</span>
+                      </li>
+                      <li class="modal-overview-item">
+                        <img
+                          src="assets/svg/booking-page/check.svg"
+                          alt="icon: checked"
+                          class="modal-overview-img"
+                        />
+                        <span class="modal-overview-text"
+                          >Temporary exhibition</span
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <img
+                    src="assets/img/book-louvre-photo.jpg"
+                    alt="photo: Louvre"
+                    class="modal-img"
+                  />
+                </div>
+                <!-- /.modal-overview-cont -->
+
+                <div class="modal-total">
+                  <span>
+                    <span class="modal-total-amount">2</span> Basic (20 €)</span
+                  >
+                  <span>40 €</span>
+                </div>
+                <div class="modal-total">
+                  <span>
+                    <span class="modal-total-amount">2</span>
+                    Senior (10 €)</span
+                  >
+                  <span>20 €</span>
+                </div>
+
+                <div class="modal-line"></div>
+
+                <div class="modal-total">
+                  <span class="modal-total-conclusion">Total:</span>
+                  <span class="modal-total-descr">60 €</span>
+                </div>
+
+                <div class="cards">
+                  <div class="card card-top">
+                    <img
+                      src="assets/svg/booking-page/visa.svg"
+                      alt="pic: visa"
+                      class="card-visa"
+                    />
+                    <img
+                      src="assets/svg/booking-page/mastercard.svg"
+                      alt="pic: mastercard"
+                      class="card-master"
+                    />
+                  </div>
+                  <div class="card card-bottom"></div>
+                  <div class="card-black-rect"></div>
+                </div>
+
+                <button class="modal-btn">Book</button>
+              </div>
+              <!-- /.modal-body-right -->
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="parallax"></div>
 
@@ -673,7 +926,7 @@
                 >
               </p>
             </div>
-            <img src="assets/img/contacts-map.png" alt="map: Louvre museum">
+            <img src="assets/img/contacts-map.png" alt="map: Louvre museum" />
           </div>
         </div>
         <!-- /.container -->

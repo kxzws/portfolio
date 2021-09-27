@@ -173,7 +173,7 @@ button {
 .header__logo {
   display: flex;
   align-items: baseline;
-  transition: all .5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .header__logo:hover {
@@ -949,7 +949,7 @@ button {
 .tickets__amount-btn {
   font-size: var(--font3);
   background-color: transparent;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .tickets__amount-btn:hover {
@@ -965,11 +965,12 @@ button {
 
 .tickets__btn {
   padding: 12px 38px;
+  display: block;
   font: inherit;
   color: #fff;
   letter-spacing: 2px;
   background-color: var(--bg-dark);
-  transition: all .5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .tickets__btn:hover {
@@ -977,6 +978,401 @@ button {
   background-color: var(--font-gold);
 }
 /*tickets end*/
+
+/*modal start*/
+/* свойства модального окна по умолчанию */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out;
+  pointer-events: none;
+}
+
+.modal:target {
+  opacity: 1;
+  pointer-events: auto;
+  overflow-y: auto;
+  transform: translateX(0);
+}
+
+/* ширина модального окна и его отступы от экрана */
+.modal-dialog {
+  position: relative;
+  max-width: 1440px;
+  margin: 10px auto;
+}
+
+@media (max-width: 1024px) {
+  .modal-dialog {
+    max-width: 1024px;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 590px;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .modal-dialog {
+    max-width: 420px;
+    margin: 10px auto;
+  }
+}
+
+/* свойства для блока, содержащего контент модального окна */
+.modal-content {
+  padding-bottom: 90px;
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  outline: 0;
+}
+
+@media (min-width: 1025px) {
+  .modal-content {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* свойства для заголовка модального окна */
+.modal-header {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  padding-bottom: 36px;
+}
+
+/* свойства для кнопки "Закрыть" */
+.close {
+  margin-left: auto;
+  display: block;
+  height: 25px;
+  width: 25px;
+  background: url("../assets/svg/booking-page/close.svg") no-repeat;
+  text-decoration: none;
+}
+
+/* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+.close:focus,
+.close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* свойства для блока, содержащего основное содержимое окна */
+.modal-body {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: auto;
+  font-weight: normal;
+  font-size: var(--font5);
+  line-height: 21px;
+}
+/*modal-body-left start*/
+.modal-body-left {
+  margin-right: 40px;
+}
+
+.modal-title {
+  font-family: "Forum", serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 55px;
+  text-transform: uppercase;
+  color: #9d8665;
+}
+
+.modal-subtitle {
+  margin-bottom: 73px;
+  position: relative;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--dark-red);
+}
+
+.modal-subtitle::after {
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-color: var(--dark-red);
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-date-time {
+  display: flex;
+}
+
+.inp-top {
+  display: inline-block;
+  width: 190px;
+}
+
+.inp-top:first-child {
+  margin-right: 20px;
+}
+
+.modal-booking-inp-cont {
+  padding: 10px 15px;
+  padding-top: 13px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  height: 45px;
+  border: 1px solid #000;
+}
+
+.modal-inp-img {
+  margin-right: 15px;
+}
+
+.modal-booking-inp {
+  font: inherit;
+  border: none;
+}
+
+.modal-booking-inp::placeholder {
+  font: inherit;
+  color: #000;
+}
+
+.modal-entry {
+  padding: 15px;
+  padding-top: 10px;
+  border: 1px solid #000;
+}
+
+.modal-entry-title {
+  margin-bottom: 25px;
+  position: relative;
+  font-family: "Forum", serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  text-transform: capitalize;
+  color: #9d8665;
+}
+
+.modal-entry-title::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: var(--dark-red);
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+}
+
+.modal-entry-container {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-entry-container:last-child {
+  margin-bottom: 0;
+}
+
+.modal-btn-group {
+  border: 1px solid #000;
+}
+
+.modal-amount-btn {
+  height: 25px;
+  width: 35px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #000;
+}
+
+.modal-amount-num {
+  height: 25px;
+  width: 35px;
+  font: inherit;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+}
+/*modal-body-left end*/
+/*modal-body-right start*/
+.modal-body-right {
+  padding: 25px 30px;
+  border: 1px solid #000;
+}
+
+.modal-overview-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-img {
+  width: 150px;
+  height: 120px;
+}
+
+.modal-overview {
+  margin-right: 124px;
+}
+
+.modal-overview-title {
+  margin-bottom: 2px;
+  font-weight: 500;
+  font-size: var(--font2);
+  line-height: 37px;
+  color: #272727;
+}
+
+.modal-overview-subtitle {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: var(--font4);
+  line-height: 26px;
+  color: #740c11;
+  opacity: 0.9;
+}
+
+.modal-overview-list {
+  margin-bottom: 22px;
+}
+
+.modal-overview-item {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: baseline;
+}
+
+.modal-overview-img {
+  margin-right: 15px;
+}
+
+.modal-overview-text {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.modal-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.modal-line {
+  margin-top: 9px;
+  margin-bottom: 10px;
+  height: 2px;
+  width: 100%;
+  background-color: var(--dark-red); 
+}
+
+.modal-total-amount {
+  margin-right: 10px;
+  padding: 1px 11px;
+  display: inline-block;
+  font-size: var(--font5);
+  line-height: 21px;
+  color: #a4a4a3;
+  text-align: center;
+  background-color: #000;
+  border-radius: 7px;
+}
+
+.modal-total-conclusion {
+  font-weight: normal;
+  font-size: var(--font2);
+  line-height: 37px;
+}
+
+.modal-total-descr {
+  font-weight: 500;
+  font-size: var(--font2);
+  line-height: 37px;
+}
+
+.cards {
+  margin-top: 10px;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.card {
+  width: 360px;
+  height: 211px;
+  border-radius: 5px;
+}
+
+.card-top {
+  position: relative;
+  z-index: 3;
+  background-color: #BCBCBC;
+}
+
+.card-visa {
+  height: 16px;
+  width: 55px;
+  position: absolute;
+  right: 20px;
+  top: 32px;
+}
+
+.card-master {
+  height: 32px;
+  width: 53px;
+  position: absolute;
+  right: 20px;
+  top: 65px;
+}
+
+.card-bottom {
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  background-color: #939393;
+}
+
+.card-black-rect {
+  height: 45px;
+  width: 100%;
+  position: absolute;
+  top: 55px;
+  z-index: 2;
+  background-color: #000;
+}
+
+.modal-btn {
+  margin-left: auto;
+  padding: 11px 85px;
+  display: block;
+  color: #fff;
+  background-color: var(--dark-red);
+}
+/*modal-body-right end*/
+/*modal end*/
 
 .parallax {
   height: 400px;
@@ -1068,7 +1464,7 @@ button {
   margin-right: 145px;
   display: flex;
   align-items: baseline;
-  transition: all .5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .footer__logo:hover {

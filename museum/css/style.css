@@ -173,15 +173,22 @@ button {
 .header__logo {
   display: flex;
   align-items: baseline;
+  transition: all .5s ease-out;
+}
+
+.header__logo:hover {
+  filter: invert(54%) sepia(12%) saturate(950%) hue-rotate(356deg)
+    brightness(97%) contrast(88%);
+}
+
+.header__logo:active {
+  filter: invert(44%) sepia(7%) saturate(1743%) hue-rotate(357deg)
+    brightness(93%) contrast(85%);
 }
 
 .header__logo-img {
   margin-right: 25px;
   transition: all 150ms ease-in;
-}
-
-.header__logo-img:hover {
-  opacity: 0.6;
 }
 
 .header__logo-text {
@@ -359,7 +366,7 @@ button {
 }
 
 .carousel__check:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .carousel__check:last-child {
@@ -372,15 +379,7 @@ button {
 
 .carousel__control {
   margin-right: 20px;
-  background-color: #000;
-}
-
-.carousel__control:hover {
-  color: var(--font-gold);
-}
-
-.carousel__control:active {
-  color: var(--font-gold);
+  background-color: transparent;
 }
 
 .carousel__control:last-child {
@@ -950,6 +949,11 @@ button {
 .tickets__amount-btn {
   font-size: var(--font3);
   background-color: transparent;
+  transition: all .2s ease;
+}
+
+.tickets__amount-btn:hover {
+  color: #c4c4c4;
 }
 
 .tickets__amount-num {
@@ -965,6 +969,12 @@ button {
   color: #fff;
   letter-spacing: 2px;
   background-color: var(--bg-dark);
+  transition: all .5s ease-out;
+}
+
+.tickets__btn:hover {
+  color: #000;
+  background-color: var(--font-gold);
 }
 /*tickets end*/
 
@@ -1058,6 +1068,17 @@ button {
   margin-right: 145px;
   display: flex;
   align-items: baseline;
+  transition: all .5s ease-out;
+}
+
+.footer__logo:hover {
+  filter: invert(54%) sepia(12%) saturate(950%) hue-rotate(356deg)
+    brightness(97%) contrast(88%);
+}
+
+.footer__logo:active {
+  filter: invert(44%) sepia(7%) saturate(1743%) hue-rotate(357deg)
+    brightness(93%) contrast(85%);
 }
 
 .footer__logo-img {

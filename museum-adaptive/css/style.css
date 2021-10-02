@@ -569,7 +569,6 @@ button {
   }
 
   .visiting__title::after {
-    height: 2.5px;
     bottom: -14px;
   }
 
@@ -677,6 +676,45 @@ button {
 }
 
 @media screen and (max-width: 1024px) {
+  .explore {
+    padding-top: 56px;
+    padding-bottom: 58px;
+  }
+
+  .explore-flex {
+    display: block;
+  }
+
+  .explore__side-bar {
+    margin-right: 0;
+    margin-bottom: 58px;
+    max-width: 100%;
+  }
+
+  .explore__title {
+    margin-bottom: 74px;
+  }
+  
+  .explore__title::after {
+    bottom: -14px;
+  }
+
+  .explore .title-break {
+    display: inline;
+  }
+
+  .explore__subtitle {
+    margin-bottom: 0;
+  }
+
+  .explore__subtitle:last-child {
+    display: none;
+  }
+
+  .explore__img-before {
+    margin: 0 auto;
+    max-width: 720px;
+  }
 }
 /*explore end*/
 

@@ -120,6 +120,16 @@
   --font5: 18px;
 }
 
+@media screen and (max-width: 1024px) {
+  :root {
+    --font1: 50px;
+    --font2: 28px;
+    --font3: 24px;
+    --font4: 20px;
+    --font5: 16px;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -156,16 +166,6 @@ button {
 
 .title-break {
   display: block;
-}
-
-@media screen and (max-width: 1024px) {
-  :root {
-    --font1: 50px;
-    /*--font2: 32px;*/
-    --font3: 24px;
-    --font4: 20px;
-    /*--font5: 18px;*/
-  }
 }
 
 /*header start*/
@@ -245,6 +245,17 @@ button {
   .header {
     padding-top: 49px;
     padding-bottom: 48px;
+  }
+
+  .header__logo-text {
+    font-family: "Forum", serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: var(--font2);
+    line-height: 31px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #ffffff;
   }
 }
 /*header end*/
@@ -412,12 +423,16 @@ button {
     padding-top: 50px;
   }
 
+  .welcome__title {
+    margin-bottom: 22px;
+  }
+
   .welcome__subtitle {
-    margin-bottom: 50px;
+    margin-bottom: 48px;
   }
 
   .welcome__btn {
-    padding: 19px 45px;
+    padding: 17px 45px;
   }
 
   .carousel {
@@ -431,6 +446,8 @@ button {
   .carousel__control-panel {
     width: 68.5%;
     justify-content: end;
+    bottom: -58px;
+    right: 19px;
   }
 
   .carousel__order {
@@ -479,30 +496,13 @@ button {
   margin-bottom: 76px;
 }
 
-.visiting__card:hover .visiting__card-name::after {
-  width: 100%;
-}
-
-.visiting__card:hover .visiting__card-name {
-  color: var(--font-gold);
-}
-
-.visiting__card:active .visiting__card-name::after {
-  width: 100%;
-}
-
-.visiting__card:active .visiting__card-name {
-  color: var(--font-br-gold);
-}
-
 .visiting__card-link {
   display: block;
 }
 
 .visiting__card-img {
   margin-bottom: 25px;
-  height: 285px;
-  width: 440px;
+  width: 100%;
 }
 
 .visiting__card-name {
@@ -522,12 +522,28 @@ button {
 .visiting__card-name::after {
   content: "";
   height: 2px;
-  width: 300px;
+  width: 68.5%;
   background-color: var(--dark-red);
   position: absolute;
   left: 0;
   bottom: -11px;
   transition: all 1s ease;
+}
+
+.visiting__card:hover .visiting__card-name::after {
+  width: 100%;
+}
+
+.visiting__card:hover .visiting__card-name {
+  color: var(--font-gold);
+}
+
+.visiting__card:active .visiting__card-name::after {
+  width: 100%;
+}
+
+.visiting__card:active .visiting__card-name {
+  color: var(--font-br-gold);
 }
 
 .visiting__card-descr1 {
@@ -545,7 +561,37 @@ button {
 
 @media screen and (max-width: 1024px) {
   .visiting {
-    padding-top: 60px;
+    padding-top: 52px;
+  }
+
+  .visiting__title {
+    margin-bottom: 74px;
+  }
+
+  .visiting__title::after {
+    height: 2.5px;
+    bottom: -14px;
+  }
+
+  .visiting-flex {
+    justify-content: space-evenly;
+  }
+
+  .visiting__card {
+    margin-bottom: 58px;
+    width: 33.5%;
+  }
+
+  .visiting__card-name {
+    margin-bottom: 20px;
+    line-height: 31px;
+    letter-spacing: 3px;
+  }
+
+  .visiting__card-name::after {
+    height: 2px;
+    width: 45.5%;
+    bottom: -13px;
   }
 }
 /*visiting end*/
@@ -628,6 +674,9 @@ button {
   left: -280px;
   object-fit: cover;
   object-position: 280px 0;
+}
+
+@media screen and (max-width: 1024px) {
 }
 /*explore end*/
 

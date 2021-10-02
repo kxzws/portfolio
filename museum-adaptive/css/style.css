@@ -2038,4 +2038,31 @@ span.ripple {
   color: var(--font-br-gold);
 }
 /*footer__bottom end*/
+@media screen and (max-width: 1024px) {
+  .footer {
+    font-size: 22px;
+  }
+
+  .footer__top {
+    padding-top: 60px;
+    padding-bottom: 47px;
+  }
+
+  .footer__logo {
+    margin-right: 40px;
+  }
+
+  .footer__list {
+    margin-top: 6px;
+  }
+
+  .footer__item {
+    margin-bottom: 26px;
+    margin-right: 122px;
+  }
+
+  .footer__logo-text {
+    font-size: 28px;
+  }
+}
 /*footer end*/

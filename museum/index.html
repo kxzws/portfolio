@@ -670,7 +670,7 @@
                         class="modal-inp-img"
                       />
                       <input
-                        class="modal-booking-inp"
+                        class="modal-booking-inp date-inp"
                         type="date"
                         name="date"
                       />
@@ -683,7 +683,7 @@
                         class="modal-inp-img"
                       />
                       <input
-                        class="modal-booking-inp"
+                        class="modal-booking-inp time-inp"
                         type="time"
                         name="time"
                       />
@@ -737,7 +737,10 @@
                       alt="icon: name"
                       class="modal-inp-img"
                     />
-                    <select class="modal-booking-inp" name="ticket-type">
+                    <select
+                      class="modal-booking-inp select-inp"
+                      name="ticket-type"
+                    >
                       <option value="">Ticket type</option>
                       <option>Permanent exhibition</option>
                       <option>Temporary exhibition</option>
@@ -874,6 +877,36 @@
 
                 <div class="cards">
                   <div class="card card-top">
+                    <p class="card-text">Card number</p>
+                    <input
+                      type="number"
+                      name="cardNumber"
+                      class="card-inp inp-num"
+                    />
+                    <p class="card-text">Expiration date</p>
+                    <input
+                      type="number"
+                      name="expDay"
+                      min="1"
+                      max="12"
+                      value="03"
+                      class="card-inp inp-exp"
+                    />
+                    <input
+                      type="number"
+                      name="expYear"
+                      min="2019"
+                      max="2050"
+                      value="2024"
+                      class="card-inp inp-exp"
+                    />
+                    <p class="card-text">Cardholder name</p>
+                    <input
+                      type="text"
+                      name="cardName"
+                      class="card-inp inp-hold"
+                    />
+
                     <img
                       src="assets/svg/booking-page/visa.svg"
                       alt="pic: visa"
@@ -885,7 +918,21 @@
                       class="card-master"
                     />
                   </div>
-                  <div class="card card-bottom"></div>
+                  <div class="card card-bottom">
+                    <div class="card-bottom-text">
+                      <p class="card-text text-cvv">cvc/cvv</p>
+                      <input
+                        type="number"
+                        name="cvv"
+                        min="100"
+                        max="999"
+                        class="card-inp inp-cvv"
+                      />
+                      <p class="card-text">
+                        The last 3&nbsp;or&nbsp;4&nbsp;digits on&nbsp;back of&nbsp;the&nbsp;card
+                      </p>
+                    </div>
+                  </div>
                   <div class="card-black-rect"></div>
                 </div>
 

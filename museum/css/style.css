@@ -237,7 +237,7 @@ button {
   font-family: "Forum", serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 80px;
+  font-size: var(--font1);
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
@@ -478,7 +478,7 @@ button {
 
 .visiting__card-descr2 {
   font-weight: 200;
-  font-size: 18px;
+  font-size: var(--font5);
   line-height: 21px;
   color: #000;
 }
@@ -1094,6 +1094,7 @@ button {
 }
 
 .modal-title {
+  margin-bottom: 15px;
   font-family: "Forum", serif;
   font-style: normal;
   font-weight: normal;
@@ -1106,7 +1107,7 @@ button {
 .modal-subtitle {
   margin-bottom: 73px;
   position: relative;
-  font-size: 18px;
+  font-size: var(--font5);
   line-height: 21px;
   color: var(--dark-red);
 }
@@ -1164,19 +1165,44 @@ button {
   color: #000;
 }
 
+.date-inp {
+  color: #fff;
+}
+
+.date-inp::-webkit-calendar-picker-indicator {
+  height: 17px;
+  width: 17px;
+  background-image: url("../assets/svg/booking-page/arrow.svg");
+}
+
+.time-inp {
+  color: #fff;
+}
+
+.time-inp::-webkit-calendar-picker-indicator {
+  height: 17px;
+  width: 17px;
+  background-image: url("../assets/svg/booking-page/arrow.svg");
+}
+
+.select-inp::-webkit-ms-expand {
+  display: none;
+}
+
 .modal-entry {
   padding: 15px;
   padding-top: 10px;
+  padding-bottom: 10px;
   border: 1px solid #000;
 }
 
 .modal-entry-title {
-  margin-bottom: 25px;
+  margin-bottom: 22px;
   position: relative;
   font-family: "Forum", serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: var(--font5);
   line-height: 20px;
   text-transform: capitalize;
   color: #9d8665;
@@ -1193,7 +1219,7 @@ button {
 }
 
 .modal-entry-container {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1204,23 +1230,24 @@ button {
 }
 
 .modal-btn-group {
+  background-color: #000;
   border: 1px solid #000;
 }
 
 .modal-amount-btn {
-  height: 25px;
-  width: 35px;
-  font-size: 18px;
+  height: 18px;
+  width: 28px;
+  font-size: var(--font5);
   color: #fff;
-  background-color: #000;
+  background: transparent;
 }
 
 .modal-amount-num {
-  height: 25px;
+  height: 23px;
   width: 35px;
   font: inherit;
   font-weight: normal;
-  font-size: 18px;
+  font-size: var(--font5);
   line-height: 21px;
   text-align: center;
   border: none;
@@ -1279,26 +1306,29 @@ button {
 
 .modal-overview-text {
   font-weight: 300;
-  font-size: 18px;
+  font-size: var(--font5);
   line-height: 21px;
 }
 
 .modal-total {
+  margin-bottom: 6px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
+  align-items: baseline;
+  font-size: var(--font4);
+  line-height: 26px;
 }
 
 .modal-line {
-  margin-top: 9px;
+  margin-top: 12px;
   margin-bottom: 10px;
   height: 2px;
   width: 100%;
-  background-color: var(--dark-red); 
+  background-color: var(--dark-red);
 }
 
 .modal-total-amount {
-  margin-right: 10px;
+  margin-right: 6px;
   padding: 1px 11px;
   display: inline-block;
   font-size: var(--font5);
@@ -1328,15 +1358,44 @@ button {
 }
 
 .card {
+  padding: 15px 20px;
   width: 360px;
   height: 211px;
-  border-radius: 5px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #161615;
+  border-radius: 4px;
 }
 
 .card-top {
   position: relative;
   z-index: 3;
-  background-color: #BCBCBC;
+  background-color: #bcbcbc;
+}
+
+.card-text {
+  margin-bottom: 5px;
+}
+
+.card-inp {
+  margin-bottom: 10px;
+  padding: 10px;
+  height: 35px;
+  border: 0.5px solid #a4a4a3;
+}
+
+.inp-num {
+  width: 215px;
+}
+
+.inp-exp {
+  margin-right: 15px;
+  width: 100px;
+}
+
+.inp-hold {
+  width: 320px;
 }
 
 .card-visa {
@@ -1359,7 +1418,29 @@ button {
   position: absolute;
   bottom: -30px;
   right: 0;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
   background-color: #939393;
+}
+
+.card-bottom-text {
+  max-width: 75px;
+  position: relative;
+  top: 72px;
+  left: 255px;
+}
+
+.text-cvv {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.inp-cvv {
+  margin-bottom: 6px;
+  width: 75px;
+  position: relative;
+  right: 9px;
 }
 
 .card-black-rect {
@@ -1373,10 +1454,29 @@ button {
 
 .modal-btn {
   margin-left: auto;
-  padding: 11px 85px;
+  padding: 10px 85px;
+  position: relative;
   display: block;
+  font-size: var(--font4);
   color: #fff;
   background-color: var(--dark-red);
+  overflow: hidden;
+  transition: background 400ms;
+}
+
+span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 /*modal-body-right end*/
 /*modal end*/
@@ -1449,7 +1549,7 @@ button {
 /*footer start*/
 .footer {
   font-weight: 100;
-  font-size: 22px;
+  font-size: var(--font4);
   line-height: 22px;
   letter-spacing: 2px;
   color: #fff;

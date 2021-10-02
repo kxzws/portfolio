@@ -1056,6 +1056,25 @@ button {
   max-height: 570px;
   max-width: 456px;
 }
+
+@media screen and (max-width: 1024px) {
+  .gallery {
+    padding-top: 52px;
+    max-height: 1460px;
+  }
+
+  .gallery__title {
+    margin-bottom: 52px;
+  }
+
+  .masonry {
+    height: 2100px;
+  }
+
+  .masonry__item-img {
+    width: 304px;
+  }
+}
 /*gallery end*/
 
 /*tickets start*/

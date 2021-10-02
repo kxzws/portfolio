@@ -1119,7 +1119,7 @@ button {
   margin-bottom: 60px;
   letter-spacing: 1.65px;
 }
-/*tickets type inuput start*/
+/*tickets type input start*/
 .tickets__radio-cont {
   display: block;
   position: relative;
@@ -1179,7 +1179,7 @@ button {
   border-radius: 50%;
   background: #000;
 }
-/*tickets type inuput end*/
+/*tickets type input end*/
 .tickets__amount {
   margin-left: auto;
   text-align: right;
@@ -1233,6 +1233,72 @@ button {
 .tickets__btn:hover {
   color: #000;
   background-color: var(--font-gold);
+}
+
+@media screen and (max-width: 1024px) {
+  .tickets {
+    padding-top: 54px;
+    padding-bottom: 59px;
+  }
+
+  .tickets__title {
+    margin-bottom: 72px;
+  }
+
+  .tickets__title::after {
+    bottom: -13px;
+  }
+
+  .tickets__img {
+    margin-right: 80px;
+    height: 440px;
+    width: 700px;
+    object-fit: cover;
+  }
+
+  .tickets__subtitle {
+    margin-bottom: 30px;
+    font-size: var(--font2);
+  }
+
+  .subtitle-total {
+    margin-bottom: 69px;
+  }
+
+  .tickets__type {
+    display: none;
+  }
+
+  .tickets__amount {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .tickets__inp-descr {
+    margin-bottom: 11px;
+    margin-left: 0;
+    font-size: 22px;
+  }
+
+  .tickets__btn-group {
+    margin-left: 0;
+    margin-bottom: 27px;
+    height: 50px;
+    width: 100%;
+    font-size: 22px;
+  }
+
+  .tickets__btn-group:last-of-type {
+    margin-bottom: 25px;
+  }
+
+  .tickets__amount-num {
+    width: 100px;
+  }
+
+  .tickets__btn {
+    font-size: 22px;
+  }
 }
 /*tickets end*/
 

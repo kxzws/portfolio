@@ -1859,6 +1859,36 @@ span.ripple {
 .contacts__item-link:active {
   color: var(--font-br-gold);
 }
+
+@media screen and (max-width: 1024px) {
+  .contacts {
+    padding-top: 54px;
+    padding-bottom: 63px;
+  }
+
+  .contacts__title {
+    margin-bottom: 74px;
+  }
+
+  .contacts__title::after {
+    bottom: -14px;
+  }
+
+  .contacts__name {
+    margin-bottom: 32px;
+    line-height: 28px;
+  }
+
+  .contacts__item {
+    margin-bottom: 14px;
+  }
+
+  .contacts__map {
+    height: 454px;
+    width: 694px;
+    object-fit: cover;
+  }
+}
 /*contacts end*/
 /*main end*/
 

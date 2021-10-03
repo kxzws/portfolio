@@ -898,9 +898,9 @@ button {
   }
 
   .explore__img-after {
-    max-height: 368px;
-    max-width: 380px;
-    object-position: 280px 0;
+    height: 368px;
+    width: 380px;
+    object-position: 0 0;
   }
 }
 /*explore end*/
@@ -2179,7 +2179,7 @@ button {
   height: 45px;
   width: 100%;
   position: absolute;
-  top: 55px;
+  top: 25px;
   z-index: 2;
   background-color: #000;
 }
@@ -2246,7 +2246,7 @@ span.ripple {
   }
 
   .modal-header {
-    padding: 30 30px;
+    padding: 30px 30px;
     padding-bottom: 25px;
   }
 
@@ -2286,6 +2286,79 @@ span.ripple {
 
   .modal-overview-list {
     margin-bottom: 24px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .modal-dialog {
+    max-width: 420px;
+    margin: 0;
+  }
+
+  .modal-content {
+    padding-bottom: 50px;
+  }
+
+  .modal-body-left {
+    margin-bottom: 49px;
+  }
+
+  .modal-title {
+    font-size: 32px;
+    line-height: 35px;
+  }
+
+  .modal-date-time {
+    display: block;
+  }
+
+  .inp-top {
+    width: 100%;
+  }
+
+  .inp-top:last-child {
+    margin-left: 0;
+  }
+
+  .modal-overview {
+    margin-right: 0;
+  }
+
+  .modal-img {
+    width: 120px;
+    height: 96px;
+  }
+
+  .cards {
+    margin-bottom: 40px;
+  }
+
+  .card {
+
+    width: 330px;
+    height: 209px;
+  }
+
+  .card-top {
+    margin-bottom: 25px;
+  }
+
+  .inp-hold {
+    width: 290px;
+  }
+
+  .card-bottom {
+    position: relative;
+    bottom: 0;
+  }
+
+  .card-bottom-text {
+    top: 72px;
+    left: 225px;
+  }
+
+  .card-black-rect {
+    left: 0;
   }
 }
 /*modal end*/

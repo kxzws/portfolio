@@ -452,10 +452,6 @@ button {
     padding-top: 50px;
   }
 
-  .welcome__title {
-    margin-bottom: 22px;
-  }
-
   .welcome__subtitle {
     margin-bottom: 48px;
   }
@@ -506,10 +502,6 @@ button {
     padding-top: 0;
     position: static;
     text-align: center;
-  }
-
-  .welcome__title {
-    line-height: 60px;
   }
 
   .welcome__subtitle {
@@ -631,16 +623,8 @@ button {
 }
 
 @media screen and (max-width: 1024px) {
-  .visiting {
-    padding-top: 52px;
-  }
-
-  .visiting__title {
-    margin-bottom: 74px;
-  }
-
   .visiting__title::after {
-    bottom: -14px;
+    bottom: -22px;
   }
 
   .visiting-flex {
@@ -747,7 +731,6 @@ button {
 
 @media screen and (max-width: 1024px) {
   .explore {
-    padding-top: 56px;
     padding-bottom: 58px;
   }
 
@@ -761,12 +744,8 @@ button {
     max-width: 100%;
   }
 
-  .explore__title {
-    margin-bottom: 74px;
-  }
-
   .explore__title::after {
-    bottom: -14px;
+    bottom: -22px;
   }
 
   .explore .title-break {
@@ -922,7 +901,7 @@ button {
 .slider-flex {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .slide {
@@ -973,12 +952,8 @@ button {
 }
 /*slider end*/
 @media screen and (max-width: 1024px) {
-  .video {
-    padding-top: 56px;
-  }
-
   .video__sect-descr {
-    margin-bottom: 30px;
+    margin-bottom: 0;
   }
 
   .video__subtitle {
@@ -1124,12 +1099,7 @@ button {
 
 @media screen and (max-width: 1024px) {
   .gallery {
-    padding-top: 52px;
     max-height: 1460px;
-  }
-
-  .gallery__title {
-    margin-bottom: 52px;
   }
 
   .masonry {
@@ -1302,16 +1272,11 @@ button {
 
 @media screen and (max-width: 1024px) {
   .tickets {
-    padding-top: 54px;
     padding-bottom: 59px;
   }
 
-  .tickets__title {
-    margin-bottom: 72px;
-  }
-
   .tickets__title::after {
-    bottom: -13px;
+    bottom: -22px;
   }
 
   .tickets__img {
@@ -1922,16 +1887,11 @@ span.ripple {
 
 @media screen and (max-width: 1024px) {
   .contacts {
-    padding-top: 54px;
     padding-bottom: 63px;
   }
 
-  .contacts__title {
-    margin-bottom: 74px;
-  }
-
   .contacts__title::after {
-    bottom: -14px;
+    bottom: -22px;
   }
 
   .contacts__name {
@@ -1950,9 +1910,50 @@ span.ripple {
   }
 }
 /*contacts end*/
+@media screen and (max-width: 1024px) {
+  .section-main {
+    padding-top: 60px;
+  }
+
+  .section-title {
+    margin-bottom: 83px;
+    line-height: 75px;
+  }
+
+  .welcome__title {
+    margin-bottom: 22px;
+    line-height: 90px;
+  }
+
+  .video__title {
+    margin-bottom: 40px;
+  }
+
+  .gallery__title {
+    margin-bottom: 60px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .section-main {
     padding-top: 40px;
+  }
+
+  .section-title {
+    margin-bottom: 63px;
+    line-height: 60px;
+  }
+
+  .welcome__title {
+    margin-bottom: 25px;
+  }
+
+  .video__title {
+    margin-bottom: 20px;
+  }
+
+  .gallery__title {
+    margin-bottom: 40px;
   }
 }
 /*main end*/

@@ -144,6 +144,16 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  :root {
+    --font1: 28px;
+    --font2: 22px;
+    --font3: 16px;
+    --font4: 18px;
+    --font5: 16px;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -280,6 +290,22 @@ button {
   .header__logo-text {
     font-size: 28px;
     line-height: 50px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header {
+    padding: 35px 0;
+    padding-bottom: 42px;
+  }
+
+  .header__logo-img {
+    width: 29px;
+  }
+
+  .header__logo-text {
+    font-size: 16px;
+    line-height: 18px;
   }
 }
 /*header end*/
@@ -527,6 +553,40 @@ button {
     padding: 30px 0;
     position: static;
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .welcome__subtitle {
+    margin-bottom: 48px;
+    line-height: 19px;
+  }
+
+  .carousel__control-panel {
+    padding: 20px 0;
+    font-size: 16px;
+  }
+
+  .carousel__order {
+    margin-right: 25px;
+  }
+
+  .carousel__checkbox {
+    margin-right: 25px;
+  }
+
+  .carousel__check {
+    margin-right: 10px;
+    height: 7px;
+    width: 7px;
+  }
+
+  .carousel__control {
+    margin-right: 15px;
+  }
+
+  .carousel__control-img {
+    width: 20px;
   }
 }
 /*welcome end*/
@@ -800,6 +860,19 @@ button {
 
   .explore__subtitle {
     display: none;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .explore__img-before {
+    max-height: 368px;
+    max-width: 380px;
+  }
+
+  .explore__img-after {
+    max-height: 368px;
+    max-width: 380px;
+    object-position: 280px 0;
   }
 }
 /*explore end*/
@@ -1498,6 +1571,18 @@ button {
     margin-bottom: 39px;
   }
 }
+
+@media screen and (max-width: 420px) {
+  .tickets-flex {
+    display: block;
+  }
+
+  .tickets__img {
+    margin-right: 0;
+    height: 160px;
+    width: 380px;
+  }
+}
 /*tickets end*/
 
 /*modal start*/
@@ -2163,6 +2248,13 @@ span.ripple {
     width: 728px;
   }
 }
+
+@media screen and (max-width: 420px) {
+  .contacts__map {
+    height: 248px;
+    width: 380px;
+  }
+}
 /*contacts end*/
 @media screen and (max-width: 1024px) {
   .section-main {
@@ -2208,6 +2300,12 @@ span.ripple {
 
   .gallery__title {
     margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .section-title {
+    line-height: 40px;
   }
 }
 /*main end*/
@@ -2418,6 +2516,12 @@ span.ripple {
 
   .footer__bottom {
     padding: 40px 0;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .footer__link:first-of-type {
+    display: none;
   }
 }
 /*footer end*/

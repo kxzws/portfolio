@@ -147,9 +147,9 @@
 @media screen and (max-width: 420px) {
   :root {
     --font1: 28px;
-    --font2: 22px;
+    --font2: 18px;
     --font3: 16px;
-    --font4: 18px;
+    --font4: 16px;
     --font5: 16px;
   }
 }
@@ -732,6 +732,30 @@ button {
   }
 
   .visiting__card-descr2 {
+    line-height: 19px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .visiting__card {
+    margin-bottom: 41px;
+    width: calc(100% - 100px);
+  }
+
+  .visiting__card:last-child {
+    margin-bottom: 40px;
+  }
+
+  .visiting__card-name {
+    line-height: 20px;
+    letter-spacing: 5px;
+  }
+
+  .visiting__card-name::after {
+    width: 53.5%;
+  }
+
+  .visiting__card-descr1 {
     line-height: 19px;
   }
 }

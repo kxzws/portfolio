@@ -262,25 +262,24 @@ button {
   }
 
   .header__logo-text {
-    font-family: "Forum", serif;
-    font-style: normal;
-    font-weight: normal;
     font-size: var(--font2);
     line-height: 31px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #ffffff;
   }
 }
 
 @media screen and (max-width: 768px) {
   .header {
     padding-top: 35px;
-    padding-bottom: 34px;
+    padding-bottom: 25px;
   }
 
   .header__nav {
     display: none;
+  }
+
+  .header__logo-text {
+    font-size: 28px;
+    line-height: 50px;
   }
 }
 /*header end*/
@@ -651,7 +650,7 @@ button {
 
 @media screen and (max-width: 768px) {
   .visiting__card {
-    margin-bottom: 40px;
+    margin-bottom: 39px;
     width: 38.5%;
   }
 
@@ -665,6 +664,7 @@ button {
 
   .visiting__card-name::after {
     width: 53.5%;
+    bottom: -9px;
   }
 
   .visiting__card-descr1 {
@@ -795,7 +795,7 @@ button {
 
 @media screen and (max-width: 768px) {
   .explore {
-    padding-bottom: 40px;
+    padding-bottom: 45px;
   }
 
   .explore__subtitle {
@@ -1066,7 +1066,7 @@ button {
 
 @media screen and (max-width: 768px) {
   .slider {
-    margin-bottom: 80px;
+    margin-bottom: 75px;
   }
 
   .video__video {
@@ -1079,7 +1079,7 @@ button {
     width: 80px;
     height: 80px;
     top: 18.7%;
-    left: 42.2%;
+    left: 44.5%;
     border: 4px solid #fff;
   }
 
@@ -1091,7 +1091,7 @@ button {
 
   .video__control-panel {
     padding: 12px 30px;
-    bottom: 274px;
+    bottom: 256px;
   }
 
   .play-progress {
@@ -1114,7 +1114,7 @@ button {
   }
 
   .slide {
-    margin-bottom: 20px;
+    margin-bottom: 2px;
   }
 
   .slide iframe {
@@ -1125,6 +1125,15 @@ button {
 
   .slide-active:nth-child(n + 3) {
     display: none;
+  }
+
+  .dots-wrapper {
+    max-width: 190px;
+  }
+
+  .dot {
+    height: 10px;
+    width: 10px;
   }
 }
 /*video end*/
@@ -1220,6 +1229,7 @@ button {
 
   .masonry {
     height: 3300px;
+    column-gap: 12px;
   }
 
   .masonry__item-img {
@@ -1480,6 +1490,10 @@ button {
     font-size: 28px;
   }
 
+  .tickets__btn-group {
+    margin-bottom: 24px;
+  }
+
   .tickets__btn-group:last-of-type {
     margin-bottom: 39px;
   }
@@ -1663,9 +1677,7 @@ button {
 }
 
 .modal-entry {
-  padding: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 15px;
   border: 1px solid #000;
 }
 
@@ -1975,6 +1987,60 @@ span.ripple {
     padding-bottom: 20px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .modal-dialog {
+    max-width: 590px;
+    margin: 10px auto;
+  }
+
+  .modal-content {
+    padding-bottom: 40px;
+  }
+
+  .modal-header {
+    padding: 30 30px;
+    padding-bottom: 25px;
+  }
+
+  .modal-body {
+    padding: 0 30px;
+    display: block;
+  }
+
+  .modal-body-left {
+    margin-right: 0;
+    margin-bottom: 51px;
+  }
+
+  .modal-subtitle {
+    margin-bottom: 53px;
+  }
+
+  .inp-top {
+    width: calc(50% - 14px);
+  }
+
+  .inp-top:last-child {
+    margin-left: auto;
+  }
+
+  .modal-booking-inp-cont {
+    max-width: 100%;
+  }
+
+  .modal-inp-img {
+    margin-right: 13px;
+  }
+
+  .modal-body-right {
+    padding: 25px 15px;
+  }
+
+  .modal-overview-list {
+    margin-bottom: 24px;
+  }
+}
 /*modal end*/
 
 .parallax {
@@ -1983,6 +2049,12 @@ span.ripple {
   background-image: url("../assets/img/parallax.jpg");
   background-size: cover;
   background-attachment: fixed;
+}
+
+@media screen and (max-width: 768px) {
+  .parallax {
+    height: 300px;
+  }
 }
 
 /*contacts start*/
@@ -2066,7 +2138,7 @@ span.ripple {
 
 @media screen and (max-width: 768px) {
   .contacts {
-    padding-bottom: 67px;
+    padding-bottom: 77px;
   }
 
   .contacts-flex {
@@ -2316,22 +2388,32 @@ span.ripple {
 }
 
 @media screen and (max-width: 768px) {
+  .footer {
+    font-size: var(--font4);
+    line-height: 21px;
+  }
+
   .footer__top {
-    padding-top: 40px;
+    padding-top: 47px;
     padding-bottom: 40px;
     max-height: 340px;
   }
 
   .footer__logo {
-    margin-right: 80px;
+    margin-right: 99px;
   }
 
   .footer__list {
-    margin-bottom: 42px;
+    margin-bottom: 36px;
+  }
+
+  .footer__item {
+    margin-bottom: 21px;
+    margin-right: 185px;
   }
 
   .footer__soc-list {
-    margin-right: 12%;
+    margin-right: 12.2%;
   }
 
   .footer__bottom {

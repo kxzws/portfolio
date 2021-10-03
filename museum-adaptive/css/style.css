@@ -1074,7 +1074,7 @@ button {
     max-height: 386px;
     object-fit: cover;
   }
-  
+
   .video__btn-big-play {
     width: 80px;
     height: 80px;
@@ -1123,7 +1123,7 @@ button {
     object-fit: cover;
   }
 
-  .slide-active:nth-child(n+3) {
+  .slide-active:nth-child(n + 3) {
     display: none;
   }
 }
@@ -2061,6 +2061,34 @@ span.ripple {
     height: 454px;
     width: 694px;
     object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contacts {
+    padding-bottom: 67px;
+  }
+
+  .contacts-flex {
+    display: block;
+  }
+
+  .contacts__name {
+    margin-bottom: 40px;
+    line-height: 23px;
+  }
+
+  .contacts__info {
+    margin-bottom: 40px;
+  }
+
+  .contacts__item {
+    line-height: 21px;
+  }
+
+  .contacts__map {
+    height: 467px;
+    width: 728px;
   }
 }
 /*contacts end*/

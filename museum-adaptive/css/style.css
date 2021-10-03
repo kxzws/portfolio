@@ -1709,8 +1709,40 @@ button {
 
   .tickets__img {
     margin-right: 0;
+    margin-bottom: 40px;
     height: 160px;
     width: 380px;
+  }
+
+  .tickets__amount {
+    margin: 0 auto;
+    max-width: 176px;
+    text-align: center;
+  }
+
+  .tickets__subtitle {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .subtitle-total {
+    margin-bottom: 40px;
+    letter-spacing: normal;
+  }
+
+  .tickets__inp-descr {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .tickets__btn-group {
+    margin-bottom: 25px;
+  }
+
+  .tickets__btn {
+    font-size: 16px;
   }
 }
 /*tickets end*/

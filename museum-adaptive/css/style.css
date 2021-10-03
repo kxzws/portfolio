@@ -1212,6 +1212,37 @@ button {
     width: 304px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .gallery {
+    max-height: 1220px;
+  }
+
+  .masonry {
+    height: 3300px;
+  }
+
+  .masonry__item-img {
+    width: 352px;
+  }
+
+  .masonry__item:nth-child(2n + 1) {
+    position: relative;
+    top: 50px;
+    order: 1;
+  }
+  .masonry__item:nth-child(3n + 2) {
+    order: initial;
+  }
+  .masonry__item:nth-child(2n) {
+    order: 2;
+  }
+
+  .item-top {
+    position: relative;
+    top: 0;
+  }
+}
 /*gallery end*/
 
 /*tickets start*/

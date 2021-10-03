@@ -888,6 +888,10 @@ button {
 }
 
 @media screen and (max-width: 420px) {
+  .explore {
+    padding-bottom: 40px;
+  }
+
   .explore__img-before {
     max-height: 368px;
     max-width: 380px;
@@ -921,6 +925,10 @@ button {
 /*slider start*/
 .slider {
   margin-bottom: 66px;
+  position: relative;
+}
+
+.video__video-cont {
   position: relative;
 }
 
@@ -960,7 +968,7 @@ button {
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  bottom: 356px;
+  bottom: 0;
   background-color: var(--bg-dark);
 }
 
@@ -1119,7 +1127,6 @@ button {
 
   .video__control-panel {
     padding: 15px 40px;
-    bottom: 270px;
   }
 
   .video__progress {
@@ -1188,7 +1195,6 @@ button {
 
   .video__control-panel {
     padding: 12px 30px;
-    bottom: 256px;
   }
 
   .play-progress {
@@ -1231,6 +1237,92 @@ button {
   .dot {
     height: 10px;
     width: 10px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .slider {
+    margin-bottom: 34px;
+  }
+
+  .video__video {
+    margin-bottom: 40px;
+    max-height: 226px;
+  }
+
+  .video__btn-big-play {
+    width: 50px;
+    height: 50px;
+    top: 26%;
+    left: 44.5%;
+    border: 3px solid #fff;
+  }
+
+  .video__btn-big-play-img {
+    left: 2.5px;
+    width: 21px;
+    height: 27px;
+  }
+
+  .video__control-panel {
+    padding: 16px 20px;
+  }
+
+  .video__btn-play {
+    width: 14px;
+  }
+
+  .video__progress {
+    height: 4px;
+  }
+  
+  .video__progress::-webkit-slider-thumb {
+    width: 10px;
+    height: 10px;
+  }
+
+  .play-progress {
+    top: -4px;
+  }
+
+  .video__btn-volume {
+    width: 18px;
+  }
+
+  .volume-progress {
+    width: 59%;
+  }
+
+  .video__btn-fullscr {
+    width: 18px;
+  }
+
+  .slide {
+    margin-bottom: 28px;
+  }
+
+  .slide iframe {
+    width: 180px;
+    height: 101px;
+    object-fit: cover;
+  }
+
+  .slide-active:nth-child(n + 3) {
+    display: none;
+  }
+
+  .dots-wrapper {
+    max-width: 176px;
+    align-items: center;
+  }
+
+  .dot {
+    height: 8px;
+    width: 8px;
+  }
+
+  .slider-arrow {
+    font-size: 16px;
   }
 }
 /*video end*/
@@ -2330,6 +2422,10 @@ span.ripple {
 @media screen and (max-width: 420px) {
   .section-title {
     line-height: 40px;
+  }
+
+  .video {
+    padding-top: 36px;
   }
 }
 /*main end*/

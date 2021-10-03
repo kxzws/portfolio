@@ -301,72 +301,76 @@
           </div>
 
           <div class="slider">
-            <video
-              class="video__video"
-              src="#"
-              poster="assets/video/poster0.jpg"
-            ></video>
-            <button class="video__btn-big-play">
-              <img
-                src="assets/svg/play.svg"
-                alt="icon: play video"
-                class="video__btn-big-play-img"
-              />
-            </button>
-            <div class="video__control-panel">
-              <button class="video__btn">
+            <div class="video__video-cont">
+              <video
+                class="video__video"
+                src="#"
+                poster="assets/video/poster0.jpg"
+              ></video>
+              <button class="video__btn-big-play">
                 <img
                   src="assets/svg/play.svg"
                   alt="icon: play video"
-                  class="video__btn-play"
-                />
-                <img
-                  src="assets/svg/pause.svg"
-                  alt="icon: play video"
-                  class="video__btn-play btn-off"
+                  class="video__btn-big-play-img"
                 />
               </button>
-              <input
-                type="range"
-                value="54"
-                min="0"
-                max="100"
-                step="1"
-                class="video__progress play-progress"
-              />
-              <button class="video__btn">
-                <img
-                  src="assets/svg/volume.svg"
-                  alt="icon: turn volume"
-                  class="video__btn-volume"
+              <div class="video__control-panel">
+                <button class="video__btn">
+                  <img
+                    src="assets/svg/play.svg"
+                    alt="icon: play video"
+                    class="video__btn-play"
+                  />
+                  <img
+                    src="assets/svg/pause.svg"
+                    alt="icon: play video"
+                    class="video__btn-play btn-off"
+                  />
+                </button>
+                <input
+                  type="range"
+                  value="54"
+                  min="0"
+                  max="100"
+                  step="1"
+                  class="video__progress play-progress"
                 />
-                <img
-                  src="assets/svg/volume-off.svg"
-                  alt="icon: volume off"
-                  class="video__btn-volume btn-off"
+                <button class="video__btn">
+                  <img
+                    src="assets/svg/volume.svg"
+                    alt="icon: turn volume"
+                    class="video__btn-volume"
+                  />
+                  <img
+                    src="assets/svg/volume-off.svg"
+                    alt="icon: volume off"
+                    class="video__btn-volume btn-off"
+                  />
+                </button>
+                <input
+                  type="range"
+                  value="40"
+                  min="0"
+                  max="100"
+                  step="1"
+                  class="video__progress volume-progress"
                 />
-              </button>
-              <input
-                type="range"
-                value="40"
-                min="0"
-                max="100"
-                step="1"
-                class="video__progress volume-progress"
-              />
-              <button class="video__btn">
-                <img
-                  src="assets/svg/fullscreen.svg"
-                  alt="icon: fullscreen"
-                  class="video__btn-fullscr"
-                />
-                <img
-                  src="assets/svg/fullscreen-exit.svg"
-                  alt="icon: fullscreen exit"
-                  class="video__btn-fullscr btn-off"
-                />
-              </button>
+                <button class="video__btn">
+                  <img
+                    src="assets/svg/fullscreen.svg"
+                    alt="icon: fullscreen"
+                    class="video__btn-fullscr"
+                  />
+                  <img
+                    src="assets/svg/fullscreen-exit.svg"
+                    alt="icon: fullscreen exit"
+                    class="video__btn-fullscr btn-off"
+                  />
+                </button>
+              </div>
+              <!-- /.video__control-panel -->
             </div>
+            <!-- /.video__video-cont -->
 
             <div class="slider-flex">
               <div class="slide slide-active">

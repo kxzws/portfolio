@@ -2672,7 +2672,7 @@ span.ripple {
   .footer__top {
     padding-top: 47px;
     padding-bottom: 40px;
-    max-height: 340px;
+    max-height: 300px;
   }
 
   .footer__logo {
@@ -2680,6 +2680,7 @@ span.ripple {
   }
 
   .footer__list {
+    margin-top: 0;
     margin-bottom: 36px;
   }
 
@@ -2698,7 +2699,66 @@ span.ripple {
 }
 
 @media screen and (max-width: 420px) {
-  .footer__link:first-of-type {
+  .footer {
+    font-size: var(--font3);
+    line-height: 19px;
+  }
+
+  .footer__top {
+    padding-top: 42px;
+  }
+
+  .footer__logo {
+    margin-bottom: 40px;
+    margin-right: 0;
+  }
+
+  .footer__logo-img {
+    margin-right: 20px;
+    width: 29px;
+  }
+
+  .footer__logo-text {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .footer-flex-top {
+    display: block;
+  }
+
+  .footer__list {
+    height: initial;
+    max-height: 100px;
+  }
+
+  .footer__item {
+    margin-bottom: 30px;
+    margin-right: 23.5%;
+  }
+
+  .footer__item:nth-child(3n) {
+    margin-bottom: 30px;
+  }
+
+  .footer__item:nth-child(2n) {
+    margin-bottom: 0;
+  }
+
+  .footer__item-link {
+    line-height: 19px;
+  }
+
+  .footer__soc-list {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .footer__soc-item {
+    margin-right: 5px;
+  }
+
+  .rs-link {
     display: none;
   }
 }

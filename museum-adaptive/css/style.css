@@ -137,10 +137,10 @@
 @media screen and (max-width: 768px) {
   :root {
     --font1: 40px;
-    /*--font2: 28px;*/
+    --font2: 22px;
     --font3: 20px;
-    /*--font4: 20px;*/
-    /*--font5: 16px;*/
+    --font4: 18px;
+    --font5: 16px;
   }
 }
 
@@ -646,6 +646,33 @@ button {
     height: 2px;
     width: 45.5%;
     bottom: -13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .visiting__card {
+    margin-bottom: 40px;
+    width: 38.5%;
+  }
+
+  .visiting__card:last-child {
+    margin-bottom: 80px;
+  }
+
+  .visiting__card-name {
+    line-height: 25px;
+  }
+
+  .visiting__card-name::after {
+    width: 53.5%;
+  }
+
+  .visiting__card-descr1 {
+    line-height: 21px;
+  }
+
+  .visiting__card-descr2 {
+    line-height: 19px;
   }
 }
 /*visiting end*/

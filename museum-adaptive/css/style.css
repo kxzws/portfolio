@@ -128,6 +128,20 @@
     --font4: 20px;
     --font5: 16px;
   }
+
+  .section-main {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --font1: 40px;
+    /*--font2: 28px;*/
+    --font3: 20px;
+    /*--font4: 20px;*/
+    /*--font5: 16px;*/
+  }
 }
 
 *,
@@ -258,6 +272,17 @@ button {
     color: #ffffff;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding-top: 35px;
+    padding-bottom: 34px;
+  }
+
+  .header__nav {
+    display: none;
+  }
+}
 /*header end*/
 
 /*main start*/
@@ -270,6 +295,10 @@ button {
   letter-spacing: 5px;
   text-transform: uppercase;
   color: #fff;
+}
+
+.section-main {
+  padding-top: 75px;
 }
 /*welcome start*/
 .welcome {
@@ -463,13 +492,55 @@ button {
     width: 12px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .welcome {
+    padding: 0;
+  }
+
+  .welcome-flex {
+    display: block;
+  }
+
+  .welcome__side-bar {
+    padding-top: 0;
+    position: static;
+    text-align: center;
+  }
+
+  .welcome__title {
+    line-height: 60px;
+  }
+
+  .welcome__subtitle {
+    margin-bottom: 48px;
+    line-height: 23px;
+  }
+
+  .welcome__btn {
+    display: none;
+  }
+
+  .carousel {
+    left: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .carousel__img {
+    width: 100%;
+  }
+
+  .carousel__control-panel {
+    margin: 0 auto;
+    padding: 30px 0;
+    position: static;
+    justify-content: center;
+  }
+}
 /*welcome end*/
 
 /*visiting start*/
-.visiting {
-  padding-top: 75px;
-}
-
 .visiting__title {
   margin-bottom: 103px;
   position: relative;
@@ -597,7 +668,6 @@ button {
 
 /*explore start*/
 .explore {
-  padding-top: 75px;
   padding-bottom: 75px;
   background-color: var(--bg-dark);
 }
@@ -719,10 +789,6 @@ button {
 /*explore end*/
 
 /*video start*/
-.video {
-  padding-top: 75px;
-}
-
 .video__sect-descr {
   margin-bottom: 75px;
   display: flex;
@@ -856,7 +922,7 @@ button {
 .slider-flex {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 42px;
+  justify-content: space-evenly;
 }
 
 .slide {
@@ -988,7 +1054,6 @@ button {
 
 /*gallery start*/
 .gallery {
-  padding-top: 75px;
   max-height: 2200px;
   position: relative;
   overflow-y: hidden;
@@ -1803,7 +1868,6 @@ span.ripple {
 
 /*contacts start*/
 .contacts {
-  padding-top: 75px;
   padding-bottom: 75px;
 }
 
@@ -1886,6 +1950,11 @@ span.ripple {
   }
 }
 /*contacts end*/
+@media screen and (max-width: 768px) {
+  .section-main {
+    padding-top: 40px;
+  }
+}
 /*main end*/
 
 /*footer start*/

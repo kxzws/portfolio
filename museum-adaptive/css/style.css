@@ -2412,6 +2412,18 @@ span.ripple {
 }
 
 @media screen and (max-width: 420px) {
+  .contacts {
+    padding-bottom: 40px;
+  }
+
+  .contacts__name {
+    line-height: 19px;
+  }
+
+  .contacts__info {
+    margin-bottom: 38px;
+  }
+
   .contacts__map {
     height: 248px;
     width: 380px;

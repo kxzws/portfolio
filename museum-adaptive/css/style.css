@@ -2159,6 +2159,7 @@ span.ripple {
 .footer-flex-top {
   display: flex;
   align-items: start;
+  flex-wrap: wrap;
 }
 
 .footer__logo {
@@ -2311,6 +2312,30 @@ span.ripple {
 
   .footer__logo-text {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer__top {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-height: 340px;
+  }
+
+  .footer__logo {
+    margin-right: 80px;
+  }
+
+  .footer__list {
+    margin-bottom: 42px;
+  }
+
+  .footer__soc-list {
+    margin-right: 12%;
+  }
+
+  .footer__bottom {
+    padding: 40px 0;
   }
 }
 /*footer end*/

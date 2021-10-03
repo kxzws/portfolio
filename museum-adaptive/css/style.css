@@ -1442,6 +1442,20 @@ button {
     top: 0;
   }
 }
+
+@media screen and (max-width: 420px) {
+  .gallery {
+    max-height: 757px;
+  }
+
+  .masonry {
+    height: 2100px;
+  }
+
+  .masonry__item-img {
+    width: 178px;
+  }
+}
 /*gallery end*/
 
 /*tickets start*/

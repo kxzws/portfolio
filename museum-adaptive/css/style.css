@@ -792,6 +792,16 @@ button {
     max-width: 720px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .explore {
+    padding-bottom: 40px;
+  }
+
+  .explore__subtitle {
+    display: none;
+  }
+}
 /*explore end*/
 
 /*video start*/

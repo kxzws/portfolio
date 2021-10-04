@@ -1,3 +1,25 @@
+//responsive menu in header-nav
+const burgerMenu = document.querySelector(".header__nav");
+const closeMenu = document.querySelector(".header__close");
+const welcomeSideBar = document.querySelector(".welcome__side-bar");
+const welcomeCarousel = document.querySelector(".carousel");
+const welcomeCarouselPanel = document.querySelector(".carousel__control-panel");
+
+const firstLine = document.querySelector(".line-first");
+const secondLine = document.querySelector(".line-second");
+const thirdLine = document.querySelector(".line-third");
+
+closeMenu.addEventListener('click', function() {
+  burgerMenu.classList.toggle('open');
+  welcomeSideBar.classList.toggle('side-bar-unvis');
+  welcomeCarousel.classList.toggle('carousel-unvis');
+  welcomeCarouselPanel.classList.toggle('carousel-unvis');
+  firstLine.classList.toggle('line-first-close');
+  secondLine.classList.toggle('line-second-close');
+  thirdLine.classList.toggle('line-third-close');
+});
+
+//progress-bar in video
 const playProgress = document.querySelector(".play-progress");
 
 playProgress.addEventListener("input", function () {
@@ -12,6 +34,7 @@ volumeProgress.addEventListener("input", function () {
   this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`;
 });
 
+//ripple-effect in tickets
 function createRipple(event) {
   const button = event.currentTarget;
 

@@ -1106,14 +1106,11 @@ button {
   .explore__img-before {
     margin: 0 auto;
     max-height: 705px;
-    width: 100%;
-    background-size: contain;
+    width: 73.1%;
   }
 
   .explore__img-after {
-    width: 100%;
-    left: 60.5%;
-    object-position: -441px 0;
+    left: 61.5%;
   }
 }
 
@@ -1125,6 +1122,14 @@ button {
   .explore__subtitle {
     display: none;
   }
+
+  .explore__img-before {
+    width: 100%;
+  }
+
+  .explore__img-after {
+    left: 60.5%;
+  }
 }
 
 @media screen and (max-width: 420px) {
@@ -1133,14 +1138,10 @@ button {
   }
 
   .explore__img-before {
-    margin-right: auto;
     max-height: 368px;
-    width: 100%;
-    background-size: contain;
   }
 
   .explore__img-after {
-    width: 100%;
     left: 60.5%;
     object-position: -230px 0;
   }

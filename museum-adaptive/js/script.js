@@ -1,3 +1,13 @@
+console.log("Score: 150/150");
+console.log("Не выполненные/не засчитанные пункты:");
+console.log("1) Результат проверки скорости сайта для мобильных устройств");
+console.log("Частично выполненные пункты:");
+console.log("1) слайдера сравнения изображений в секции `Explore`");
+console.log("feedback: размеры блока изменяются плавно, но сами картинки плывут между брейкпоинтами");
+console.log("2) при клике по ссылке в адаптивном меню, или при клике по любому месту сайта,");
+console.log("кроме самого адаптивного меню, меню закрывается");
+console.log("feedback: меню закрывается при клике по любому месту сайта, но не при кликах по ссылкам");
+
 //responsive menu in header-nav
 const burgerMenu = document.querySelector(".header__nav");
 const closeMenu = document.querySelector(".header__close");

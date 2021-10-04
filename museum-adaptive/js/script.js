@@ -9,7 +9,7 @@ const firstLine = document.querySelector(".line-first");
 const secondLine = document.querySelector(".line-second");
 const thirdLine = document.querySelector(".line-third");
 
-closeMenu.addEventListener('click', function() {
+function toggleMenu() {
   burgerMenu.classList.toggle('open');
   welcomeSideBar.classList.toggle('side-bar-unvis');
   welcomeCarousel.classList.toggle('carousel-unvis');
@@ -17,7 +17,22 @@ closeMenu.addEventListener('click', function() {
   firstLine.classList.toggle('line-first-close');
   secondLine.classList.toggle('line-second-close');
   thirdLine.classList.toggle('line-third-close');
+}
+closeMenu.addEventListener('click', e => {
+  e.stopPropagation();
+  toggleMenu();
 });
+
+document.addEventListener('click', e => {
+  let target = e.target;
+  let its_menu = target == burgerMenu || burgerMenu.contains(target);
+  let its_hamburger = target == closeMenu;
+  let menu_is_active = burgerMenu.classList.contains('open');
+  
+  if (!its_menu && !its_hamburger && menu_is_active) {
+    toggleMenu();
+  }
+})
 
 //progress-bar in video
 const playProgress = document.querySelector(".play-progress");

@@ -1,4 +1,5 @@
 <!-- TODO: add arrows hover -->
+<!-- TODO: random gallery pics positions -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,26 +29,126 @@
           <ul class="header__list">
             <li class="header__item">
               <a href="#visiting" class="header__item-link">Visiting</a>
+              <img
+                class="header__item-arr"
+                src="assets/svg/menu-arrow.svg"
+                alt="icon: arrow right"
+              />
             </li>
             <li class="header__item">
               <a href="#explore" class="header__item-link">Explore</a>
+              <img
+                class="header__item-arr"
+                src="assets/svg/menu-arrow.svg"
+                alt="icon: arrow right"
+              />
             </li>
             <li class="header__item">
               <a href="#video" class="header__item-link">Video</a>
+              <img
+                class="header__item-arr"
+                src="assets/svg/menu-arrow.svg"
+                alt="icon: arrow right"
+              />
             </li>
             <li class="header__item">
               <a href="#gallery" class="header__item-link">Gallery</a>
+              <img
+                class="header__item-arr"
+                src="assets/svg/menu-arrow.svg"
+                alt="icon: arrow right"
+              />
             </li>
             <li class="header__item">
               <a href="#tickets" class="header__item-link">Tickets</a>
+              <img
+                class="header__item-arr"
+                src="assets/svg/menu-arrow.svg"
+                alt="icon: arrow right"
+              />
             </li>
             <li class="header__item">
               <a href="#contacts" class="header__item-link">Contacts</a>
+              <img
+                class="header__item-arr"
+                src="assets/svg/menu-arrow.svg"
+                alt="icon: arrow right"
+              />
+            </li>
+          </ul>
+
+          <div class="header__menu-img-cont">
+            <div class="header__menu-img"></div>
+            <div class="header__menu-img"></div>
+            <div class="header__menu-img"></div>
+          </div>
+
+          <div class="header__soc-line"></div>
+          <ul class="soc-list header__soc-list">
+            <li class="soc-item header__soc-item">
+              <a
+                href="https://www.youtube.com/user/louvre"
+                class="soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/youtube.svg"
+                  alt="icon: youtube"
+                  class="soc-img"
+              /></a>
+            </li>
+            <li class="soc-item header__soc-item">
+              <a
+                href="https://www.instagram.com/museelouvre/"
+                class="soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/insta.svg"
+                  alt="icon: instagram"
+                  class="soc-img"
+              /></a>
+            </li>
+            <li class="soc-item header__soc-item">
+              <a
+                href="https://www.facebook.com/museedulouvre"
+                class="soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/facebook.svg"
+                  alt="icon: facebook"
+                  class="soc-img"
+              /></a>
+            </li>
+            <li class="soc-item header__soc-item">
+              <a
+                href="http://twitter.com/museelouvre"
+                class="soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/twitter.svg"
+                  alt="icon: twitter"
+                  class="soc-img"
+              /></a>
+            </li>
+            <li class="soc-item header__soc-item">
+              <a
+                href="https://www.pinterest.fr/museedulouvre/"
+                class="soc-link"
+                target="_blank"
+                ><img
+                  src="assets/svg/pint.svg"
+                  alt="icon: pinterest"
+                  class="soc-img"
+              /></a>
             </li>
           </ul>
         </nav>
       </div>
       <!-- /.container -->
+      <div class="header__close">
+        <span class="header__line line-first"></span>
+        <span class="header__line line-second"></span>
+        <span class="header__line line-third"></span>
+      </div>
     </header>
 
     <main class="main">
@@ -139,7 +240,7 @@
       </section>
       <!-- /.welcome -->
 
-      <section id="visiting" class="visiting">
+      <section id="visiting" class="visiting section-main">
         <div class="container">
           <h2 class="visiting__title section-title">Virtual tour</h2>
           <div class="visiting-flex">
@@ -251,7 +352,7 @@
       </section>
       <!-- /.visiting -->
 
-      <section id="explore" class="explore">
+      <section id="explore" class="explore section-main">
         <div class="container explore-flex">
           <div class="explore__side-bar">
             <h2 class="explore__title section-title">Picture explore</h2>
@@ -276,7 +377,7 @@
           <!-- /.explore__side-bar -->
           <div class="explore__img-before">
             <img
-              src="assets/img/explore-slider/before.jpg"
+              src="assets/img/explore-slider/after.jpg"
               alt="pic: Las Meninas after cleaning"
               class="explore__img-after"
             />
@@ -289,7 +390,7 @@
       </section>
       <!-- /.explore -->
 
-      <section id="video" class="video">
+      <section id="video" class="video section-main">
         <div class="container">
           <div class="video__sect-descr">
             <h2 class="video__title section-title">Video journey</h2>
@@ -300,72 +401,76 @@
           </div>
 
           <div class="slider">
-            <video
-              class="video__video"
-              src="#"
-              poster="assets/video/poster0.jpg"
-            ></video>
-            <button class="video__btn-big-play">
-              <img
-                src="assets/svg/play.svg"
-                alt="icon: play video"
-                class="video__btn-big-play-img"
-              />
-            </button>
-            <div class="video__control-panel">
-              <button class="video__btn">
+            <div class="video__video-cont">
+              <video
+                class="video__video"
+                src="#"
+                poster="assets/video/poster0.jpg"
+              ></video>
+              <button class="video__btn-big-play">
                 <img
                   src="assets/svg/play.svg"
                   alt="icon: play video"
-                  class="video__btn-play"
-                />
-                <img
-                  src="assets/svg/pause.svg"
-                  alt="icon: play video"
-                  class="video__btn-play btn-off"
+                  class="video__btn-big-play-img"
                 />
               </button>
-              <input
-                type="range"
-                value="54"
-                min="0"
-                max="100"
-                step="1"
-                class="video__progress play-progress"
-              />
-              <button class="video__btn">
-                <img
-                  src="assets/svg/volume.svg"
-                  alt="icon: turn volume"
-                  class="video__btn-volume"
+              <div class="video__control-panel">
+                <button class="video__btn">
+                  <img
+                    src="assets/svg/play.svg"
+                    alt="icon: play video"
+                    class="video__btn-play"
+                  />
+                  <img
+                    src="assets/svg/pause.svg"
+                    alt="icon: play video"
+                    class="video__btn-play btn-off"
+                  />
+                </button>
+                <input
+                  type="range"
+                  value="54"
+                  min="0"
+                  max="100"
+                  step="1"
+                  class="video__progress play-progress"
                 />
-                <img
-                  src="assets/svg/volume-off.svg"
-                  alt="icon: volume off"
-                  class="video__btn-volume btn-off"
+                <button class="video__btn">
+                  <img
+                    src="assets/svg/volume.svg"
+                    alt="icon: turn volume"
+                    class="video__btn-volume"
+                  />
+                  <img
+                    src="assets/svg/volume-off.svg"
+                    alt="icon: volume off"
+                    class="video__btn-volume btn-off"
+                  />
+                </button>
+                <input
+                  type="range"
+                  value="40"
+                  min="0"
+                  max="100"
+                  step="1"
+                  class="video__progress volume-progress"
                 />
-              </button>
-              <input
-                type="range"
-                value="40"
-                min="0"
-                max="100"
-                step="1"
-                class="video__progress volume-progress"
-              />
-              <button class="video__btn">
-                <img
-                  src="assets/svg/fullscreen.svg"
-                  alt="icon: fullscreen"
-                  class="video__btn-fullscr"
-                />
-                <img
-                  src="assets/svg/fullscreen-exit.svg"
-                  alt="icon: fullscreen exit"
-                  class="video__btn-fullscr btn-off"
-                />
-              </button>
+                <button class="video__btn">
+                  <img
+                    src="assets/svg/fullscreen.svg"
+                    alt="icon: fullscreen"
+                    class="video__btn-fullscr"
+                  />
+                  <img
+                    src="assets/svg/fullscreen-exit.svg"
+                    alt="icon: fullscreen exit"
+                    class="video__btn-fullscr btn-off"
+                  />
+                </button>
+              </div>
+              <!-- /.video__control-panel -->
             </div>
+            <!-- /.video__video-cont -->
 
             <div class="slider-flex">
               <div class="slide slide-active">
@@ -440,7 +545,7 @@
       </section>
       <!-- /.video -->
 
-      <section id="gallery" class="gallery">
+      <section id="gallery" class="gallery section-main">
         <div class="container">
           <h2 class="gallery__title section-title">Art gallery</h2>
           <div class="masonry">
@@ -555,7 +660,7 @@
       </section>
       <!-- /.gallery -->
 
-      <section id="tickets" class="tickets">
+      <section id="tickets" class="tickets section-main">
         <div class="container">
           <h2 class="tickets__title section-title">Buy tickets</h2>
           <div class="tickets-flex">
@@ -637,7 +742,7 @@
                 </button>
               </div>
               <!-- /.tickets__btn-group -->
-              <h3 class="tickets__subtitle subtitle-total">Total €220</h3>
+              <h3 class="tickets__subtitle subtitle-total">Total € 220</h3>
               <a class="tickets__btn" href="#openModal">Buy Now</a>
             </div>
           </div>
@@ -670,7 +775,7 @@
                         class="modal-inp-img"
                       />
                       <input
-                        class="modal-booking-inp"
+                        class="modal-booking-inp date-inp"
                         type="date"
                         name="date"
                       />
@@ -683,7 +788,7 @@
                         class="modal-inp-img"
                       />
                       <input
-                        class="modal-booking-inp"
+                        class="modal-booking-inp time-inp"
                         type="time"
                         name="time"
                       />
@@ -737,7 +842,10 @@
                       alt="icon: name"
                       class="modal-inp-img"
                     />
-                    <select class="modal-booking-inp" name="ticket-type">
+                    <select
+                      class="modal-booking-inp select-inp"
+                      name="ticket-type"
+                    >
                       <option value="">Ticket type</option>
                       <option>Permanent exhibition</option>
                       <option>Temporary exhibition</option>
@@ -874,6 +982,36 @@
 
                 <div class="cards">
                   <div class="card card-top">
+                    <p class="card-text">Card number</p>
+                    <input
+                      type="number"
+                      name="cardNumber"
+                      class="card-inp inp-num"
+                    />
+                    <p class="card-text">Expiration date</p>
+                    <input
+                      type="number"
+                      name="expDay"
+                      min="1"
+                      max="12"
+                      value="03"
+                      class="card-inp inp-exp"
+                    />
+                    <input
+                      type="number"
+                      name="expYear"
+                      min="2019"
+                      max="2050"
+                      value="2024"
+                      class="card-inp inp-exp"
+                    />
+                    <p class="card-text">Cardholder name</p>
+                    <input
+                      type="text"
+                      name="cardName"
+                      class="card-inp inp-hold"
+                    />
+
                     <img
                       src="assets/svg/booking-page/visa.svg"
                       alt="pic: visa"
@@ -885,8 +1023,24 @@
                       class="card-master"
                     />
                   </div>
-                  <div class="card card-bottom"></div>
-                  <div class="card-black-rect"></div>
+                  <div class="card card-bottom">
+                    <div class="card-bottom-text">
+                      <p class="card-text text-cvv">cvc/cvv</p>
+                      <input
+                        type="number"
+                        name="cvv"
+                        min="100"
+                        max="999"
+                        class="card-inp inp-cvv"
+                      />
+                      <p class="card-text">
+                        The last 3&nbsp;or&nbsp;4&nbsp;digits on&nbsp;back
+                        of&nbsp;the&nbsp;card
+                      </p>
+                    </div>
+
+                    <div class="card-black-rect"></div>
+                  </div>
                 </div>
 
                 <button class="modal-btn">Book</button>
@@ -899,7 +1053,7 @@
 
       <div class="parallax"></div>
 
-      <section id="contacts" class="contacts">
+      <section id="contacts" class="contacts section-main">
         <div class="container">
           <h2 class="contacts__title section-title">Contacts</h2>
           <div class="contacts-flex">
@@ -924,7 +1078,11 @@
                 >
               </p>
             </div>
-            <img src="assets/img/contacts-map.png" alt="map: Louvre museum" />
+            <img
+              class="contacts__map"
+              src="assets/img/contacts-map.png"
+              alt="map: Louvre museum"
+            />
           </div>
         </div>
         <!-- /.container -->
@@ -981,60 +1139,60 @@
             </ul>
           </nav>
 
-          <ul class="footer__soc-list">
-            <li class="footer__soc-item">
+          <ul class="soc-list footer__soc-list">
+            <li class="soc-item">
               <a
                 href="https://www.youtube.com/user/louvre"
-                class="footer__soc-link"
+                class="soc-link"
                 target="_blank"
                 ><img
                   src="assets/svg/youtube.svg"
                   alt="icon: youtube"
-                  class="footer__soc-img"
+                  class="soc-img"
               /></a>
             </li>
-            <li class="footer__soc-item">
+            <li class="soc-item">
               <a
                 href="https://www.instagram.com/museelouvre/"
-                class="footer__soc-link"
+                class="soc-link"
                 target="_blank"
                 ><img
                   src="assets/svg/insta.svg"
                   alt="icon: instagram"
-                  class="footer__soc-img"
+                  class="soc-img"
               /></a>
             </li>
-            <li class="footer__soc-item">
+            <li class="soc-item">
               <a
                 href="https://www.facebook.com/museedulouvre"
-                class="footer__soc-link"
+                class="soc-link"
                 target="_blank"
                 ><img
                   src="assets/svg/facebook.svg"
                   alt="icon: facebook"
-                  class="footer__soc-img"
+                  class="soc-img"
               /></a>
             </li>
-            <li class="footer__soc-item">
+            <li class="soc-item">
               <a
                 href="http://twitter.com/museelouvre"
-                class="footer__soc-link"
+                class="soc-link"
                 target="_blank"
                 ><img
                   src="assets/svg/twitter.svg"
                   alt="icon: twitter"
-                  class="footer__soc-img"
+                  class="soc-img"
               /></a>
             </li>
-            <li class="footer__soc-item">
+            <li class="soc-item">
               <a
                 href="https://www.pinterest.fr/museedulouvre/"
-                class="footer__soc-link"
+                class="soc-link"
                 target="_blank"
                 ><img
                   src="assets/svg/pint.svg"
                   alt="icon: pinterest"
-                  class="footer__soc-img"
+                  class="soc-img"
               /></a>
             </li>
           </ul>
@@ -1044,7 +1202,11 @@
       <div class="footer__bottom">
         <div class="container footer-flex-bottom">
           <time datetime="2021-09-27">© 2021</time>
-          <a href="https://rs.school/js" class="footer__link" target="_blank">
+          <a
+            href="https://rs.school/js"
+            class="footer__link rs-link"
+            target="_blank"
+          >
             The Rolling Scopes School
           </a>
           <a

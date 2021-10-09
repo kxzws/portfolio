@@ -1045,7 +1045,16 @@ button {
   display: block;
 }
 
-.explore__img-line {
+.explore__slider {
+  width: 39px;
+  height: 700px;
+  position: absolute;
+  z-index: 9;
+  background: url('../assets/svg/slider.svg') no-repeat;
+  cursor: ew-resize;
+}
+
+/*.explore__img-line {
   width: 4px;
   height: 47.5%;
   position: absolute;
@@ -1064,12 +1073,12 @@ button {
   height: 39px;
   position: absolute;
   z-index: 9;
-  /*top: 330px;
-  left: 422px;*/
+  top: 330px;
+  left: 422px;
   border: 4px solid #fff;
   border-radius: 50%;
   cursor: ew-resize;
-}
+}*/
 
 @media screen and (max-width: 1024px) {
   .explore {

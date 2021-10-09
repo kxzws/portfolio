@@ -1029,14 +1029,20 @@ button {
   color: #caaa7d;
 }
 
-.explore__img-before {
-  margin-top: 15px;
-  max-height: 705px;
-  width: 73.2%;
+.img-comp-cont {
   position: relative;
+  height: 700px;
+}
+
+.img-comp {
+  position: absolute;
+  width: auto;
+  height: auto;
   overflow: hidden;
-  background: url("../assets/img/explore-slider/before.jpg") no-repeat;
-  background-size: contain;
+}
+
+.img-comp img {
+  display: block;
 }
 
 .explore__img-line {
@@ -1046,7 +1052,7 @@ button {
   top: 0;
   left: 440px;
   background-color: #fff;
-  cursor: pointer;
+  cursor: ew-resize;
 }
 
 .down {
@@ -1057,19 +1063,12 @@ button {
   width: 39px;
   height: 39px;
   position: absolute;
-  top: 330px;
-  left: 422px;
+  z-index: 9;
+  /*top: 330px;
+  left: 422px;*/
   border: 4px solid #fff;
   border-radius: 50%;
-  cursor: pointer;
-}
-
-.explore__img-after {
-  position: relative;
-  width: 100%;
-  left: 61.8%;
-  object-fit: cover;
-  object-position: -441px 0;
+  cursor: ew-resize;
 }
 
 @media screen and (max-width: 1024px) {

@@ -1,5 +1,5 @@
 function initComparisons() {
-  let x, i;
+  var x, i;
   /*find all elements with an "overlay" class:*/
   x = document.getElementsByClassName("img-comp-overlay");
   for (i = 0; i < x.length; i++) {
@@ -8,7 +8,7 @@ function initComparisons() {
     compareImages(x[i]);
   }
   function compareImages(img) {
-    let slider,
+    var slider,
       img,
       clicked = 0,
       w,
@@ -19,7 +19,8 @@ function initComparisons() {
     /*set the width of the img element to 50%:*/
     img.style.width = w / 2 + "px";
     /*create slider:*/
-    slider = document.getElementsByClassName("explore__slider");
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "explore__img-circle");
     /*insert slider*/
     img.parentElement.insertBefore(slider, img);
     /*position the slider in the middle:*/
@@ -47,7 +48,7 @@ function initComparisons() {
       clicked = 0;
     }
     function slideMove(e) {
-      let pos;
+      var pos;
       /*if the slider is no longer clicked, exit this function:*/
       if (clicked == 0) return false;
       /*get the cursor's x position:*/
@@ -59,7 +60,7 @@ function initComparisons() {
       slide(pos);
     }
     function getCursorPos(e) {
-      let a,
+      var a,
         x = 0;
       e = e || window.event;
       /*get the x positions of the image:*/

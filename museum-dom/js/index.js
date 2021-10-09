@@ -18,3 +18,4 @@ for (const button of buttons) {
 
 import initComparisons from "./explore.js";
 initComparisons();
+

@@ -1,6 +1,9 @@
 <!-- TODO: add arrows hover -->
 <!-- TODO: random gallery pics positions -->
 
+<!-- TODO: welcome/mouse drag moves slide and linear transition -->
+<!-- TODO: explore/slider adaptivity -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,6 +14,11 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
   </head>
   <body>
     <header class="header">
@@ -219,14 +227,14 @@
               <li class="carousel__check"></li>
             </ul>
 
-            <button class="carousel__control control-left">
+            <button id="btn-prev" class="carousel__control control-left">
               <img
                 src="assets/svg/left-arrow.svg"
                 alt="icon: left arrow"
                 class="carousel__control-img"
               />
             </button>
-            <button class="carousel__control control-right">
+            <button id="btn-next" class="carousel__control control-right">
               <img
                 src="assets/svg/right-arrow.svg"
                 alt="icon: right arrow"
@@ -375,16 +383,32 @@
             </p>
           </div>
           <!-- /.explore__side-bar -->
-          <div class="explore__img-before">
-            <img
-              src="assets/img/explore-slider/after.jpg"
-              alt="pic: Las Meninas after cleaning"
-              class="explore__img-after"
-            />
-            <div class="explore__img-line"></div>
-            <div class="explore__img-line down"></div>
-            <div class="explore__img-circle"></div>
+
+          <div class="img-comp-cont">
+            <div class="img-comp">
+              <img
+                src="assets/img/explore-slider/before.jpg"
+                alt="pic: Las Meninas before cleaning"
+                width="720"
+                height="700"
+              />
+            </div>
+            <div class="img-comp img-comp-overlay">
+              <img
+                src="assets/img/explore-slider/after.jpg"
+                alt="pic: Las Meninas after cleaning"
+                width="720"
+                height="700"
+              />
+            </div>
+
+            <!--<div class="explore__slider">
+              <div class="explore__img-line"></div>
+              <div class="explore__img-line down"></div>
+              <div class="explore__img-circle"></div>
+            </div>-->
           </div>
+          <!-- /.img-comp-cont -->
         </div>
         <!-- /.container -->
       </section>
@@ -404,9 +428,10 @@
             <div class="video__video-cont">
               <video
                 class="video__video"
-                src="#"
+                src="assets/video/video0.mp4"
                 poster="assets/video/poster0.jpg"
               ></video>
+
               <button class="video__btn-big-play">
                 <img
                   src="assets/svg/play.svg"
@@ -414,6 +439,7 @@
                   class="video__btn-big-play-img"
                 />
               </button>
+              
               <div class="video__control-panel">
                 <button class="video__btn">
                   <img
@@ -429,10 +455,11 @@
                 </button>
                 <input
                   type="range"
-                  value="54"
+                  value="0"
                   min="0"
                   max="100"
                   step="1"
+                  name="currentTime"
                   class="video__progress play-progress"
                 />
                 <button class="video__btn">
@@ -449,10 +476,11 @@
                 </button>
                 <input
                   type="range"
-                  value="40"
+                  value="100"
                   min="0"
                   max="100"
                   step="1"
+                  name="volume"
                   class="video__progress volume-progress"
                 />
                 <button class="video__btn">
@@ -549,105 +577,105 @@
         <div class="container">
           <h2 class="gallery__title section-title">Art gallery</h2>
           <div class="masonry">
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery2.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item">
+            <div class="masonry__item slide-up">
               <img
                 src="assets/img/galery/galery1.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery7.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery9.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item">
+            <div class="masonry__item slide-up">
               <img
                 src="assets/img/galery/galery8.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery10.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery4.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item">
+            <div class="masonry__item slide-up">
               <img
                 src="assets/img/galery/galery3.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery15.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery6.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item">
+            <div class="masonry__item slide-up">
               <img
                 src="assets/img/galery/galery5.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery12.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery13.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item">
+            <div class="masonry__item slide-up">
               <img
                 src="assets/img/galery/galery14.jpg"
                 alt="gallery: photo"
                 class="masonry__item-img"
               />
             </div>
-            <div class="masonry__item item-top">
+            <div class="masonry__item item-top slide-up">
               <img
                 src="assets/img/galery/galery11.jpg"
                 alt="gallery: photo"
@@ -1078,11 +1106,8 @@
                 >
               </p>
             </div>
-            <img
-              class="contacts__map"
-              src="assets/img/contacts-map.png"
-              alt="map: Louvre museum"
-            />
+
+            <div id="map" class="contacts__map"></div>
           </div>
         </div>
         <!-- /.container -->
@@ -1221,6 +1246,6 @@
       <!-- /.footer__bottom -->
     </footer>
 
-    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>

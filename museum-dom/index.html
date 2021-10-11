@@ -428,9 +428,10 @@
             <div class="video__video-cont">
               <video
                 class="video__video"
-                src="#"
+                src="assets/video/video0.mp4"
                 poster="assets/video/poster0.jpg"
               ></video>
+
               <button class="video__btn-big-play">
                 <img
                   src="assets/svg/play.svg"
@@ -438,6 +439,7 @@
                   class="video__btn-big-play-img"
                 />
               </button>
+              
               <div class="video__control-panel">
                 <button class="video__btn">
                   <img
@@ -453,10 +455,11 @@
                 </button>
                 <input
                   type="range"
-                  value="54"
+                  value="0"
                   min="0"
                   max="100"
                   step="1"
+                  name="currentTime"
                   class="video__progress play-progress"
                 />
                 <button class="video__btn">
@@ -473,10 +476,11 @@
                 </button>
                 <input
                   type="range"
-                  value="40"
+                  value="100"
                   min="0"
                   max="100"
                   step="1"
+                  name="volume"
                   class="video__progress volume-progress"
                 />
                 <button class="video__btn">

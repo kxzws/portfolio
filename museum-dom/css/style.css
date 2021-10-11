@@ -1200,6 +1200,15 @@ button {
   position: relative;
 }
 
+.video__video-cont-fullscr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+}
+
 .video__video {
   margin: 0 auto;
   margin-bottom: 40px;
@@ -1218,6 +1227,7 @@ button {
   background-color: rgba(0, 0, 0, 0);
   border: 8px solid #fff;
   border-radius: 50%;
+  transition: all 0.2s;
 }
 
 .video__btn-big-play:hover {
@@ -1242,6 +1252,7 @@ button {
 
 .video__btn {
   background-color: #000;
+  transition: all 0.2s;
 }
 
 .btn-off {
@@ -1262,7 +1273,7 @@ button {
   background: linear-gradient(
     to right,
     var(--dark-red) 0%,
-    var(--dark-red) 54%,
+    var(--dark-red) 0%,
     #c4c4c4 0%,
     #c4c4c4 100%
   );
@@ -1298,7 +1309,7 @@ button {
   background: linear-gradient(
     to right,
     var(--dark-red) 0%,
-    var(--dark-red) 42%,
+    var(--dark-red) 100%,
     #c4c4c4 0%,
     #c4c4c4 100%
   );
@@ -1671,8 +1682,8 @@ button {
 
 .slide-up {
   opacity: 0;
-  transform: translateY(30%) scale(.95);
-  transition: all .5s;
+  transform: translateY(30%) scale(0.95);
+  transition: all 0.5s;
 }
 
 .slide-up-active {

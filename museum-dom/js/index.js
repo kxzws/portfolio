@@ -13,12 +13,16 @@ const playProgress = document.querySelector(".play-progress"),
 playProgress.addEventListener("input", progressAnimation);
 volumeProgress.addEventListener("input", progressAnimation);
 
+import { debounce, checkSlide } from "./gallery.js";
+window.addEventListener('scroll', debounce(checkSlide));
+
 import { createRipple } from "./bookingTickets.js";
 const buttons = document.getElementsByClassName("modal-btn");
 for (const button of buttons) {
   button.addEventListener("click", createRipple);
 }
 
+//contacts map
 mapboxgl.accessToken =
   "pk.eyJ1Ijoia3h6d3MiLCJhIjoiY2t1Y3F3NXNsMTBhejJ3bXh3bDkyOGRlZyJ9.G3CiV9AC0NrhMVhdMDgqBQ";
 const map = new mapboxgl.Map({

@@ -1669,6 +1669,17 @@ button {
   order: 3;
 }
 
+.slide-up {
+  opacity: 0;
+  transform: translateY(30%) scale(.95);
+  transition: all .5s;
+}
+
+.slide-up-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 .item-top {
   position: relative;
   top: 50px;

@@ -1050,7 +1050,7 @@ button {
   height: 700px;
   position: absolute;
   z-index: 9;
-  background: url('../assets/svg/slider.svg') no-repeat;
+  background: url("../assets/svg/slider.svg") no-repeat;
   cursor: ew-resize;
 }
 
@@ -2721,6 +2721,7 @@ span.ripple {
 }
 
 .contacts__map {
+  height: 620px;
   width: 66.7%;
 }
 

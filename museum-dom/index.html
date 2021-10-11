@@ -1,7 +1,8 @@
 <!-- TODO: add arrows hover -->
 <!-- TODO: random gallery pics positions -->
 
-<!-- TODO: mouse drag moves slide and linear transition -->
+<!-- TODO: welcome/mouse drag moves slide and linear transition -->
+<!-- TODO: explore/slider adaptivity -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,11 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
   </head>
   <body>
     <header class="header">
@@ -1096,11 +1102,8 @@
                 >
               </p>
             </div>
-            <img
-              class="contacts__map"
-              src="assets/img/contacts-map.png"
-              alt="map: Louvre museum"
-            />
+
+            <div id="map" class="contacts__map"></div>
           </div>
         </div>
         <!-- /.container -->

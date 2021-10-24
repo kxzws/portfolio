@@ -57,4 +57,4 @@ function setLocalStorage() {
 }
 window.addEventListener('beforeunload', setLocalStorage)
 
-export { showGreeting };
+export { showGreeting, getTimeOfDay };

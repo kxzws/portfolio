@@ -1,6 +1,7 @@
 import showTime from "./clock.js";
 import { getTimeOfDay } from "./greeting.js";
 import { getSlideNext, getSlidePrev, getRandomNum, setBg, randomNum } from "./slider.js";
+import { getWeather, city } from "./weather.js";
 
 
 const dateObj = new Date();
@@ -13,3 +14,4 @@ setBg(getTimeOfDay(hours), String(randomNum).padStart(2, "0"));
 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
+city.addEventListener('change', getWeather);

@@ -33,4 +33,4 @@ function setBg(timeOfDay, bgNum) {
   };
 }
 
-export { getSlideNext, getSlidePrev, getRandomNum, setBg, randomNum };
+export { getSlideNext, getSlidePrev, setBg, randomNum };

@@ -274,6 +274,14 @@ a {
   align-items: center;
 }
 
+.footer-link {
+  transition: all .3s ease-in;
+}
+
+.footer-link:hover {
+  opacity: .65;
+}
+
 .rss-link {
   filter: invert(100%) sepia(0%) saturate(7492%) hue-rotate(96deg) brightness(117%) contrast(100%);
 }

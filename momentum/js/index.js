@@ -1,3 +1,11 @@
+console.log("Score: 102/150");
+console.log("Невыполненные пункты:");
+console.log("1. можно управлять проигрыванием трека кнопкой рядом с треком в плейлисте");
+console.log("2. перевод приложения (полностью)");
+console.log("3. подключение изображений через API (полностью)");
+console.log("4. настройки приложения (полностью)");
+console.log("5. доп-й функционал");
+
 import showTime from "./clock.js";
 import { getTimeOfDay } from "./greeting.js";
 import { getSlideNext, getSlidePrev, setBg, randomNum } from "./slider.js";

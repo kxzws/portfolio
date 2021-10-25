@@ -15,6 +15,23 @@
           <button class="play-prev player-icon"></button>
           <button class="play player-icon"></button>
           <button class="play-next player-icon"></button>
+          <div class="song-progress">
+            <span class="current-song">—</span>
+            <div style="display: flex; align-items: center">
+              <input type="range" class="progress progress-bar" value="0" />
+              <span class="current-time">—</span>
+              <span>&nbsp;/&nbsp;</span>
+              <span class="duration-time">—</span>
+              <button class="volume player-icon"></button>
+              <input
+                type="range"
+                class="progress progress-vol"
+                value="100"
+                min="0"
+                max="100"
+              />
+            </div>
+          </div>
         </div>
         <ul class="play-list"></ul>
       </div>
@@ -56,7 +73,10 @@
           >me on github</a
         >
         <time datetime="2021-10-24">© 2021</time>
-        <a href="https://rs.school/js/" class="footer-link rss-link" target="_blank"
+        <a
+          href="https://rs.school/js/"
+          class="footer-link rss-link"
+          target="_blank"
           ><img
             src="https://rs.school/images/rs_school_js.svg"
             alt="logo: rolling scopes school"

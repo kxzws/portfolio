@@ -69,10 +69,6 @@ a {
   text-decoration: none;
 }
 
-.hide {
-  display: none;
-}
-
 /*header start*/
 .header {
   padding: 20px 0;
@@ -135,7 +131,7 @@ a {
 
 .main-page__btn {
   margin-bottom: 16px;
-  height: 30px;
+  height: 36px;
   width: 100%;
   background-color: #fff;
   border: none;
@@ -185,7 +181,102 @@ a {
   }
 }
 /*main-page end*/
+/*categories start*/
+.categories {
+  display: flex;
+  flex-direction: column;
+}
 
+.categories__category {
+  margin: 0 auto;
+  margin-bottom: 15px;
+  height: 80px;
+  width: 100%;
+  text-align: right;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 40%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 40%
+  );
+  transition: all .2s ease-in;
+}
+
+.categories__category:hover {
+  transform: scale(1.1);
+}
+
+.categories__category:active {
+  transform: scale(.9);
+}
+
+.categories__category:last-child {
+  margin-bottom: 0;
+}
+
+.categories__category-num {
+  margin-right: 10%;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 500px) {
+  .categories__category {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .categories__category {
+    width: 50%;
+  }
+}
+/*categories end*/
+/*quiz start*/
+.quiz {
+
+}
+
+.quiz__question {
+  text-align: center;
+}
+
+.quiz__title {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.quiz__picture {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.quiz__answers-container {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  row-gap: 15px;
+}
+
+.quiz__answer {
+  height: 30px;
+  width: calc(50% - 10px);
+  font-size: var(--font2);
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+}
+/*quiz end*/
 /*main end*/
 
 /*footer start*/
@@ -214,3 +305,7 @@ a {
     brightness(117%) contrast(100%);
 }
 /*footer end*/
+
+.hide {
+  display: none;
+}

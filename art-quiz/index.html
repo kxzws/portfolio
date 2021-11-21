@@ -25,16 +25,18 @@
       <section class="main-page">
         <h1 class="main-page__title">Art-quiz</h1>
         <div class="main-page__container">
-          <button class="main-page__btn">Художники</button>
-          <button class="main-page__btn">Картины</button>
-          <button class="main-page__btn">Настройки</button>
+          <button id="authorQuiz" class="main-page__btn">Художники</button>
+          <button id="pictureQuiz" class="main-page__btn">Картины</button>
+          <button id="settings" class="main-page__btn">Настройки</button>
         </div>
         <div class="main-page__img"></div>
       </section>
 
-      <section class="categories"></section>
+      <section class="settings hide"></section>
 
-      <section class="quiz"></section>
+      <section class="categories hide"></section>
+
+      <section class="quiz hide"></section>
     </main>
 
     <footer class="footer">
@@ -52,5 +54,7 @@
           width="100"
       /></a>
     </footer>
+
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>

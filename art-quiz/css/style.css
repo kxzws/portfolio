@@ -268,14 +268,12 @@ a {
 .quiz__title {
   display: block;
   margin-bottom: 20px;
+  line-height: 24px;
 }
 
 .quiz__picture { /*AuthorQuiz*/
   margin-bottom: 25px;
   width: 100%;
-}
-
-.quiz__author { /*PictureQuiz*/
 }
 
 .quiz__answers-container {
@@ -295,10 +293,38 @@ a {
   background-color: #fff;
   border: none;
   border-radius: 2px;
+  transition: all .15s ease-in;
+}
+
+.quiz__answer:hover {
+  transform: scale(1.05);
+}
+
+.quiz__answer:active {
+  transform: scale(.95);
+}
+
+.quiz__answer-cont { /*PictureQuiz*/
+  padding: 10px 0;
+  width: calc(50% - 10px);
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: all .15s ease-in;
+}
+
+.quiz__answer-cont:hover {
+  transform: scale(1.05);
+}
+
+.quiz__answer-cont:active {
+  transform: scale(.95);
 }
 
 .quiz__answer-pic { /*PictureQuiz*/
-
+  width: 80%;
+  border-radius: 3px;
 }
 /*quiz end*/
 /*main end*/

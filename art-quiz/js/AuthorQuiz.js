@@ -22,7 +22,7 @@ class AuthorQuiz extends Quiz {
     answers[getRandomNum(1, 4) - 1] = images[imageNum].author;
 
     return {
-      question: `https://raw.githubusercontent.com/kxzws/image-data/master/full/${imageNum}full.jpg`,
+      question: `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`,
       answers: answers,
       correctAnswer: images[imageNum].author
     };

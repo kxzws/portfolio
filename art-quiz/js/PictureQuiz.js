@@ -9,11 +9,20 @@ import {
   modalYear } from './index.js';
 
 const ANSWER_COUNT = 4;
+const QUESTION_COUNT = 10;
+const CATEGORY_COUNT = 12;
 
 class PictureQuiz extends Quiz {
   constructor(categoryNum) {
     super(categoryNum);
     this.getQuestionInner = this.getQuestion();
+
+    function getLocalStorage() {
+      if(localStorage.getItem(`result${categoryNum + CATEGORY_COUNT}`)) {
+        this.result = localStorage.getItem(`result${categoryNum + CATEGORY_COUNT}`);
+      }
+    }
+    window.addEventListener('load', getLocalStorage)
   }
 
   getQuestion() {
@@ -21,7 +30,7 @@ class PictureQuiz extends Quiz {
     return function() {
       questionNum++;
 
-      const imageNum = ((this.categoryNum - 1) * 10 + questionNum) * 2;
+      const imageNum = (categoryNum + CATEGORY_COUNT - 1) * 10 + questionNum;
       let answers = [], count = 1;
       while (count <= ANSWER_COUNT) {
         let order = getRandomNum(1, 240);
@@ -49,6 +58,11 @@ class PictureQuiz extends Quiz {
 
   getQuestionView() {
     const question = this.getQuestionInner();
+
+    if (question.questionOrder === QUESTION_COUNT + 1) {
+      this.saveResult();
+      return this.getResultView();
+    }
 
     const questionView = document.createElement('div');
     questionView.classList.add('quiz__question');
@@ -87,6 +101,71 @@ class PictureQuiz extends Quiz {
     questionView.append(answersContainer);
 
     return questionView;
+  }
+
+  saveResult() {
+    const categoryNum = this.categoryNum + CATEGORY_COUNT;
+    const result = this.result;
+
+    function setLocalStorage() {
+      localStorage.setItem(`result${categoryNum}`, result);
+    }
+    window.addEventListener('beforeunload', setLocalStorage)
+  }
+
+  getResultView() {
+    const results = this.getResult();
+    const categoryNum = this.categoryNum + CATEGORY_COUNT;
+
+    const resultView = document.createElement('div');
+    resultView.classList.add('result');
+
+    const resultTitle = document.createElement('p');
+    resultTitle.classList.add('result__title');
+    resultTitle.textContent = `Категория ${categoryNum}. Раунд завершён`;
+    resultView.append(resultTitle);
+
+    const resultBtn = document.createElement('button');
+    resultBtn.classList.add('result__btn');
+    resultBtn.textContent = 'Результаты';
+    resultView.append(resultBtn);
+
+    resultBtn.addEventListener('click', () => {
+      resultView.textContent = '';
+
+      const resultTitle = document.createElement('p');
+      resultTitle.classList.add('result__title');
+      resultTitle.textContent = `Результат: ${results}/10`;
+      resultView.append(resultTitle);
+
+      const resultCont = document.createElement('div');
+      resultCont.classList.add('result__cont');
+
+      this.result.forEach((isCorrect, ind) => {
+        let imageNum = (categoryNum - 1) * 10 + (ind + 1);
+
+        const resultPicture = document.createElement('img');
+        resultPicture.classList.add('result__item');
+        resultPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        resultPicture.alt = 'picture: quiz answers';
+
+        if (!isCorrect) resultPicture.classList.add('incorrect');
+
+        resultPicture.addEventListener('click', () => {
+          modalPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+          modalAuthor.textContent = images[imageNum].author;
+          modalName.textContent = images[imageNum].name;
+          modalYear.textContent = images[imageNum].year;
+          toggleModal(isCorrect);
+          document.querySelector('.here-is-button').textContent = '';
+        })
+        
+        resultCont.append(resultPicture);
+      });
+      resultView.append(resultCont);
+    });
+
+    return resultView;
   }
 }
 

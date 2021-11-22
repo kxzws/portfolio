@@ -14,9 +14,17 @@ const settingsSection = document.querySelector('.settings');
 const mainPageBtn = document.getElementById('mainPage');
 const categoriesBtn = document.getElementById('categories');
 //main-page buttons
-const AuthorQuizBtn = document.getElementById('authorQuiz');
-const PictureQuizBtn = document.getElementById('pictureQuiz');
-const SettingsBtn = document.getElementById('settings');
+const authorQuizBtn = document.getElementById('authorQuiz');
+const pictureQuizBtn = document.getElementById('pictureQuiz');
+const settingsBtn = document.getElementById('settings');
+//modal button
+const next = document.getElementById('next');
+
+//modal fields 
+const modalPicture = document.querySelector('.modal__pic');
+const modalAuthor = document.getElementById('modalAuthor');
+const modalName = document.getElementById('modalName');
+const modalYear = document.getElementById('modalYear');
 
 function showSection(sectionShow) {
   const sections = document.querySelectorAll('section');
@@ -62,16 +70,43 @@ function createCategories(container, categoryType) {
   }
 }
 
+function toggleModal(isCorrect) {
+  const overlay = document.querySelector('.overlay');
+  const modal = document.querySelector('.modal');
+  const symbolTrue = document.querySelector('.symbol-true');
+  const symbolFalse = document.querySelector('.symbol-false');
+  
+  if (isCorrect) {
+    if (!symbolFalse.classList.contains('hide')) symbolFalse.classList.add('hide');
+    if (symbolTrue.classList.contains('hide')) symbolTrue.classList.remove('hide');
+  } else {
+    if (symbolFalse.classList.contains('hide')) symbolFalse.classList.remove('hide');
+    if (!symbolTrue.classList.contains('hide')) symbolTrue.classList.add('hide');
+  }
+
+  overlay.classList.toggle('hide');
+  modal.classList.toggle('open');
+}
+
 mainPageBtn.addEventListener('click', () => showSection(mainPage));
 categoriesBtn.addEventListener('click', () => showSection(categoriesSection));
-AuthorQuizBtn.addEventListener('click', () => {
+authorQuizBtn.addEventListener('click', () => {
   clearContainer(categoriesSection);
   createCategories(categoriesSection, 'category-author');
   showSection(categoriesSection);
 });
-PictureQuizBtn.addEventListener('click', () => {
+pictureQuizBtn.addEventListener('click', () => {
   clearContainer(categoriesSection);
   createCategories(categoriesSection, 'category-picture');
   showSection(categoriesSection);
 });
-SettingsBtn.addEventListener('click', () => showSection(settingsSection));
+settingsBtn.addEventListener('click', () => showSection(settingsSection));
+
+export { 
+  toggleModal,
+  next,
+  modalPicture,
+  modalAuthor,
+  modalName,
+  modalYear
+};

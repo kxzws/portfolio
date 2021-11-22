@@ -1,5 +1,6 @@
 import Quiz from './Quiz.js';
 import images from './images.js';
+import { toggleModal, next, modalPicture, modalAuthor, modalName, modalYear } from './index.js';
 
 const ANSWER_COUNT = 4;
 
@@ -29,7 +30,9 @@ class PictureQuiz extends Quiz {
     return {
       question: images[imageNum].author,
       answers: answers,
-      correctAnswer: `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`
+      correctAnswer: `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`,
+      name: images[imageNum].name,
+      year: images[imageNum].year
     };
   }
 
@@ -56,6 +59,15 @@ class PictureQuiz extends Quiz {
       answerPicture.src = value;
       answerPicture.alt = 'picture: picture of question';
       answer.append(answerPicture);
+
+      answer.addEventListener('click', () => {
+        modalPicture.src = question.correctAnswer;
+        modalAuthor.textContent = question.question;
+        modalName.textContent = question.name;
+        modalYear.textContent = question.year;
+        if (value === question.correctAnswer) toggleModal(true);
+        else toggleModal(false);
+      });
 
       answersContainer.append(answer);
     }

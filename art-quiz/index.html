@@ -27,7 +27,9 @@
         <div class="main-page__container">
           <button id="authorQuiz" class="main-page__btn">Художники</button>
           <button id="pictureQuiz" class="main-page__btn">Картины</button>
-          <button id="settings" class="main-page__btn">Настройки</button>
+          <button id="settings" class="main-page__btn">Настройки
+            <span class="main-page__settings-pic"></span>
+          </button>
         </div>
         <div class="main-page__img"></div>
       </section>
@@ -35,6 +37,20 @@
       <section class="settings hide"></section>
 
       <section class="categories hide"></section>
+
+      <div class="overlay hide">
+        <div class="modal">
+          <div class="modal__symbol symbol-true hide"></div>
+          <div class="modal__symbol symbol-false hide"></div>
+
+          <img src="/" alt="picture: correct answer" class="modal__pic">
+          <p id="modalAuthor" class="modal__subtitle"></p>
+          <p class="modal__subtitle">"<span id="modalName"></span>"</p>
+          <p id="modalYear" class="modal__subtitle"></p>
+
+          <button id="next" class="modal__btn">Продолжить</button>
+        </div>
+      </div>
 
       <section class="quiz hide"></section>
     </main>

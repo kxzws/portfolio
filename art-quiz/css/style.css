@@ -337,6 +337,26 @@ a {
 .modal__btn:active {
   transform: scale(0.9);
 }
+
+@media screen and (min-width: 500px) {
+  .modal {
+    width: 50%;
+  }
+
+  .open {
+    left: calc(50% - 25%);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .modal {
+    width: 30%;
+  }
+
+  .open {
+    left: calc(50% - 15%);
+  }
+}
 /*modal end*/
 /*quiz start*/
 .quiz__question {
@@ -352,7 +372,7 @@ a {
 /*AuthorQuiz*/
 .quiz__picture {
   margin-bottom: 25px;
-  width: 60%;
+  width: 50%;
 }
 
 .quiz__answers-container {

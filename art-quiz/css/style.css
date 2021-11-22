@@ -193,9 +193,13 @@ a {
   height: 80px;
   width: 100%;
   text-align: right;
-  background-color: #fff;
   border: none;
   border-radius: 4px;
+  transition: all .2s ease-in;
+}
+
+.category-author {
+  background-color: rgb(240, 199, 123);
   -webkit-mask-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0) 0%,
@@ -206,7 +210,20 @@ a {
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 1) 40%
   );
-  transition: all .2s ease-in;
+}
+
+.category-picture {
+  background-color: rgb(235, 162, 162);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 40%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 40%
+  );
 }
 
 .categories__category:hover {
@@ -253,9 +270,12 @@ a {
   margin-bottom: 20px;
 }
 
-.quiz__picture {
+.quiz__picture { /*AuthorQuiz*/
   margin-bottom: 25px;
   width: 100%;
+}
+
+.quiz__author { /*PictureQuiz*/
 }
 
 .quiz__answers-container {
@@ -267,14 +287,18 @@ a {
   row-gap: 15px;
 }
 
-.quiz__answer {
-  height: 30px;
+.quiz__answer { /*AuthorQuiz*/
+  min-height: 30px;
   width: calc(50% - 10px);
   font-size: var(--font2);
   text-align: center;
   background-color: #fff;
   border: none;
   border-radius: 2px;
+}
+
+.quiz__answer-pic { /*PictureQuiz*/
+
 }
 /*quiz end*/
 /*main end*/

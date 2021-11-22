@@ -1,11 +1,30 @@
 import Quiz from './Quiz.js';
+import images from './images.js';
+
+const ANSWER_COUNT = 4;
 
 class AuthorQuiz extends Quiz {
   getQuestion(questionNum) {
+    function getRandomNum(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    
+    const imageNum = (this.categoryNum - 1) * 10 + questionNum;
+    let answers = [], count = 1;
+    while (count <= ANSWER_COUNT) {
+      const value = images[getRandomNum(1, 240)].author;
+      answers.push(value);
+
+      count++;
+    }
+    answers[getRandomNum(1, 4) - 1] = images[imageNum].author;
+
     return {
-      question: 'https://raw.githubusercontent.com/kxzws/image-data/master/full/0full.jpg',
-      answers: ['1', '2', '3', 'Павел Федотов'],
-      correctAnswer: 'Павел Федотов'
+      question: `https://raw.githubusercontent.com/kxzws/image-data/master/full/${imageNum}full.jpg`,
+      answers: answers,
+      correctAnswer: images[imageNum].author
     };
   }
 
@@ -29,7 +48,7 @@ class AuthorQuiz extends Quiz {
     const answersContainer = document.createElement('div');
     answersContainer.classList.add('quiz__answers-container');
 
-    for (let value in question.answers) {
+    for (let value of question.answers) {
       const answer = document.createElement('button');
       answer.classList.add('quiz__answer');
       answer.textContent = value;

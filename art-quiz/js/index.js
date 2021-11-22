@@ -30,23 +30,30 @@ function clearContainer(container) {
   container.textContent = '';
 }
 
-function createCategories(container) {
+function createCategories(container, categoryType) {
   let count = 1;
   while (count <= SECTION_COUNT) {
     const category = document.createElement('button');
     category.id = 'cat' + count;
     category.classList.add('categories__category');
+    category.classList.add(categoryType);
     
     const categoryNum = document.createElement('span');
     categoryNum.classList.add('categories__category-num');
     categoryNum.textContent = count;
     category.append(categoryNum);
-
+   
     container.append(category);
 
+    let quiz;
+    switch (categoryType) {
+      case 'category-author': quiz = new AuthorQuiz(count);
+      break;
+      case 'category-picture': quiz = new PictureQuiz(count);
+      break;
+    }
     category.addEventListener('click', () => {
       clearContainer(quizSection);
-      const quiz = new AuthorQuiz(count);
       quizSection.append(quiz.getQuestionView(1));
       showSection(quizSection);
     });
@@ -59,12 +66,12 @@ mainPageBtn.addEventListener('click', () => showSection(mainPage));
 categoriesBtn.addEventListener('click', () => showSection(categoriesSection));
 AuthorQuizBtn.addEventListener('click', () => {
   clearContainer(categoriesSection);
-  createCategories(categoriesSection);
+  createCategories(categoriesSection, 'category-author');
   showSection(categoriesSection);
 });
 PictureQuizBtn.addEventListener('click', () => {
   clearContainer(categoriesSection);
-  createCategories(categoriesSection);
+  createCategories(categoriesSection, 'category-picture');
   showSection(categoriesSection);
 });
 SettingsBtn.addEventListener('click', () => showSection(settingsSection));

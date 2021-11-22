@@ -4,7 +4,7 @@ class Quiz {
     this.result = Array(12).fill(0);
   }
 
-  getQuestion(questionNum) {
+  getQuestion() {
     return 0;
   }
 

@@ -17,8 +17,6 @@ const categoriesBtn = document.getElementById('categories');
 const authorQuizBtn = document.getElementById('authorQuiz');
 const pictureQuizBtn = document.getElementById('pictureQuiz');
 const settingsBtn = document.getElementById('settings');
-//modal button
-const next = document.getElementById('next');
 
 //modal fields 
 const modalPicture = document.querySelector('.modal__pic');
@@ -30,50 +28,6 @@ function getRandomNum(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function showSection(sectionShow) {
-  const sections = document.querySelectorAll('section');
-  for (let section of sections) {
-    if (!section.classList.contains('hide')) section.classList.add('hide');
-  }
-  sectionShow.classList.remove('hide');
-}
-
-function clearContainer(container) {
-  container.textContent = '';
-}
-
-function createCategories(container, categoryType) {
-  let count = 1;
-  while (count <= SECTION_COUNT) {
-    const category = document.createElement('button');
-    category.id = 'cat' + count;
-    category.classList.add('categories__category');
-    category.classList.add(categoryType);
-    
-    const categoryNum = document.createElement('span');
-    categoryNum.classList.add('categories__category-num');
-    categoryNum.textContent = count;
-    category.append(categoryNum);
-   
-    container.append(category);
-
-    let quiz;
-    switch (categoryType) {
-      case 'category-author': quiz = new AuthorQuiz(count);
-      break;
-      case 'category-picture': quiz = new PictureQuiz(count);
-      break;
-    }
-    category.addEventListener('click', () => {
-      clearContainer(quizSection);
-      quizSection.append(quiz.getQuestionView(1));
-      showSection(quizSection);
-    });
-
-    count++;
-  }
 }
 
 function toggleModal(isCorrect) {
@@ -94,6 +48,58 @@ function toggleModal(isCorrect) {
   modal.classList.toggle('open');
 }
 
+function showSection(sectionShow) {
+  const sections = document.querySelectorAll('section');
+  for (let section of sections) {
+    if (!section.classList.contains('hide')) section.classList.add('hide');
+  }
+  sectionShow.classList.remove('hide');
+}
+
+function clearContainer(container) {
+  container.textContent = '';
+}
+
+function createCategories(container, categoryType) {
+  for (let count = 1; count <= SECTION_COUNT; count++) {
+    const category = document.createElement('button');
+    category.id = 'cat' + count;
+    category.classList.add('categories__category');
+    category.classList.add(categoryType);
+    
+    const categoryNum = document.createElement('span');
+    categoryNum.classList.add('categories__category-num');
+    categoryNum.textContent = count;
+    category.append(categoryNum);
+   
+    container.append(category);
+
+    category.addEventListener('click', () => {
+      let quiz;
+      switch (categoryType) {
+        case 'category-author': quiz = new AuthorQuiz(count);
+        break;
+        case 'category-picture': quiz = new PictureQuiz(count);
+        break;
+      }
+      clearContainer(quizSection);
+      quizSection.append(quiz.getQuestionView());
+      showSection(quizSection);
+
+      const next = document.createElement('button');
+      next.classList.add('modal__btn');
+      next.textContent = 'Продолжить';
+      document.querySelector('.here-is-button').textContent = '';
+      document.querySelector('.here-is-button').append(next);
+      next.addEventListener('click', () => {
+        clearContainer(quizSection);
+        quizSection.append(quiz.getQuestionView());
+        toggleModal(true);
+      });
+    });
+  }
+}
+
 mainPageBtn.addEventListener('click', () => showSection(mainPage));
 categoriesBtn.addEventListener('click', () => showSection(categoriesSection));
 authorQuizBtn.addEventListener('click', () => {
@@ -111,7 +117,6 @@ settingsBtn.addEventListener('click', () => showSection(settingsSection));
 export { 
   getRandomNum,
   toggleModal,
-  next,
   modalPicture,
   modalAuthor,
   modalName,

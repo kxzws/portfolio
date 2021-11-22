@@ -1,6 +1,6 @@
 import Quiz from './Quiz.js';
 import images from './images.js';
-import { getRandomNum, toggleModal, next, modalPicture, modalAuthor, modalName, modalYear } from './index.js';
+import { getRandomNum, toggleModal, modalPicture, modalAuthor, modalName, modalYear } from './index.js';
 
 const ANSWER_COUNT = 4;
 

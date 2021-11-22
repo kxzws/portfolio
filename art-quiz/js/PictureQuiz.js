@@ -20,7 +20,7 @@ class PictureQuiz extends Quiz {
     let questionNum = 0, categoryNum = this.categoryNum;
     return function() {
       questionNum++;
-      console.log(questionNum);//##############################################
+
       const imageNum = ((this.categoryNum - 1) * 10 + questionNum) * 2;
       let answers = [], count = 1;
       while (count <= ANSWER_COUNT) {

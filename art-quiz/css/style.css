@@ -408,6 +408,56 @@ a {
   width: 80%;
   border-radius: 3px;
 }
+/*result start*/
+.result__title {
+  margin-bottom: 20px;
+  font-size: 26px;
+  text-align: center;
+}
+
+.result__btn {
+  margin: 0 auto;
+  height: 36px;
+  display: block;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+}
+
+.result__btn:hover {
+  transform: scale(1.1);
+}
+
+.result__btn:active {
+  transform: scale(0.9);
+}
+
+.result__cont {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.result__item {
+  width: calc(30% - 10px);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.incorrect {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+@media screen and (min-width: 600px) {
+  .result__item {
+    width: calc(20% - 20px);
+  }
+}
+/*result end*/
 /*quiz end*/
 /*main end*/
 

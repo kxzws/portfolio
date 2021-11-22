@@ -9,18 +9,26 @@ import {
   modalYear } from './index.js';
 
 const ANSWER_COUNT = 4;
+const QUESTION_COUNT = 10;
 
 class AuthorQuiz extends Quiz {
   constructor(categoryNum) {
     super(categoryNum);
     this.getQuestionInner = this.getQuestion();
+
+    function getLocalStorage() {
+      if(localStorage.getItem(`result${categoryNum}`)) {
+        this.result = localStorage.getItem(`result${categoryNum}`);
+      }
+    }
+    window.addEventListener('load', getLocalStorage)
   }
 
   getQuestion() {
     let questionNum = 0, categoryNum = this.categoryNum;
     return function() {
       questionNum++;
-      console.log(questionNum);//##############################################
+
       const imageNum = (categoryNum - 1) * 10 + questionNum;
       let answers = [], count = 1;
       while (count <= ANSWER_COUNT) {
@@ -49,6 +57,11 @@ class AuthorQuiz extends Quiz {
 
   getQuestionView() {
     const question = this.getQuestionInner();
+
+    if (question.questionOrder === QUESTION_COUNT + 1) {
+      this.saveResult();
+      return this.getResultView();
+    }
 
     const questionView = document.createElement('div');
     questionView.classList.add('quiz__question');

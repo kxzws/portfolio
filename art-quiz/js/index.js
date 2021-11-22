@@ -44,6 +44,11 @@ function toggleModal(isCorrect) {
     if (!symbolTrue.classList.contains('hide')) symbolTrue.classList.add('hide');
   }
 
+  overlay.addEventListener('click', () => {
+    overlay.classList.add('hide');
+    modal.classList.remove('open');
+  })
+
   overlay.classList.toggle('hide');
   modal.classList.toggle('open');
 }

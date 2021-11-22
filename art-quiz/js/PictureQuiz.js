@@ -14,7 +14,12 @@ class PictureQuiz extends Quiz {
     const imageNum = ((this.categoryNum - 1) * 10 + questionNum) * 2;
     let answers = [], count = 1;
     while (count <= ANSWER_COUNT) {
-      const value = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${getRandomNum(1, 240)}.jpg`;
+      let order = getRandomNum(1, 240);
+      let value = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${order}.jpg`;
+      while (value === `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`) {
+        order++;
+        value = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${order}.jpg`;
+      }
       answers.push(value);
 
       count++;

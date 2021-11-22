@@ -14,7 +14,12 @@ class AuthorQuiz extends Quiz {
     const imageNum = (this.categoryNum - 1) * 10 + questionNum;
     let answers = [], count = 1;
     while (count <= ANSWER_COUNT) {
-      const value = images[getRandomNum(1, 240)].author;
+      let order = getRandomNum(1, 240);
+      let value = images[order].author;
+      while (value === images[imageNum].author) {
+        order++;
+        value = images[order].author;
+      }
       answers.push(value);
 
       count++;

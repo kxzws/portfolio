@@ -26,6 +26,12 @@ const modalAuthor = document.getElementById('modalAuthor');
 const modalName = document.getElementById('modalName');
 const modalYear = document.getElementById('modalYear');
 
+function getRandomNum(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function showSection(sectionShow) {
   const sections = document.querySelectorAll('section');
   for (let section of sections) {
@@ -103,6 +109,7 @@ pictureQuizBtn.addEventListener('click', () => {
 settingsBtn.addEventListener('click', () => showSection(settingsSection));
 
 export { 
+  getRandomNum,
   toggleModal,
   next,
   modalPicture,

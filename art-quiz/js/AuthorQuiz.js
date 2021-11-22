@@ -1,17 +1,11 @@
 import Quiz from './Quiz.js';
 import images from './images.js';
-import { toggleModal, next, modalPicture, modalAuthor, modalName, modalYear } from './index.js';
+import { getRandomNum, toggleModal, next, modalPicture, modalAuthor, modalName, modalYear } from './index.js';
 
 const ANSWER_COUNT = 4;
 
 class AuthorQuiz extends Quiz {
   getQuestion(questionNum) {
-    function getRandomNum(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    
     const imageNum = (this.categoryNum - 1) * 10 + questionNum;
     let answers = [], count = 1;
     while (count <= ANSWER_COUNT) {

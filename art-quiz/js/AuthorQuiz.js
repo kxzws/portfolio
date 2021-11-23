@@ -59,6 +59,7 @@ class AuthorQuiz extends Quiz {
         btn.textContent = `${this.getResult()}/10`;
       } else {
         const btn = document.getElementById(`cat${this.categoryNum}`);
+        btn.classList.add('played');
         btn.append(getResultButton(this.categoryNum, this.getResult()));
       }
       return this.getResultView();

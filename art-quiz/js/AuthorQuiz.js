@@ -73,7 +73,9 @@ class AuthorQuiz extends Quiz {
 
     const questionPicture = document.createElement('img');
     questionPicture.classList.add('quiz__picture');
-    questionPicture.src = question.question;
+    const img = new Image();
+    img.src = question.question;
+    img.addEventListener('load', () => questionPicture.src = img.src);
     questionPicture.alt = 'picture: picture of question';
     questionView.append(questionPicture);
 
@@ -146,7 +148,9 @@ class AuthorQuiz extends Quiz {
 
         const resultPicture = document.createElement('img');
         resultPicture.classList.add('result__item');
-        resultPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        const img = new Image();
+        img.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        img.addEventListener('load', () => resultPicture.src = img.src);
         resultPicture.alt = 'picture: quiz answers';
 
         if (!isCorrect) resultPicture.classList.add('incorrect');

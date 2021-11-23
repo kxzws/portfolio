@@ -81,7 +81,9 @@ class PictureQuiz extends Quiz {
 
       const answerPicture = document.createElement('img');
       answerPicture.classList.add('quiz__answer-pic');
-      answerPicture.src = value;
+      const img = new Image();
+      img.src = value;
+      img.addEventListener('load', () => answerPicture.src = img.src);
       answerPicture.alt = 'picture: picture of question';
       answer.append(answerPicture);
 
@@ -146,7 +148,9 @@ class PictureQuiz extends Quiz {
 
         const resultPicture = document.createElement('img');
         resultPicture.classList.add('result__item');
-        resultPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        const img = new Image();
+        img.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        img.addEventListener('load', () => resultPicture.src = img.src);
         resultPicture.alt = 'picture: quiz answers';
 
         if (!isCorrect) resultPicture.classList.add('incorrect');

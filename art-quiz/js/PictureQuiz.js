@@ -23,8 +23,13 @@ class PictureQuiz extends Quiz {
     let questionNum = 0, categoryNum = this.categoryNum;
     return function() {
       questionNum++;
-
+      
       const imageNum = (categoryNum + CATEGORY_COUNT - 1) * 10 + questionNum;
+      
+      if (imageNum > 240) return {
+        questionOrder: questionNum
+      }; //bug with 241
+
       let answers = [], count = 1;
       while (count <= ANSWER_COUNT) {
         let order = getRandomNum(1, 240);
@@ -52,7 +57,6 @@ class PictureQuiz extends Quiz {
 
   getQuestionView() {
     const question = this.getQuestionInner();
-    console.log(question);
 
     if (question.questionOrder === QUESTION_COUNT + 1) {
       this.saveResult();

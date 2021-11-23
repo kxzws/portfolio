@@ -190,8 +190,12 @@ a {
 .categories__category {
   margin: 0 auto;
   margin-bottom: 15px;
+  padding: 0 10px;
   height: 80px;
   width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
   text-align: right;
   border: none;
   border-radius: 4px;
@@ -227,7 +231,7 @@ a {
 }
 
 .categories__category:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .categories__category:active {
@@ -242,6 +246,22 @@ a {
   margin-right: 10%;
   font-size: 50px;
   font-weight: bold;
+}
+
+.categories__result {
+  padding: 6px;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s ease-in;
+}
+
+.categories__result:hover {
+  transform: scale(1.15);
+}
+
+.categories__result:active {
+  transform: scale(0.9);
 }
 
 @media screen and (min-width: 500px) {

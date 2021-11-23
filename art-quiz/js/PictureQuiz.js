@@ -16,13 +16,6 @@ class PictureQuiz extends Quiz {
   constructor(categoryNum) {
     super(categoryNum);
     this.getQuestionInner = this.getQuestion();
-
-    function getLocalStorage() {
-      if(localStorage.getItem(`result${categoryNum + CATEGORY_COUNT}`)) {
-        this.result = localStorage.getItem(`result${categoryNum + CATEGORY_COUNT}`);
-      }
-    }
-    window.addEventListener('load', getLocalStorage)
   }
 
   getQuestion() {

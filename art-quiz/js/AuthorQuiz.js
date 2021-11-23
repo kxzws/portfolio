@@ -15,13 +15,6 @@ class AuthorQuiz extends Quiz {
   constructor(categoryNum) {
     super(categoryNum);
     this.getQuestionInner = this.getQuestion();
-
-    function getLocalStorage() {
-      if(localStorage.getItem(`result${categoryNum}`)) {
-        this.result = localStorage.getItem(`result${categoryNum}`);
-      }
-    }
-    window.addEventListener('load', getLocalStorage)
   }
 
   getQuestion() {

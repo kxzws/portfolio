@@ -1,28 +1,22 @@
 import Quiz from './Quiz.js';
 import images from './images.js';
 import { 
+  ANSWER_COUNT,
+  CATEGORY_COUNT,
+  QUESTION_COUNT,
   getRandomNum, 
   toggleModal, 
+  getResultButton,
+  categoriesBtn,
   modalPicture, 
   modalAuthor, 
   modalName, 
   modalYear } from './index.js';
 
-const ANSWER_COUNT = 4;
-const QUESTION_COUNT = 10;
-const CATEGORY_COUNT = 12;
-
 class PictureQuiz extends Quiz {
   constructor(categoryNum) {
     super(categoryNum);
     this.getQuestionInner = this.getQuestion();
-
-    function getLocalStorage() {
-      if(localStorage.getItem(`result${categoryNum + CATEGORY_COUNT}`)) {
-        this.result = localStorage.getItem(`result${categoryNum + CATEGORY_COUNT}`);
-      }
-    }
-    window.addEventListener('load', getLocalStorage)
   }
 
   getQuestion() {
@@ -58,9 +52,18 @@ class PictureQuiz extends Quiz {
 
   getQuestionView() {
     const question = this.getQuestionInner();
+    console.log(question);
 
     if (question.questionOrder === QUESTION_COUNT + 1) {
       this.saveResult();
+      if (document.getElementById(`res${this.categoryNum}`)) {
+        const btn = document.getElementById(`res${this.categoryNum}`);
+        btn.textContent = `${this.getResult()}/10`;
+      } else {
+        const btn = document.getElementById(`cat${this.categoryNum}`);
+        btn.classList.add('played');
+        btn.append(getResultButton(this.categoryNum, this.getResult()));
+      }
       return this.getResultView();
     }
 
@@ -81,7 +84,9 @@ class PictureQuiz extends Quiz {
 
       const answerPicture = document.createElement('img');
       answerPicture.classList.add('quiz__answer-pic');
-      answerPicture.src = value;
+      const img = new Image();
+      img.src = value;
+      img.addEventListener('load', () => answerPicture.src = img.src);
       answerPicture.alt = 'picture: picture of question';
       answer.append(answerPicture);
 
@@ -146,7 +151,9 @@ class PictureQuiz extends Quiz {
 
         const resultPicture = document.createElement('img');
         resultPicture.classList.add('result__item');
-        resultPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        const img = new Image();
+        img.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        img.addEventListener('load', () => resultPicture.src = img.src);
         resultPicture.alt = 'picture: quiz answers';
 
         if (!isCorrect) resultPicture.classList.add('incorrect');
@@ -163,6 +170,16 @@ class PictureQuiz extends Quiz {
         resultCont.append(resultPicture);
       });
       resultView.append(resultCont);
+
+      const resultNextBtn = document.createElement('button');
+      resultNextBtn.classList.add('result__btn');
+      resultNextBtn.textContent = 'Продолжить';
+      resultView.append(resultNextBtn);
+
+      resultNextBtn.addEventListener('click', () => {
+        let event = new Event('click');
+        categoriesBtn.dispatchEvent(event);
+      })
     });
 
     return resultView;

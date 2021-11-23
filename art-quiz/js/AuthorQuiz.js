@@ -1,27 +1,21 @@
 import Quiz from './Quiz.js';
 import images from './images.js';
 import { 
+  ANSWER_COUNT,
+  QUESTION_COUNT,
   getRandomNum,
   toggleModal,
+  getResultButton,
+  categoriesBtn,
   modalPicture,
   modalAuthor, 
   modalName, 
   modalYear } from './index.js';
 
-const ANSWER_COUNT = 4;
-const QUESTION_COUNT = 10;
-
 class AuthorQuiz extends Quiz {
   constructor(categoryNum) {
     super(categoryNum);
     this.getQuestionInner = this.getQuestion();
-
-    function getLocalStorage() {
-      if(localStorage.getItem(`result${categoryNum}`)) {
-        this.result = localStorage.getItem(`result${categoryNum}`);
-      }
-    }
-    window.addEventListener('load', getLocalStorage)
   }
 
   getQuestion() {
@@ -60,6 +54,14 @@ class AuthorQuiz extends Quiz {
 
     if (question.questionOrder === QUESTION_COUNT + 1) {
       this.saveResult();
+      if (document.getElementById(`res${this.categoryNum}`)) {
+        const btn = document.getElementById(`res${this.categoryNum}`);
+        btn.textContent = `${this.getResult()}/10`;
+      } else {
+        const btn = document.getElementById(`cat${this.categoryNum}`);
+        btn.classList.add('played');
+        btn.append(getResultButton(this.categoryNum, this.getResult()));
+      }
       return this.getResultView();
     }
 
@@ -73,7 +75,9 @@ class AuthorQuiz extends Quiz {
 
     const questionPicture = document.createElement('img');
     questionPicture.classList.add('quiz__picture');
-    questionPicture.src = question.question;
+    const img = new Image();
+    img.src = question.question;
+    img.addEventListener('load', () => questionPicture.src = img.src);
     questionPicture.alt = 'picture: picture of question';
     questionView.append(questionPicture);
 
@@ -146,7 +150,9 @@ class AuthorQuiz extends Quiz {
 
         const resultPicture = document.createElement('img');
         resultPicture.classList.add('result__item');
-        resultPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        const img = new Image();
+        img.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        img.addEventListener('load', () => resultPicture.src = img.src);
         resultPicture.alt = 'picture: quiz answers';
 
         if (!isCorrect) resultPicture.classList.add('incorrect');
@@ -163,6 +169,16 @@ class AuthorQuiz extends Quiz {
         resultCont.append(resultPicture);
       });
       resultView.append(resultCont);
+
+      const resultNextBtn = document.createElement('button');
+      resultNextBtn.classList.add('result__btn');
+      resultNextBtn.textContent = 'Продолжить';
+      resultView.append(resultNextBtn);
+
+      resultNextBtn.addEventListener('click', () => {
+        let event = new Event('click');
+        categoriesBtn.dispatchEvent(event);
+      })
     });
 
     return resultView;

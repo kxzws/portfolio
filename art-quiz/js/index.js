@@ -2,7 +2,11 @@ import Quiz from './Quiz.js';
 import PictureQuiz from './PictureQuiz.js';
 import AuthorQuiz from './AuthorQuiz.js';
 
-const SECTION_COUNT = 12;
+console.log('Самооценка: 165/220\nНе выполненные/не засчитанные пункты:\n1) в настройках есть возможность включать/выключать звук, есть регулятор громкости звука. Если звук включён, есть звуковая индикация правильных и неправильных ответов, звуковое сопровождение окончания раунда\n2) в настройках есть возможность включать/выключать игру на время. Если выбрана игра на время, на странице с вопросами викторины отображается таймер, отсчитывающий время, которое отведено для ответа на вопрос\n3) в настройках можно указать время для ответа на вопрос в интервале от 5 до 30 секунд с шагом в 5 секунд. Если время истекает, а ответа нет, это засчитывается как неправильный ответ на вопрос\n4) при перезагрузке страницы приложения настройки сохраняются\n5) дополнительными баллами оценивается очень высокое качество оформления приложения, продуманность отдельных деталей интерфейса, улучшающие внешний вид приложения и удобство пользования им, а также выполненный на высоком уровне и сложный в реализации свой собственный дополнительный функционал, существенно улучшающий качество и/или возможности приложения\nЧастично выполненные пункты:\n1) 5 баллов за каждую уникальную сложную анимацию, улучшающую интерфейс и удобство использования приложения, но не больше 20 баллов\nfeedback: +5, анимация "клика" по кнопкам');
+
+const ANSWER_COUNT = 4;
+const CATEGORY_COUNT = 12;
+const QUESTION_COUNT = 10;
 
 //sections
 const mainPage = document.querySelector('.main-page');
@@ -53,6 +57,15 @@ function toggleModal(isCorrect) {
   modal.classList.toggle('open');
 }
 
+function getResultButton(categoryOrder, score) {
+  const resultButtonView = document.createElement('button');
+  resultButtonView.id = 'res' + categoryOrder;
+  resultButtonView.classList.add('categories__result');
+  resultButtonView.textContent = `${score}/10`;
+
+  return resultButtonView;
+}
+
 function showSection(sectionShow) {
   const sections = document.querySelectorAll('section');
   for (let section of sections) {
@@ -66,7 +79,7 @@ function clearContainer(container) {
 }
 
 function createCategories(container, categoryType) {
-  for (let count = 1; count <= SECTION_COUNT; count++) {
+  for (let count = 1; count <= CATEGORY_COUNT; count++) {
     const category = document.createElement('button');
     category.id = 'cat' + count;
     category.classList.add('categories__category');
@@ -76,6 +89,19 @@ function createCategories(container, categoryType) {
     categoryNum.classList.add('categories__category-num');
     categoryNum.textContent = count;
     category.append(categoryNum);
+
+    let categoryOrder = count;
+    if (categoryType === 'category-picture') categoryOrder += CATEGORY_COUNT;
+
+    if (localStorage.getItem(`result${categoryOrder}`)) {
+      let score = localStorage.getItem(`result${categoryOrder}`).split(',');
+      score = score.reduce((acc, curr) => {
+        if (curr === '1') acc++;
+        return acc;
+      });
+      category.classList.add('played');
+      category.append(getResultButton(categoryOrder, score));
+    }
    
     container.append(category);
 
@@ -120,8 +146,13 @@ pictureQuizBtn.addEventListener('click', () => {
 settingsBtn.addEventListener('click', () => showSection(settingsSection));
 
 export { 
+  ANSWER_COUNT,
+  CATEGORY_COUNT,
+  QUESTION_COUNT,
   getRandomNum,
   toggleModal,
+  getResultButton,
+  categoriesBtn,
   modalPicture,
   modalAuthor,
   modalName,

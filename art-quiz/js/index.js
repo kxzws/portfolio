@@ -79,6 +79,17 @@ function clearContainer(container) {
 }
 
 function createCategories(container, categoryType) {
+  function createQuizObject(type, num) {
+    let object;
+    switch (type) {
+      case 'category-author': object = new AuthorQuiz(num);
+      break;
+      case 'category-picture': object = new PictureQuiz(num);
+      break;
+    }
+    return object;
+  }
+
   for (let count = 1; count <= CATEGORY_COUNT; count++) {
     const category = document.createElement('button');
     category.id = 'cat' + count;
@@ -106,13 +117,7 @@ function createCategories(container, categoryType) {
     container.append(category);
 
     category.addEventListener('click', () => {
-      let quiz;
-      switch (categoryType) {
-        case 'category-author': quiz = new AuthorQuiz(count);
-        break;
-        case 'category-picture': quiz = new PictureQuiz(count);
-        break;
-      }
+      const quiz = createQuizObject(categoryType, count);
       clearContainer(quizSection);
       quizSection.append(quiz.getQuestionView());
       showSection(quizSection);

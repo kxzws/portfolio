@@ -10,7 +10,8 @@ import {
   modalPicture,
   modalAuthor, 
   modalName, 
-  modalYear } from './index.js';
+  modalYear,
+  setting } from './index.js';
 
 class AuthorQuiz extends Quiz {
   constructor(categoryNum) {
@@ -62,6 +63,7 @@ class AuthorQuiz extends Quiz {
         btn.classList.add('played');
         btn.append(getResultButton(this.categoryNum, this.getResult()));
       }
+      setting.playAudio('finish');
       return this.getResultView();
     }
 
@@ -97,7 +99,11 @@ class AuthorQuiz extends Quiz {
         if (value === question.correctAnswer) {
           this.setResult(question.questionOrder, 1);
           toggleModal(true);
-        } else toggleModal(false);
+          setting.playAudio('correct');
+        } else {
+          toggleModal(false);
+          setting.playAudio('wrong');
+        }
       });
 
       answersContainer.append(answer);
@@ -114,7 +120,7 @@ class AuthorQuiz extends Quiz {
     function setLocalStorage() {
       localStorage.setItem(`result${categoryNum}`, result);
     }
-    window.addEventListener('beforeunload', setLocalStorage)
+    window.addEventListener('beforeunload', setLocalStorage);
   }
 
   getResultView() {

@@ -1,8 +1,8 @@
-import Quiz from './Quiz.js';
 import PictureQuiz from './PictureQuiz.js';
 import AuthorQuiz from './AuthorQuiz.js';
+import Settings from './Settings.js';
 
-console.log('Самооценка: 165/220\nНе выполненные/не засчитанные пункты:\n1) в настройках есть возможность включать/выключать звук, есть регулятор громкости звука. Если звук включён, есть звуковая индикация правильных и неправильных ответов, звуковое сопровождение окончания раунда\n2) в настройках есть возможность включать/выключать игру на время. Если выбрана игра на время, на странице с вопросами викторины отображается таймер, отсчитывающий время, которое отведено для ответа на вопрос\n3) в настройках можно указать время для ответа на вопрос в интервале от 5 до 30 секунд с шагом в 5 секунд. Если время истекает, а ответа нет, это засчитывается как неправильный ответ на вопрос\n4) при перезагрузке страницы приложения настройки сохраняются\n5) дополнительными баллами оценивается очень высокое качество оформления приложения, продуманность отдельных деталей интерфейса, улучшающие внешний вид приложения и удобство пользования им, а также выполненный на высоком уровне и сложный в реализации свой собственный дополнительный функционал, существенно улучшающий качество и/или возможности приложения\nЧастично выполненные пункты:\n1) 5 баллов за каждую уникальную сложную анимацию, улучшающую интерфейс и удобство использования приложения, но не больше 20 баллов\nfeedback: +5, анимация "клика" по кнопкам');
+console.log('Самооценка: 190/220\nНе выполненные/не засчитанные пункты:\n1) в настройках есть возможность включать/выключать игру на время. Если выбрана игра на время, на странице с вопросами викторины отображается таймер, отсчитывающий время, которое отведено для ответа на вопрос\n2) в настройках можно указать время для ответа на вопрос в интервале от 5 до 30 секунд с шагом в 5 секунд. Если время истекает, а ответа нет, это засчитывается как неправильный ответ на вопрос\n3) дополнительными баллами оценивается очень высокое качество оформления приложения, продуманность отдельных деталей интерфейса, улучшающие внешний вид приложения и удобство пользования им, а также выполненный на высоком уровне и сложный в реализации свой собственный дополнительный функционал, существенно улучшающий качество и/или возможности приложения\nЧастично выполненные пункты:\n1) 5 баллов за каждую уникальную сложную анимацию, улучшающую интерфейс и удобство использования приложения, но не больше 20 баллов\nfeedback: +10, анимация "клика" по кнопкам и "выезжание" модального окна с ответом');
 
 const ANSWER_COUNT = 4;
 const CATEGORY_COUNT = 12;
@@ -21,6 +21,13 @@ const categoriesBtn = document.getElementById('categories');
 const authorQuizBtn = document.getElementById('authorQuiz');
 const pictureQuizBtn = document.getElementById('pictureQuiz');
 const settingsBtn = document.getElementById('settings');
+//settings button
+const settingsSave = document.getElementById('saveSettings');
+const volumeRange = document.getElementById('volume');
+const timerRange = document.getElementById('timer');
+const timerCount = document.querySelector('.settings__timer-value');
+const onTimer = document.getElementById('onTimer');
+const offTimer = document.getElementById('offTimer');
 
 //modal fields 
 const modalPicture = document.querySelector('.modal__pic');
@@ -79,6 +86,17 @@ function clearContainer(container) {
 }
 
 function createCategories(container, categoryType) {
+  function createQuizObject(type, num) {
+    let object;
+    switch (type) {
+      case 'category-author': object = new AuthorQuiz(num);
+      break;
+      case 'category-picture': object = new PictureQuiz(num);
+      break;
+    }
+    return object;
+  }
+
   for (let count = 1; count <= CATEGORY_COUNT; count++) {
     const category = document.createElement('button');
     category.id = 'cat' + count;
@@ -106,13 +124,7 @@ function createCategories(container, categoryType) {
     container.append(category);
 
     category.addEventListener('click', () => {
-      let quiz;
-      switch (categoryType) {
-        case 'category-author': quiz = new AuthorQuiz(count);
-        break;
-        case 'category-picture': quiz = new PictureQuiz(count);
-        break;
-      }
+      const quiz = createQuizObject(categoryType, count);
       clearContainer(quizSection);
       quizSection.append(quiz.getQuestionView());
       showSection(quizSection);
@@ -131,6 +143,21 @@ function createCategories(container, categoryType) {
   }
 }
 
+function toggleVolumeIcon() {
+  const iconOn = document.querySelector('.icon-volume'); 
+  const iconOff = document.querySelector('.icon-volume-mute'); 
+
+  if (volumeRange.value < 1) {
+    if (!iconOn.classList.contains('hide')) iconOn.classList.add('hide');
+    if (iconOff.classList.contains('hide')) iconOff.classList.remove('hide');
+  } else {
+    if (iconOn.classList.contains('hide')) iconOn.classList.remove('hide');
+    if (!iconOff.classList.contains('hide')) iconOff.classList.add('hide');
+  }
+}
+
+const setting = new Settings();
+
 mainPageBtn.addEventListener('click', () => showSection(mainPage));
 categoriesBtn.addEventListener('click', () => showSection(categoriesSection));
 authorQuizBtn.addEventListener('click', () => {
@@ -145,6 +172,20 @@ pictureQuizBtn.addEventListener('click', () => {
 });
 settingsBtn.addEventListener('click', () => showSection(settingsSection));
 
+volumeRange.addEventListener('change', toggleVolumeIcon);
+timerRange.addEventListener('change', () => {
+  timerCount.textContent = timerRange.value;
+});
+settingsSave.addEventListener('click', () => {
+  setting.saveSettings();
+});
+onTimer.addEventListener('click', () => {
+  setting.toggleTimer();
+});
+offTimer.addEventListener('click', () => {
+  setting.toggleTimer();
+});
+
 export { 
   ANSWER_COUNT,
   CATEGORY_COUNT,
@@ -156,5 +197,8 @@ export {
   modalPicture,
   modalAuthor,
   modalName,
-  modalYear
+  modalYear,
+  volumeRange,
+  timerRange,
+  setting
 };

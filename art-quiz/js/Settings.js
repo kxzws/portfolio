@@ -57,7 +57,7 @@ class Settings {
 
   playAudio(type) {
     if (type === 'correct') this.audio.src = `../assets/mp3/${type}.mp3`;
-    else this.audio.src = `../assets/mp3/${type}.wav`;
+    else this.audio.src = `./assets/mp3/${type}.wav`;
     this.audio.play();
   }
 

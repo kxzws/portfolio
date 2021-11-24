@@ -27,14 +27,51 @@
         <div class="main-page__container">
           <button id="authorQuiz" class="main-page__btn">Художники</button>
           <button id="pictureQuiz" class="main-page__btn">Картины</button>
-          <button id="settings" class="main-page__btn">Настройки
+          <button id="settings" class="main-page__btn">
+            Настройки
             <span class="main-page__settings-pic"></span>
           </button>
         </div>
         <div class="main-page__img"></div>
       </section>
 
-      <section class="settings hide"></section>
+      <section class="settings hide">
+        <div class="settings__row">
+          <p class="settings__subtitle">Звуки:</p>
+          <div class="settings__icon icon-volume"></div>
+          <div class="settings__icon icon-volume-mute hide"></div>
+          <input
+            id="volume"
+            type="range"
+            class="settings__inp inp-volume"
+            value="50"
+            min="0"
+            max="100"
+            step="1"
+          />
+        </div>
+        <div class="settings__row">
+          <p class="settings__subtitle">Таймер:</p>
+          <div class="settings__icon icon-timer"></div>
+          <input
+            id="timer"
+            type="range"
+            class="settings__inp inp-timer"
+            value="20"
+            min="5"
+            max="30"
+            step="5"
+          />
+          <span class="settings__timer-value">20</span>
+          <div>
+            <button id="onTimer" class="settings__btn">Включить</button>
+            <button id="offTimer" class="settings__btn">Выключить</button>
+          </div>
+        </div>
+        <div class="settings__row">
+          <button id="saveSettings" class="settings__btn">Сохранить</button>
+        </div>
+      </section>
 
       <section class="categories hide"></section>
 
@@ -43,7 +80,7 @@
           <div class="modal__symbol symbol-true hide"></div>
           <div class="modal__symbol symbol-false hide"></div>
 
-          <img src="/" alt="picture: correct answer" class="modal__pic">
+          <img src="/" alt="picture: correct answer" class="modal__pic" />
           <p id="modalAuthor" class="modal__subtitle"></p>
           <p class="modal__subtitle">"<span id="modalName"></span>"</p>
           <p id="modalYear" class="modal__subtitle"></p>

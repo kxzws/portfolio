@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "description": "migration to TypeScript",
+  "private": true,
+  "name": "migration-to-ts",
+  "scripts": {
+    "start": "rss-scripts start",
+    "build": "rss-scripts build",
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.4.0",
+    "rss-scripts": "^0.2.4"
+  }
+}

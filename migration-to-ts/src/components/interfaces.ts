@@ -1,5 +1,5 @@
 interface ISource {
-  id: string | null;
+  id: string;
   name: string;
 }
 

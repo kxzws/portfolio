@@ -24,10 +24,11 @@ header h1 {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    z-index: 3;
     background: url("./images/uparrow.svg") no-repeat;
     background-size: contain;
-    filter: invert(100%) sepia(0%) saturate(2%) 
-        hue-rotate(8deg) brightness(108%) contrast(101%);
+    filter: invert(66%) sepia(21%) saturate(1316%) 
+        hue-rotate(165deg) brightness(98%) contrast(87%);
     transition: all .3s;
 }
 

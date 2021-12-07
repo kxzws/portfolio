@@ -1,0 +1,62 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #fff;
+    background: #17181c;
+    font-family: sans-serif;
+}
+
+header {
+    padding: 10px 30px;
+}
+
+header h1 {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.up-link {
+    height: 30px;
+    width: 30px;
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3;
+    background: url("./images/uparrow.svg") no-repeat;
+    background-size: contain;
+    filter: invert(66%) sepia(21%) saturate(1316%) 
+        hue-rotate(165deg) brightness(98%) contrast(87%);
+    transition: all .3s;
+}
+
+.up-link:hover {
+    transform: scale(1.1);
+}
+
+.up-link:active {
+    transform: scale(.9);
+}
+
+footer {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer .copyright {
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+footer .copyright a {
+    color: #444;
+}
+footer .copyright a:hover {
+    color: #555;
+}
+footer .copyright:before {
+    content: '©';
+}

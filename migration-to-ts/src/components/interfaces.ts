@@ -22,9 +22,12 @@ type Option = {
   apiKey: string;
 };
 
+type callbackType<T> = (data: T) => void;
+
 export {
   ISource,
   IArticle,
   INewsData,
-  Option
+  Option,
+  callbackType
 };

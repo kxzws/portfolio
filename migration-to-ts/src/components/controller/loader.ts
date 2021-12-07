@@ -1,4 +1,5 @@
 import { Option } from '../interfaces';
+import { INewsData, callbackType } from '../interfaces';
 
 class Loader {
     private baseLink: string;
@@ -10,8 +11,8 @@ class Loader {
     }
 
     getResp(
-        { endpoint, options = {} },
-        callback = () => {
+        { endpoint, options = {} }: { endpoint: string, options?: { sources?: string } },
+        callback: callbackType<INewsData> = () => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -28,7 +29,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options, endpoint: string): string {
+    makeUrl(options: { sources?: string }, endpoint: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -39,12 +40,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
+    load(method: string, endpoint: string, callback: callbackType<INewsData>, options: { sources?: string } = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
+            .then((data: INewsData) => callback(data))
+            .catch((err: Error) => console.error(err));
     }
 }
 

@@ -1,14 +1,15 @@
 import './news.css';
+import { IArticle } from '../../interfaces';
 
 class News {
-    draw(data) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    draw(data: IArticle[]): void {
+        const news = data.length >= 10 ? data.filter((_item: IArticle, idx: number) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
-        const newsItemTemp = document.querySelector('#newsItemTemp');
+        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
-        news.forEach((item, idx) => {
-            const newsClone = newsItemTemp.content.cloneNode(true);
+        news.forEach((item: IArticle, idx: number) => {
+            const newsClone = newsItemTemp.content.cloneNode(true) as HTMLTemplateElement;
 
             if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
 
@@ -30,8 +31,8 @@ class News {
             fragment.append(newsClone);
         });
 
-        document.querySelector('.news').innerHTML = '';
-        document.querySelector('.news').appendChild(fragment);
+        document.querySelector('.news')?.innerHTML = '';
+        document.querySelector('.news')?.appendChild(fragment);
     }
 }
 

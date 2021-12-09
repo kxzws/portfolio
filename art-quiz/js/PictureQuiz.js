@@ -1,10 +1,6 @@
 import Quiz from './Quiz.js';
 import images from './images.js';
 import { 
-  ANSWER_COUNT,
-  CATEGORY_COUNT,
-  QUESTION_COUNT,
-  getRandomNum, 
   toggleModal, 
   getResultButton,
   categoriesBtn,
@@ -13,6 +9,12 @@ import {
   modalName, 
   modalYear,
   setting } from './index.js';
+import { getRandomNum } from './helpers.js';
+import { 
+  ANSWER_COUNT,
+  CATEGORY_COUNT,
+  QUESTION_COUNT
+} from './constants.js';
 
 class PictureQuiz extends Quiz {
   constructor(categoryNum) {
@@ -166,7 +168,9 @@ class PictureQuiz extends Quiz {
         img.addEventListener('load', () => resultPicture.src = img.src);
         resultPicture.alt = 'picture: quiz answers';
 
-        if (!isCorrect) resultPicture.classList.add('incorrect');
+        if (!isCorrect) {
+        resultPicture.classList.add('incorrect');
+        }
 
         resultPicture.addEventListener('click', () => {
           modalPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;

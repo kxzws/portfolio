@@ -1,4 +1,5 @@
 import { volumeRange, timerRange } from './index.js';
+import { FULL_VOLUME } from './constants.js';
 
 class Settings {
   constructor() {
@@ -6,8 +7,8 @@ class Settings {
     //'false' if nothing and a digit if 'true'
     if (localStorage.getItem(`settingsVolume`)) {
       if (localStorage.getItem(`settingsVolume`) !== "false") {
-        this.audio.volume = localStorage.getItem(`settingsVolume`) / 100;
-        volumeRange.value = this.audio.volume * 100;
+        this.audio.volume = localStorage.getItem(`settingsVolume`) / FULL_VOLUME;
+        volumeRange.value = this.audio.volume * FULL_VOLUME;
       } else {
         if (volumeRange.value > 0) {
           this.isVolume = true;
@@ -16,7 +17,7 @@ class Settings {
           this.isVolume = false;
           this.audio.muted = true;
         }
-        this.audio.volume = volumeRange.value / 100;
+        this.audio.volume = volumeRange.value / FULL_VOLUME;
       }
     }
 
@@ -32,7 +33,7 @@ class Settings {
   }
 
   saveSettings() {
-    this.audio.volume = volumeRange.value / 100;
+    this.audio.volume = volumeRange.value / FULL_VOLUME;
     if (volumeRange.value > 0) {
       this.isVolume = true;
       this.audio.muted = false;
@@ -46,18 +47,25 @@ class Settings {
     function setLocalStorage() {
       if (this.isVolume !== "false") {
         localStorage.setItem(`settingsVolume`, this.volume.value);
-      } else localStorage.setItem(`settingsVolume`, "false");
+      } else {
+        localStorage.setItem(`settingsVolume`, "false");
+      }
 
       if (isTimer !== "false") {
         localStorage.setItem(`settingsTimer`, this.timer.value);
-      } else localStorage.setItem(`settingsTimer`, "false");
+      } else {
+        localStorage.setItem(`settingsTimer`, "false");
+      }
     }
     window.addEventListener("beforeunload", setLocalStorage);
   }
 
   playAudio(type) {
-    if (type === 'correct') this.audio.src = `./assets/mp3/${type}.mp3`;
-    else this.audio.src = `./assets/mp3/${type}.wav`;
+    if (type === 'correct') {
+      this.audio.src = `./assets/mp3/${type}.mp3`;
+    } else {
+      this.audio.src = `./assets/mp3/${type}.wav`;
+    }
     this.audio.play();
   }
 

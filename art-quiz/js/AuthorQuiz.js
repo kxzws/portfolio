@@ -1,9 +1,6 @@
 import Quiz from './Quiz.js';
 import images from './images.js';
 import { 
-  ANSWER_COUNT,
-  QUESTION_COUNT,
-  getRandomNum,
   toggleModal,
   getResultButton,
   categoriesBtn,
@@ -12,6 +9,11 @@ import {
   modalName, 
   modalYear,
   setting } from './index.js';
+import { getRandomNum } from './helpers.js';
+import { 
+  ANSWER_COUNT,
+  QUESTION_COUNT
+} from './constants.js';
 
 class AuthorQuiz extends Quiz {
   constructor(categoryNum) {

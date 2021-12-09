@@ -1,12 +1,10 @@
 import PictureQuiz from './PictureQuiz.js';
 import AuthorQuiz from './AuthorQuiz.js';
 import Settings from './Settings.js';
-
-console.log('Самооценка: 190/220\nНе выполненные/не засчитанные пункты:\n1) в настройках есть возможность включать/выключать игру на время. Если выбрана игра на время, на странице с вопросами викторины отображается таймер, отсчитывающий время, которое отведено для ответа на вопрос\n2) в настройках можно указать время для ответа на вопрос в интервале от 5 до 30 секунд с шагом в 5 секунд. Если время истекает, а ответа нет, это засчитывается как неправильный ответ на вопрос\n3) дополнительными баллами оценивается очень высокое качество оформления приложения, продуманность отдельных деталей интерфейса, улучшающие внешний вид приложения и удобство пользования им, а также выполненный на высоком уровне и сложный в реализации свой собственный дополнительный функционал, существенно улучшающий качество и/или возможности приложения\nЧастично выполненные пункты:\n1) 5 баллов за каждую уникальную сложную анимацию, улучшающую интерфейс и удобство использования приложения, но не больше 20 баллов\nfeedback: +10, анимация "клика" по кнопкам и "выезжание" модального окна с ответом');
-
-const ANSWER_COUNT = 4;
-const CATEGORY_COUNT = 12;
-const QUESTION_COUNT = 10;
+import { 
+  CATEGORY_COUNT,
+  CORRECT_ANSWER
+} from './constants.js';
 
 //sections
 const mainPage = document.querySelector('.main-page');
@@ -35,12 +33,6 @@ const modalAuthor = document.getElementById('modalAuthor');
 const modalName = document.getElementById('modalName');
 const modalYear = document.getElementById('modalYear');
 
-function getRandomNum(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function toggleModal(isCorrect) {
   const overlay = document.querySelector('.overlay');
   const modal = document.querySelector('.modal');
@@ -48,11 +40,19 @@ function toggleModal(isCorrect) {
   const symbolFalse = document.querySelector('.symbol-false');
   
   if (isCorrect) {
-    if (!symbolFalse.classList.contains('hide')) symbolFalse.classList.add('hide');
-    if (symbolTrue.classList.contains('hide')) symbolTrue.classList.remove('hide');
+    if (!symbolFalse.classList.contains('hide')) {
+      symbolFalse.classList.add('hide');
+    }
+    if (symbolTrue.classList.contains('hide')) {
+      symbolTrue.classList.remove('hide');
+    }
   } else {
-    if (symbolFalse.classList.contains('hide')) symbolFalse.classList.remove('hide');
-    if (!symbolTrue.classList.contains('hide')) symbolTrue.classList.add('hide');
+    if (symbolFalse.classList.contains('hide')) {
+      symbolFalse.classList.remove('hide');
+    }
+    if (!symbolTrue.classList.contains('hide')) {
+      symbolTrue.classList.add('hide');
+    }
   }
 
   overlay.addEventListener('click', () => {
@@ -76,7 +76,9 @@ function getResultButton(categoryOrder, score) {
 function showSection(sectionShow) {
   const sections = document.querySelectorAll('section');
   for (let section of sections) {
-    if (!section.classList.contains('hide')) section.classList.add('hide');
+    if (!section.classList.contains('hide')) {
+      section.classList.add('hide');
+    }
   }
   sectionShow.classList.remove('hide');
 }
@@ -109,12 +111,14 @@ function createCategories(container, categoryType) {
     category.append(categoryNum);
 
     let categoryOrder = count;
-    if (categoryType === 'category-picture') categoryOrder += CATEGORY_COUNT;
+    if (categoryType === 'category-picture') {
+      categoryOrder += CATEGORY_COUNT;
+    }
 
     if (localStorage.getItem(`result${categoryOrder}`)) {
       let score = localStorage.getItem(`result${categoryOrder}`).split(',');
       score = score.reduce((acc, curr) => {
-        if (curr === '1') acc++;
+        if (curr === CORRECT_ANSWER) acc++;
         return acc;
       });
       category.classList.add('played');
@@ -148,11 +152,19 @@ function toggleVolumeIcon() {
   const iconOff = document.querySelector('.icon-volume-mute'); 
 
   if (volumeRange.value < 1) {
-    if (!iconOn.classList.contains('hide')) iconOn.classList.add('hide');
-    if (iconOff.classList.contains('hide')) iconOff.classList.remove('hide');
+    if (!iconOn.classList.contains('hide')) {
+      iconOn.classList.add('hide');
+    }
+    if (iconOff.classList.contains('hide')) {
+      iconOff.classList.remove('hide');
+    }
   } else {
-    if (iconOn.classList.contains('hide')) iconOn.classList.remove('hide');
-    if (!iconOff.classList.contains('hide')) iconOff.classList.add('hide');
+    if (iconOn.classList.contains('hide')) {
+      iconOn.classList.remove('hide');
+    }
+    if (!iconOff.classList.contains('hide')) {
+      iconOff.classList.add('hide');
+    }
   }
 }
 
@@ -187,10 +199,6 @@ offTimer.addEventListener('click', () => {
 });
 
 export { 
-  ANSWER_COUNT,
-  CATEGORY_COUNT,
-  QUESTION_COUNT,
-  getRandomNum,
   toggleModal,
   getResultButton,
   categoriesBtn,

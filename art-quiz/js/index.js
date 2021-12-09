@@ -58,7 +58,7 @@ function toggleModal(isCorrect) {
   overlay.addEventListener('click', () => {
     overlay.classList.add('hide');
     modal.classList.remove('open');
-  })
+  });
 
   overlay.classList.toggle('hide');
   modal.classList.toggle('open');
@@ -75,11 +75,11 @@ function getResultButton(categoryOrder, score) {
 
 function showSection(sectionShow) {
   const sections = document.querySelectorAll('section');
-  for (let section of sections) {
+  sections.forEach((section) => {
     if (!section.classList.contains('hide')) {
       section.classList.add('hide');
     }
-  }
+  });
   sectionShow.classList.remove('hide');
 }
 
@@ -87,19 +87,20 @@ function clearContainer(container) {
   container.textContent = '';
 }
 
-function createCategories(container, categoryType) {
-  function createQuizObject(type, num) {
-    let object;
-    switch (type) {
-      case 'category-author': object = new AuthorQuiz(num);
-      break;
-      case 'category-picture': object = new PictureQuiz(num);
-      break;
-    }
-    return object;
+function createQuizObject(type, num) {
+  let object;
+  switch (type) {
+    case 'category-author': object = new AuthorQuiz(num);
+    break;
+    case 'category-picture': object = new PictureQuiz(num);
+    break;
   }
+  return object;
+}
 
+function createCategories(container, categoryType) {
   for (let count = 1; count <= CATEGORY_COUNT; count++) {
+    const quiz = createQuizObject(categoryType, count);
     const category = document.createElement('button');
     category.id = 'cat' + count;
     category.classList.add('categories__category');
@@ -118,7 +119,7 @@ function createCategories(container, categoryType) {
     if (localStorage.getItem(`result${categoryOrder}`)) {
       let score = localStorage.getItem(`result${categoryOrder}`).split(',');
       score = score.reduce((acc, curr) => {
-        if (curr === CORRECT_ANSWER) acc++;
+        if (curr == CORRECT_ANSWER) acc++;
         return acc;
       });
       category.classList.add('played');
@@ -128,21 +129,20 @@ function createCategories(container, categoryType) {
     container.append(category);
 
     category.addEventListener('click', () => {
-      const quiz = createQuizObject(categoryType, count);
       clearContainer(quizSection);
       quizSection.append(quiz.getQuestionView());
       showSection(quizSection);
+    });
 
-      const next = document.createElement('button');
-      next.classList.add('modal__btn');
-      next.textContent = 'Продолжить';
-      document.querySelector('.here-is-button').textContent = '';
-      document.querySelector('.here-is-button').append(next);
-      next.addEventListener('click', () => {
-        clearContainer(quizSection);
-        quizSection.append(quiz.getQuestionView());
-        toggleModal(true);
-      });
+    const next = document.createElement('button');
+    next.classList.add('modal__btn');
+    next.textContent = 'Продолжить';
+    document.querySelector('.here-is-button').textContent = '';
+    document.querySelector('.here-is-button').append(next);
+    next.addEventListener('click', () => {
+      clearContainer(quizSection);
+      quizSection.append(quiz.getQuestionView());
+      toggleModal(true);
     });
   }
 }

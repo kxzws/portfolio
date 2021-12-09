@@ -4,6 +4,13 @@ import { FULL_VOLUME } from './constants.js';
 class Settings {
   constructor() {
     this.audio = new Audio();
+    this.isVolume = null;
+    this.timer = null;
+    this.isTimer = null;
+    this.getLocalData();
+  }
+
+  getLocalData() {
     //'false' if nothing and a digit if 'true'
     if (localStorage.getItem(`settingsVolume`)) {
       if (localStorage.getItem(`settingsVolume`) !== "false") {
@@ -32,6 +39,20 @@ class Settings {
     }
   }
 
+  setLocalData() {
+    if (this.isVolume !== "false") {
+      localStorage.setItem(`settingsVolume`, this.audio.volume * FULL_VOLUME);
+    } else {
+      localStorage.setItem(`settingsVolume`, "false");
+    }
+
+    if (this.isTimer !== "false") {
+      localStorage.setItem(`settingsTimer`, this.timer);
+    } else {
+      localStorage.setItem(`settingsTimer`, "false");
+    }
+  }
+
   saveSettings() {
     this.audio.volume = volumeRange.value / FULL_VOLUME;
     if (volumeRange.value > 0) {
@@ -44,20 +65,7 @@ class Settings {
 
     this.timer = timerRange.value;
 
-    function setLocalStorage() {
-      if (this.isVolume !== "false") {
-        localStorage.setItem(`settingsVolume`, this.volume.value);
-      } else {
-        localStorage.setItem(`settingsVolume`, "false");
-      }
-
-      if (isTimer !== "false") {
-        localStorage.setItem(`settingsTimer`, this.timer.value);
-      } else {
-        localStorage.setItem(`settingsTimer`, "false");
-      }
-    }
-    window.addEventListener("beforeunload", setLocalStorage);
+    this.setLocalData();
   }
 
   playAudio(type) {

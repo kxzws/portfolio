@@ -4,10 +4,6 @@ class Quiz {
     this.result = Array(10).fill(0);
   }
 
-  getQuestion() {
-    return 0;
-  }
-
   getResult() {
     return this.result.reduce((acc, curr) => acc += curr);
   }

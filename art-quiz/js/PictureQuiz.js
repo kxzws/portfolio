@@ -86,7 +86,7 @@ class PictureQuiz extends Quiz {
     const answersContainer = document.createElement('div');
     answersContainer.classList.add('quiz__answers-container');
 
-    for (let value of question.answers) {
+    question.answers.forEach((value) => {
       const answer = document.createElement('button');
       answer.classList.add('quiz__answer-cont');
 
@@ -114,7 +114,7 @@ class PictureQuiz extends Quiz {
       });
 
       answersContainer.append(answer);
-    }
+    });
     questionView.append(answersContainer);
 
     return questionView;
@@ -124,10 +124,7 @@ class PictureQuiz extends Quiz {
     const categoryNum = this.categoryNum + CATEGORY_COUNT;
     const result = this.result;
 
-    function setLocalStorage() {
-      localStorage.setItem(`result${categoryNum}`, result);
-    }
-    window.addEventListener('beforeunload', setLocalStorage);
+    localStorage.setItem(`result${categoryNum}`, result);
   }
 
   getResultView() {

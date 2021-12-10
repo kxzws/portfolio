@@ -73,7 +73,7 @@ class PictureQuiz extends Quiz {
         btn.append(getResultButton(this.categoryNum, this.getResult()));
       }
       setting.playAudio('finish');
-      return this.getResultView();
+      return this.getResultAnnouncement();
     }
 
     const questionView = document.createElement('div');
@@ -133,8 +133,7 @@ class PictureQuiz extends Quiz {
     localStorage.setItem(`result${categoryNum}`, result);
   }
 
-  getResultView() {
-    const results = this.getResult();
+  getResultAnnouncement() {
     const categoryNum = this.categoryNum + CATEGORY_COUNT;
 
     const resultView = document.createElement('div');
@@ -151,55 +150,60 @@ class PictureQuiz extends Quiz {
     resultView.append(resultBtn);
 
     resultBtn.addEventListener('click', () => {
-      resultView.textContent = '';
-
-      const resultTitle = document.createElement('p');
-      resultTitle.classList.add('result__title');
-      resultTitle.textContent = `Результат: ${results}/10`;
-      resultView.append(resultTitle);
-
-      const resultCont = document.createElement('div');
-      resultCont.classList.add('result__cont');
-
-      this.result.forEach((isCorrect, ind) => {
-        let imageNum = (categoryNum - 1) * 10 + (ind + 1);
-
-        const resultPicture = document.createElement('img');
-        resultPicture.classList.add('result__item');
-        const img = new Image();
-        img.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
-        img.addEventListener('load', () => resultPicture.src = img.src);
-        resultPicture.alt = 'picture: quiz answers';
-
-        if (!isCorrect) {
-        resultPicture.classList.add('incorrect');
-        }
-
-        resultPicture.addEventListener('click', () => {
-          modalPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
-          modalAuthor.textContent = images[imageNum].author;
-          modalName.textContent = images[imageNum].name;
-          modalYear.textContent = images[imageNum].year;
-          toggleModal(isCorrect);
-          document.querySelector('.here-is-button').textContent = '';
-        })
-        
-        resultCont.append(resultPicture);
-      });
-      resultView.append(resultCont);
-
-      const resultNextBtn = document.createElement('button');
-      resultNextBtn.classList.add('result__btn');
-      resultNextBtn.textContent = 'Продолжить';
-      resultView.append(resultNextBtn);
-
-      resultNextBtn.addEventListener('click', () => {
-        let event = new Event('click');
-        categoriesBtn.dispatchEvent(event);
-      })
+      this.getResultView(resultView, categoryNum);
     });
 
     return resultView;
+  }
+
+  getResultView(resultView, categoryNum) {
+    resultView.textContent = '';
+    const results = this.getResult();
+
+    const resultTitle = document.createElement('p');
+    resultTitle.classList.add('result__title');
+    resultTitle.textContent = `Результат: ${results}/10`;
+    resultView.append(resultTitle);
+
+    const resultCont = document.createElement('div');
+    resultCont.classList.add('result__cont');
+
+    this.result.forEach((isCorrect, ind) => {
+      let imageNum = (categoryNum - 1) * 10 + (ind + 1);
+
+      const resultPicture = document.createElement('img');
+      resultPicture.classList.add('result__item');
+      const img = new Image();
+      img.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+      img.addEventListener('load', () => resultPicture.src = img.src);
+      resultPicture.alt = 'picture: quiz answers';
+
+      if (!isCorrect) {
+      resultPicture.classList.add('incorrect');
+      }
+
+      resultPicture.addEventListener('click', () => {
+        modalPicture.src = `https://raw.githubusercontent.com/kxzws/image-data/master/img/${imageNum}.jpg`;
+        modalAuthor.textContent = images[imageNum].author;
+        modalName.textContent = images[imageNum].name;
+        modalYear.textContent = images[imageNum].year;
+        toggleModal(isCorrect);
+        document.querySelector('.here-is-button').textContent = '';
+      })
+      
+      resultCont.append(resultPicture);
+    });
+    resultView.append(resultCont);
+
+    const resultNextBtn = document.createElement('button');
+    resultNextBtn.classList.add('result__btn');
+    resultNextBtn.textContent = 'Продолжить';
+    resultView.append(resultNextBtn);
+
+    resultNextBtn.addEventListener('click', () => {
+      let event = new Event('click');
+      categoriesBtn.dispatchEvent(event);
+    });
   }
 }
 

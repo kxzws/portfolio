@@ -479,6 +479,7 @@ a {
 }
 
 .result__cont {
+  margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

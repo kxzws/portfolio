@@ -113,7 +113,6 @@ function addListenerOnModal(quizType) {
 
 function createCategories(container, categoryType) {
   for (let count = 1; count <= CATEGORY_COUNT; count++) {
-    const quiz = createQuizObject(categoryType, count);
     const category = document.createElement('button');
     category.id = 'cat' + count;
     category.classList.add('categories__category');
@@ -142,12 +141,14 @@ function createCategories(container, categoryType) {
     container.append(category);
 
     category.addEventListener('click', () => {
+      const quiz = createQuizObject(categoryType, count);
+      
       clearContainer(quizSection);
       quizSection.append(quiz.getQuestionView());
       showSection(quizSection);
-    });
 
-    addListenerOnModal(quiz);
+      addListenerOnModal(quiz);
+    });
   }
 }
 

@@ -98,6 +98,19 @@ function createQuizObject(type, num) {
   return object;
 }
 
+function addListenerOnModal(quizType) {
+  const next = document.createElement('button');
+  next.classList.add('modal__btn');
+  next.textContent = 'Продолжить';
+  document.querySelector('.here-is-button').textContent = '';
+  document.querySelector('.here-is-button').append(next);
+  next.addEventListener('click', () => {
+    clearContainer(quizSection);
+    quizSection.append(quizType.getQuestionView());
+    toggleModal(true);
+  });
+}
+
 function createCategories(container, categoryType) {
   for (let count = 1; count <= CATEGORY_COUNT; count++) {
     const quiz = createQuizObject(categoryType, count);
@@ -134,16 +147,7 @@ function createCategories(container, categoryType) {
       showSection(quizSection);
     });
 
-    const next = document.createElement('button');
-    next.classList.add('modal__btn');
-    next.textContent = 'Продолжить';
-    document.querySelector('.here-is-button').textContent = '';
-    document.querySelector('.here-is-button').append(next);
-    next.addEventListener('click', () => {
-      clearContainer(quizSection);
-      quizSection.append(quiz.getQuestionView());
-      toggleModal(true);
-    });
+    addListenerOnModal(quiz);
   }
 }
 
@@ -170,33 +174,56 @@ function toggleVolumeIcon() {
 
 const setting = new Settings();
 
-mainPageBtn.addEventListener('click', () => showSection(mainPage));
-categoriesBtn.addEventListener('click', () => showSection(categoriesSection));
-authorQuizBtn.addEventListener('click', () => {
-  clearContainer(categoriesSection);
-  createCategories(categoriesSection, 'category-author');
-  showSection(categoriesSection);
-});
-pictureQuizBtn.addEventListener('click', () => {
-  clearContainer(categoriesSection);
-  createCategories(categoriesSection, 'category-picture');
-  showSection(categoriesSection);
-});
-settingsBtn.addEventListener('click', () => showSection(settingsSection));
+function addListenerOnCategories(btn, type) {
+  btn.addEventListener('click', () => {
+    clearContainer(categoriesSection);
+    createCategories(categoriesSection, type);
+    showSection(categoriesSection);
+  });
+}
+addListenerOnCategories(authorQuizBtn, 'category-author');
+addListenerOnCategories(pictureQuizBtn, 'category-picture');
 
-volumeRange.addEventListener('change', toggleVolumeIcon);
-timerRange.addEventListener('change', () => {
-  timerCount.textContent = timerRange.value;
-});
-settingsSave.addEventListener('click', () => {
-  setting.saveSettings();
-});
-onTimer.addEventListener('click', () => {
-  setting.toggleTimer();
-});
-offTimer.addEventListener('click', () => {
-  setting.toggleTimer();
-});
+function addListenerShowSection(btn, section) {
+  btn.addEventListener('click', () => showSection(section));
+}
+addListenerShowSection(mainPageBtn, mainPage);
+addListenerShowSection(categoriesBtn, categoriesSection);
+addListenerShowSection(settingsBtn, settingsSection);
+
+function addChangeRangeListener(range) {
+  let func;
+  if (range.id === 'volume') {
+    func = toggleVolumeIcon;
+  } else if (range.id === 'timer') {
+    func = () => {
+      timerCount.textContent = timerRange.value;
+    }
+  }
+  range.addEventListener('change', func);
+}
+addChangeRangeListener(volumeRange);
+addChangeRangeListener(timerRange);
+
+function addListenerSettings(section) {
+  section.addEventListener('click', (e) => {
+    let target = e.target;
+    
+    switch (target.id) {
+      case 'onTimer': 
+        setting.toggleTimer();
+        break;
+      case 'offTimer': 
+        setting.toggleTimer();
+        break;
+      case 'saveSettings': 
+        setting.saveSettings();
+        break;
+      default: return;
+    }
+  });
+}
+addListenerSettings(settingsSection);
 
 export { 
   toggleModal,

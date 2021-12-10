@@ -55,6 +55,7 @@ class AuthorQuiz extends Quiz {
   getQuestionView() {
     const question = this.getQuestionInner();
 
+    // verify if it's the finish
     if (question.questionOrder === QUESTION_COUNT + 1) {
       this.saveResult();
       if (document.getElementById(`res${this.categoryNum}`)) {
@@ -85,6 +86,13 @@ class AuthorQuiz extends Quiz {
     questionPicture.alt = 'picture: picture of question';
     questionView.append(questionPicture);
 
+    const answersContainer = this.getAnswersView(question);
+    questionView.append(answersContainer);
+    
+    return questionView;
+  }
+
+  getAnswersView(question) {
     const answersContainer = document.createElement('div');
     answersContainer.classList.add('quiz__answers-container');
 
@@ -110,9 +118,7 @@ class AuthorQuiz extends Quiz {
 
       answersContainer.append(answer);
     });
-    questionView.append(answersContainer);
-    
-    return questionView;
+    return answersContainer;
   }
 
   saveResult() {

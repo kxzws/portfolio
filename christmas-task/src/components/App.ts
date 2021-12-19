@@ -1,26 +1,24 @@
 import Header from './Header/Header';
 //import Main from './main/Main';
-//import Footer from './Footer/Footer';
+import Footer from './Footer/Footer';
 
 class App {
+  private body: HTMLElement;
   private header: Header;
   //private main: Main;
-  //private footer: Footer;
+  private footer: Footer;
 
   constructor() {
+    this.body = document.body;
     this.header = new Header();
     //this.main = new Main();
-    //this.footer = new Footer();
+    this.footer = new Footer();
   }
 
   start(): void {
-    const _header = document.querySelector('.header') as HTMLElement;
-    //const _main = document.querySelector('.main') as HTMLElement;
-    //const _footer = document.querySelector('.footer') as HTMLElement;
-
-    _header?.append(this.header);
-    //_main?.append(this.main);
-    //_footer?.append(this.footer);
+    this.body.append(this.header.render());
+    //this.body.append(this.main.render());
+    this.body.append(this.footer.render());
   }
 }
 

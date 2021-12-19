@@ -1,0 +1,24 @@
+.header {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+}
+
+.header__logo {
+  height: 60px;
+  width: 60px;
+  filter: invert(100%) sepia(0%) saturate(7492%) hue-rotate(96deg)
+    brightness(117%) contrast(100%);
+  transform: rotate(-.02turn);
+  transition: all .3s ease-out;
+}
+
+.header__logo:hover {
+  transform: rotate(.02turn);
+}
+
+.header__tab-btn {
+  border: none;
+}

@@ -35,7 +35,7 @@
 
 .form__icon {
   margin-right: 12px;
-  padding: 0;
+  padding: 2px;
   height: 40px;
   width: 40px;
   border: none;
@@ -52,7 +52,7 @@
 }
 
 .icon-active {
-  border: 1px solid #fff;
+  opacity: .4;
 }
 
 .ball-big {

@@ -15,7 +15,7 @@ class ToysTab {
     this.tab.classList.add('toy-tab');
 
     this.filter = DEFAULT_FILTER;
-    this.toys = [];
+    this.toys = data;
   }
 
   render(): HTMLElement {
@@ -35,7 +35,29 @@ class ToysTab {
   }
 
   private updateFilter() {
+    // data from search form
+    const search = (document.querySelector('.search-form__input') as HTMLInputElement).value;
+    if (search) {
+      this.filter.searchInp = search;
+    }
 
+    // data from value filter
+    document.querySelectorAll('.form__icon').forEach((icon) => {
+      if (icon.classList.contains('icon-active')) {
+        switch ((icon as HTMLButtonElement).dataset.name) {
+          case 'форма':
+            //this.filter.value.shape.push((icon as HTMLButtonElement).dataset.filter);
+            break;
+          case 'цвет':
+            break;
+          case 'размер':
+            break;
+        }
+      }
+    });
+
+    // data from range filer
+    // data from sort filter
   }
 
   private updateToysList() {
@@ -51,9 +73,9 @@ class ToysTab {
     title.textContent = 'Фильтры по значению:';
 
     form.append(title);
-    form.append(this.createFilterCont('Форма', SHAPE_OPTION));
-    form.append(this.createFilterCont('Цвет', COLOR_OPTION));
-    form.append(this.createFilterCont('Размер', SIZE_OPTION));
+    form.append(this.createFilterCont('форма', SHAPE_OPTION));
+    form.append(this.createFilterCont('цвет', COLOR_OPTION));
+    form.append(this.createFilterCont('размер', SIZE_OPTION));
 
     return form;
   }
@@ -70,19 +92,27 @@ class ToysTab {
     options.forEach((option: svgOption | colorOption | ballOption) => {
       const icon = document.createElement('button');
       icon.classList.add('form__icon');
+      icon.dataset.name = sub;
       icon.dataset.filter = option.filter;
       
-      if (sub === 'Форма' || sub === 'Размер') {
+      if (sub === 'форма' || sub === 'размер') {
         icon.style.background = `center / contain no-repeat url(${(option as svgOption | ballOption).src})`;
       }
 
-      if (sub === 'Цвет') {
+      if (sub === 'цвет') {
         icon.style.backgroundColor = (option as colorOption).color;
       }
 
-      if (sub === 'Размер') {
+      if (sub === 'размер') {
         icon.classList.add((option as ballOption).addClass);
       }
+
+      icon.addEventListener('click', () => {
+        icon.classList.toggle('icon-active');
+        // #################################################################
+        // #################################################################
+        // this.updateFilter();
+      });
 
       container.append(icon);
     });   

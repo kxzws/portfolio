@@ -43,10 +43,6 @@ class Header {
     return this.header;
   }
 
-  getSearchValue(): string {
-    return this.searchToys.value;
-  }
-
   getToysTabButton(): HTMLButtonElement { // start tab gets this btn to dispatch click event by start btn
     return this.toysTabBtn;
   }

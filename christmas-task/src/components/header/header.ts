@@ -3,6 +3,7 @@ import './Header.css';
 import ToysTab from '../main/ToysTab/ToysTab';
 import TreeTab from '../main/TreeTab/TreeTab';
 import { imageOption } from '../utils/interfaces';
+import { IS_TOYS_TAB } from '../utils/constants';
 
 class Header {
   private header: HTMLElement;
@@ -14,7 +15,7 @@ class Header {
     this.header = document.createElement('header');
     this.header.classList.add('header');
 
-    this.toysTabBtn = this.createTabBtn('Игрушки', new ToysTab(), true);
+    this.toysTabBtn = this.createTabBtn('Игрушки', new ToysTab(), IS_TOYS_TAB);
     this.treeTabBtn = this.createTabBtn('Ёлка', new TreeTab());
 
     this.searchToys = document.createElement('input');
@@ -65,9 +66,7 @@ class Header {
     btn.textContent = text;
 
     btn.addEventListener('click', () => {
-      // ###################################################################
-      // ###################################################################
-      //tab.render();
+      tab.render();
       document.querySelectorAll('.header__tab-btn').forEach((tabBtn) => {
         if (tabBtn.classList.contains('tab-btn_active')) {
           tabBtn.classList.remove('tab-btn_active');

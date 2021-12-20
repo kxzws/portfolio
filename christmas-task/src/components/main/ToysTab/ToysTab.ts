@@ -1,8 +1,10 @@
 import './ToysTab.css';
 
 class ToysTab {
-  constructor() {
+  private tab: HTMLElement;
 
+  constructor() {
+    this.tab = document.createElement('div');
   }
 
   render(): void {

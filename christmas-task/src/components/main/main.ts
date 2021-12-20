@@ -12,14 +12,18 @@ class Main {
   }
 
   render(): HTMLElement {
-    const title = document.createElement('div');
+    const container = document.createElement('div');
+    const title = document.createElement('h1');
     const startBtn = this.createStartBtn();
+
+    container.classList.add('start-container');
 
     title.classList.add('main__title');
     title.textContent = 'Помоги бабушке нарядить ёлку';
 
-    this.main.append(title);
-    this.main.append(startBtn);
+    container.append(title);
+    container.append(startBtn);
+    this.main.append(container);
 
     return this.main;
   }
@@ -38,6 +42,7 @@ class Main {
   private dispatchClickOnToysTab() {
     let event = new Event('click');
     this.toysBtn.dispatchEvent(event);
+    this.main.textContent = '';
   }
 }
 

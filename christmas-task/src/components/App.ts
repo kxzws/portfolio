@@ -16,7 +16,7 @@ class App {
   }
 
   start(): void {
-    this.body.append(this.header.render(), );
+    this.body.append(this.header.render());
     this.body.append(this.main.render());
     this.body.append(this.footer.render());
   }

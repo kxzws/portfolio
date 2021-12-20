@@ -1,7 +1,10 @@
 .main {
-  padding: 130px 20px;
   background: url('../../assets/images/bg.jpg') no-repeat;
   background-attachment: fixed;
+}
+
+.start-container {
+  padding: 130px 20px;
 }
 
 .main__title {

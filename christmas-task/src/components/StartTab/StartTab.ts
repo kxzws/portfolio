@@ -1,11 +1,11 @@
-import './Main.css';
+import './StartTab.css';
 
-class Main {
+class StartTab {
   private main: HTMLElement;
   private toysBtn: HTMLButtonElement;
 
   constructor(btn: HTMLButtonElement) {
-    this.main = document.createElement('main');
+    this.main = document.createElement('div');
     this.main.classList.add('main');
 
     this.toysBtn = btn;
@@ -42,8 +42,7 @@ class Main {
   private dispatchClickOnToysTab() {
     let event = new Event('click');
     this.toysBtn.dispatchEvent(event);
-    this.main.textContent = '';
   }
 }
 
-export default Main;
+export default StartTab;

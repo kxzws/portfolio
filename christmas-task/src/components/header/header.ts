@@ -1,7 +1,7 @@
 import './Header.css';
 
-import ToysTab from '../main/ToysTab/ToysTab';
-import TreeTab from '../main/TreeTab/TreeTab';
+import ToysTab from '../ToysTab/ToysTab';
+import TreeTab from '../TreeTab/TreeTab';
 import { imageOption } from '../utils/interfaces';
 import { IS_TOYS_TAB } from '../utils/constants';
 
@@ -47,7 +47,7 @@ class Header {
     return this.searchToys.value;
   }
 
-  getToysTabButton(): HTMLButtonElement { // main gets this btn to dispatch click event by start btn
+  getToysTabButton(): HTMLButtonElement { // start tab gets this btn to dispatch click event by start btn
     return this.toysTabBtn;
   }
 

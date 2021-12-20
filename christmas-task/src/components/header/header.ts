@@ -3,7 +3,7 @@ import './Header.css';
 import ToysTab from '../ToysTab/ToysTab';
 import TreeTab from '../TreeTab/TreeTab';
 import { imageOption } from '../utils/interfaces';
-import { IS_TOYS_TAB } from '../utils/constants';
+import { IS_TOYS_TAB, CONTENT_TAB } from '../utils/constants';
 
 class Header {
   private header: HTMLElement;
@@ -66,7 +66,9 @@ class Header {
     btn.textContent = text;
 
     btn.addEventListener('click', () => {
-      tab.render();
+      (CONTENT_TAB as HTMLElement).textContent = '';
+      CONTENT_TAB?.append(tab.render());
+
       document.querySelectorAll('.header__tab-btn').forEach((tabBtn) => {
         if (tabBtn.classList.contains('tab-btn_active')) {
           tabBtn.classList.remove('tab-btn_active');

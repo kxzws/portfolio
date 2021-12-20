@@ -1,0 +1,27 @@
+.footer {
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark-color);
+}
+
+.footer__link {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease-in;
+}
+
+.footer__link:hover {
+  opacity: 0.8;
+}
+
+.footer__link:active {
+  transform: scale(1.1);
+}
+
+.rss-link {
+  filter: invert(100%) sepia(0%) saturate(7492%) hue-rotate(96deg)
+    brightness(117%) contrast(100%);
+}

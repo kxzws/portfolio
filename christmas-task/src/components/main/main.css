@@ -1,3 +1,41 @@
 .main {
+  padding: 130px 20px;
   background: url('../../assets/images/bg.jpg') no-repeat;
+  background-attachment: fixed;
+}
+
+.main__title {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 45px 0;
+  max-width: 40%;
+  font-size: var(--title-font);
+  font-weight: 300;
+  text-align: center;
+  background-color: var(--dark-color);
+  opacity: .9;
+  border: 5px solid rgb(131, 130, 151);
+  border-radius: 25px;
+}
+
+.main__start-btn {
+  margin: 0 auto;
+  height: 60px;
+  width: 200px;
+  display: block;
+  font-size: var(--large-font);
+  color: #fff;
+  background-color: var(--dark-color);
+  opacity: .9;
+  border: 4px solid rgb(131, 130, 151);
+  border-radius: 35px;
+  transition: all .5s ease-out;
+}
+
+.main__start-btn:hover {
+  transform: scale(1.1);
+}
+
+.main__start-btn:active {
+  transform: scale(.95);
 }

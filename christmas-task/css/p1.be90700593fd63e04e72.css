@@ -534,6 +534,17 @@ button {
   width: 20px;
 }
 
+.header__selected-toys {
+  padding: 13px 0;
+  height: 38px;
+  width: 38px;
+  display: block;
+  font-size: var(--med-font);
+  font-weight: 700;
+  text-align: center;
+  background: center / contain no-repeat url(../assets/images/heart.svg);
+}
+
 .toy-tab {
   padding: 20px 15px;
   background: url(../assets/images/toys-bg.jpg) no-repeat;
@@ -663,7 +674,6 @@ button {
   margin-bottom: 120px;
   padding: 0 10px;
   height: 40px;
-  width: 100%;
   font-family: 'Roboto', sans-serif;
   font-size: var(--large-font);
   font-weight: 300;
@@ -725,6 +735,26 @@ button {
   opacity: .9;
   border: 2px solid var(--light-color);
   border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card:active {
+  transform: scale(1);
+}
+
+.card_selected {
+  font-weight: 400;
+  color: #000;
+  background-color: var(--light-color);
+}
+
+.card_selected .card__title {
+  font-weight: 700;
 }
 
 .card__title {
@@ -743,6 +773,41 @@ button {
 
 .card__subtitle:last-of-type {
   margin-bottom: 0;
+}
+
+.modal {
+  padding: 15px 20px;
+  position: fixed;
+  z-index: 3;
+  top: 48%;
+  left: -666px;
+  font-size: var(--large-font);
+  color: #fff;
+  background-color: var(--dark-color);
+  opacity: .9;
+  border: 4px solid var(--light-color);
+  border-radius: 35px;
+  transition: all .2s ease-out;
+}
+
+.modal_open {
+  left: calc(50% - 260px);
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: none;
+  background-color: #000;
+  opacity: .7;
+}
+
+.overlay_visible {
+  display: block;
 }
 
 /* Functional styling;

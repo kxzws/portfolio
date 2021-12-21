@@ -60,6 +60,7 @@ class ToysTab {
     forms.append(sortForm);
 
     this.tab.append(forms);
+    this.updateToysList();
     this.renderToysCont();
     this.tab.append(this.toysContainer);
 
@@ -141,6 +142,8 @@ class ToysTab {
     }
 
     // data from sort filter
+    const sortValue = (document.getElementById('sort') as HTMLSelectElement).value;
+    this.filter.sort = sortValue;
   }
 
   updateToysList() {
@@ -162,6 +165,28 @@ class ToysTab {
       } 
       
       // sort
+      switch (this.filter.sort) {
+        case 'increasing':
+          this.toys.sort((prev, next) => {
+            return prev.name >= next.name ? (prev.name === next.name ? 0 : 1) : -1;
+          }); 
+          break;
+        case 'decreasing': 
+          this.toys.sort((prev, next) => {
+            return prev.name >= next.name ? (prev.name === next.name ? 0 : -1) : 1;
+          });
+          break;
+        case 'increasingAmount': 
+          this.toys.sort((prev, next) => {
+            return (+prev.count) - (+next.count);
+          });
+          break;
+        case 'decreasingAmount': 
+          this.toys.sort((prev, next) => {
+            return (+next.count) - (+prev.count);
+          });
+          break;
+      }
     });
   }
 
@@ -310,12 +335,47 @@ class ToysTab {
     title.classList.add('form__title');
     title.textContent = 'Сортировка:';
 
+    const sort = this.createSortSelect();
     const resetBtn = this.createResetBtn();
 
     form.append(title);
+    form.append(sort);
     form.append(resetBtn);
     
     return form;
+  }
+
+  private createSortSelect(): HTMLSelectElement {
+    const select = document.createElement('select');
+    select.classList.add('form__select-sort');
+    select.id = 'sort';
+
+    const increasing = this.createOption('increasing', 'название от А до Я');
+    const decreasing = this.createOption('decreasing', 'название от Я до А');
+    const increasingAmount = this.createOption('increasingAmount', 'по возрастанию количества');
+    const decreasingAmount = this.createOption('decreasingAmount', 'по убыванию количества');
+
+    select.append(increasing);
+    select.append(decreasing);
+    select.append(increasingAmount);
+    select.append(decreasingAmount);
+
+    select.addEventListener('change', () => {
+      this.updateFilter();
+      this.updateToysList();
+      this.renderToysCont();
+    });
+
+    return select;
+  }
+
+  private createOption(value: string, title: string): HTMLOptionElement {
+    const option = document.createElement('option');
+    option.classList.add('form__option-sort');
+    option.textContent = title;
+    option.value = value;
+
+    return option;
   }
 
   private createResetBtn(): HTMLButtonElement {

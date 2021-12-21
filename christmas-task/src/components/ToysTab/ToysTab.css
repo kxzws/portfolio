@@ -14,7 +14,7 @@
 
 .form {
   padding: 20px 40px;
-  width: 25%;
+  width: 28%;
   align-self: stretch;
   font-size: var(--large-font);
   font-weight: 300;
@@ -121,6 +121,24 @@
 
 .form__slider .noUi-tooltip {
   font-size: var(--small-font);
+}
+
+.form__select-sort {
+  margin-bottom: 120px;
+  padding: 0 10px;
+  height: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--large-font);
+  font-weight: 300;
+  color: #fff;
+  background-color: var(--light-color);
+  border-radius: 25px;
+}
+
+.form__option-sort {
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--large-font);
+  font-weight: 300;
 }
 
 .toy-tab__reset-btn {

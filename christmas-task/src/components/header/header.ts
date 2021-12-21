@@ -34,10 +34,9 @@ class Header {
 
     searchForm.classList.add('search-form');
     this.searchToys.addEventListener('input', () => {
-      // #################################################################
-      // #################################################################
       this.toysTab.updateFilter();
-      //this.updateToysList();
+      this.toysTab.updateToysList();
+      this.toysTab.renderToysCont();
     });
     searchForm.append(this.searchToys);
     const searchIcon = this.createImage({ className: 'search-form__icon', src: '../../assets/images/loupe.svg', alt: 'icon: loupe' });

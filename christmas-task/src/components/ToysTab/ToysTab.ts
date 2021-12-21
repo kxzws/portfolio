@@ -9,6 +9,7 @@ class ToysTab {
   private tab: HTMLElement;
   private filter: IFilter;
   private toys: toy[];
+  private toysContainer: HTMLElement;
 
   constructor() {
     this.tab = document.createElement('div');
@@ -16,6 +17,8 @@ class ToysTab {
 
     this.filter = DEFAULT_FILTER;
     this.toys = data;
+
+    this.toysContainer = document.createElement('div');
   }
 
   render(): HTMLElement {
@@ -24,14 +27,19 @@ class ToysTab {
     const valueForm = this.createValueFilterForm();
     const rangeForm = this.createRangeFilterForm();
     const sortForm = this.createSortForm();
-    const toysCont = this.createToysContainer();
 
     this.tab.append(valueForm);
     this.tab.append(rangeForm);
     this.tab.append(sortForm);
-    this.tab.append(toysCont);
+    this.renderToysCont();
+    this.tab.append(this.toysContainer);
 
     return this.tab;
+  }
+
+  renderToysCont(): void {
+    this.toysContainer.textContent = '';
+    this.toysContainer.append(this.createToysContainer());
   }
 
   updateFilter() {
@@ -89,14 +97,55 @@ class ToysTab {
         }
       }
     });
+    if ((document.getElementById('favourite') as HTMLInputElement).checked) {
+      this.filter.value.favourite = true;
+    } else {
+      this.filter.value.favourite = false;
+    }
+    //#####################################################################
+    //#####################################################################
+    //console.log(this.filter);
 
     // data from range filer
     // data from sort filter
   }
 
   updateToysList() {
-    
+    this.toys = [];
+    data.forEach((unit) => {
+      const isShapeCorrect = this.filter.value.shape.includes(unit.shape) || this.filter.value.shape.length === 0;
+      const isColorCorrect = this.filter.value.color.includes(unit.color) || this.filter.value.color.length === 0;
+      const isSizeCorrect = this.filter.value.size.includes(unit.size) || this.filter.value.size.length === 0;
+      const isFavourite = !this.filter.value.favourite || this.filter.value.favourite === unit.favorite;
+      const isValueFilterCorrect = isShapeCorrect && isColorCorrect && isSizeCorrect && isFavourite;
+
+      const isAmountCorrect = Number(unit.count) >= this.filter.range.amount[0] && Number(unit.count) <= this.filter.range.amount[1];
+      const isYearCorrect = Number(unit.year) >= this.filter.range.year[0] && Number(unit.year) <= this.filter.range.year[1];
+      const isRangeFilterCorrect = isAmountCorrect && isYearCorrect;
+
+      const isSearchCorrect = this.filter.searchInp?.toLowerCase() === unit.name.toLowerCase() || !this.filter.searchInp;
+      if (isValueFilterCorrect && isRangeFilterCorrect && isSearchCorrect) {
+        this.toys.push(unit);
+      }
+
+      // sort
+    });
   }
+
+  // interface IFilter {
+  //   value: {
+  //     shape: Array<string>, // 'шар' | 'колокольчик' | 'шишка' | 'снежинка' | 'фигурка'
+  //     color: Array<string>, // 'белый' | 'желтый' | 'красный' | 'синий' | 'зелёный'
+  //     size: Array<string>, // 'большой' | 'средний' | 'малый'
+  //     favourite: boolean
+  //   },
+  //   range: {
+  //     amount: [number, number],
+  //     year: [number, number]
+  //   },
+  //   sort: string, // 'increasing' | 'decreasing' | 'increasingAmount' | 'decreasingAmount'
+  //   searchInp: string | null
+  // }
 
   private createValueFilterForm(): HTMLElement {
     const form = document.createElement('div');
@@ -106,10 +155,31 @@ class ToysTab {
     title.classList.add('form__title');
     title.textContent = 'Фильтры по значению:';
 
+    const container = document.createElement('div');
+    container.classList.add('form__cont');
+
+    const subtitle = document.createElement('h4');
+    subtitle.classList.add('form__subtitle');
+    subtitle.textContent = 'только любимые';
+    container.append(subtitle);
+
+    const checkbox = document.createElement('input');
+    checkbox.classList.add('form__checkbox');
+    checkbox.id = 'favourite';
+    checkbox.type = 'checkbox';
+    container.append(checkbox);
+
+    checkbox.addEventListener('change', () => {
+      this.updateFilter();
+      this.updateToysList();
+      this.renderToysCont();
+    });
+
     form.append(title);
     form.append(this.createFilterCont('форма', SHAPE_OPTION));
     form.append(this.createFilterCont('цвет', COLOR_OPTION));
     form.append(this.createFilterCont('размер', SIZE_OPTION));
+    form.append(container);
 
     return form;
   }
@@ -143,10 +213,9 @@ class ToysTab {
 
       icon.addEventListener('click', () => {
         icon.classList.toggle('icon-active');
-        // #################################################################
-        // #################################################################
         this.updateFilter();
-        //this.updateToysList();
+        this.updateToysList();
+        this.renderToysCont();
       });
 
       container.append(icon);

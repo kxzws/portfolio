@@ -34,23 +34,57 @@ class ToysTab {
     return this.tab;
   }
 
-  private updateFilter() {
+  updateFilter() {
     // data from search form
     const search = (document.querySelector('.search-form__input') as HTMLInputElement).value;
-    if (search) {
+    if (search) { // add new value
       this.filter.searchInp = search;
+    } else { // delete removed value
+      this.filter.searchInp = null;
     }
 
     // data from value filter
     document.querySelectorAll('.form__icon').forEach((icon) => {
-      if (icon.classList.contains('icon-active')) {
-        switch ((icon as HTMLButtonElement).dataset.name) {
+      const iconName = (icon as HTMLButtonElement).dataset.name;
+      const iconFilter = String((icon as HTMLButtonElement).dataset.filter);
+
+      if (icon.classList.contains('icon-active')) { // add new values
+        switch (iconName) {
           case 'форма':
-            //this.filter.value.shape.push((icon as HTMLButtonElement).dataset.filter);
+            if (this.filter.value.shape.indexOf(iconFilter) === -1) {
+              this.filter.value.shape.push(iconFilter);
+            }
             break;
           case 'цвет':
+            if (this.filter.value.color.indexOf(iconFilter) === -1) {
+              this.filter.value.color.push(iconFilter);
+            }
             break;
           case 'размер':
+            if (this.filter.value.size.indexOf(iconFilter) === -1) {
+              this.filter.value.size.push(iconFilter);
+            }
+            break;
+        }
+      } else { // delete removed values
+        switch (iconName) {
+          case 'форма':
+            if (this.filter.value.shape.indexOf(iconFilter) > -1) {
+              const index = this.filter.value.shape.indexOf(iconFilter);
+              this.filter.value.shape.splice(index, 1);
+            }
+            break;
+          case 'цвет':
+            if (this.filter.value.color.indexOf(iconFilter) > -1) {
+              const index = this.filter.value.color.indexOf(iconFilter);
+              this.filter.value.color.splice(index, 1);
+            }
+            break;
+          case 'размер':
+            if (this.filter.value.size.indexOf(iconFilter) > -1) {
+              const index = this.filter.value.size.indexOf(iconFilter);
+              this.filter.value.size.splice(index, 1);
+            }
             break;
         }
       }
@@ -60,8 +94,8 @@ class ToysTab {
     // data from sort filter
   }
 
-  private updateToysList() {
-
+  updateToysList() {
+    
   }
 
   private createValueFilterForm(): HTMLElement {
@@ -111,7 +145,8 @@ class ToysTab {
         icon.classList.toggle('icon-active');
         // #################################################################
         // #################################################################
-        // this.updateFilter();
+        this.updateFilter();
+        //this.updateToysList();
       });
 
       container.append(icon);

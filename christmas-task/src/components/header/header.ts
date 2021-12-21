@@ -10,13 +10,18 @@ class Header {
   private toysTabBtn: HTMLButtonElement;
   private treeTabBtn: HTMLButtonElement;
   private searchToys: HTMLInputElement;
+  private toysTab: ToysTab;
+  private treeTab: TreeTab;
 
   constructor() {
+    this.toysTab = new ToysTab();
+    this.treeTab = new TreeTab();
+
     this.header = document.createElement('header');
     this.header.classList.add('header');
 
-    this.toysTabBtn = this.createTabBtn('Игрушки', new ToysTab(), IS_TOYS_TAB);
-    this.treeTabBtn = this.createTabBtn('Ёлка', new TreeTab());
+    this.toysTabBtn = this.createTabBtn('Игрушки', this.toysTab, IS_TOYS_TAB);
+    this.treeTabBtn = this.createTabBtn('Ёлка', this.treeTab);
 
     this.searchToys = document.createElement('input');
     this.searchToys.classList.add('search-form__input');
@@ -28,6 +33,12 @@ class Header {
     const searchForm = document.createElement('div');
 
     searchForm.classList.add('search-form');
+    this.searchToys.addEventListener('input', () => {
+      // #################################################################
+      // #################################################################
+      this.toysTab.updateFilter();
+      //this.updateToysList();
+    });
     searchForm.append(this.searchToys);
     const searchIcon = this.createImage({ className: 'search-form__icon', src: '../../assets/images/loupe.svg', alt: 'icon: loupe' });
     searchForm.append(searchIcon);

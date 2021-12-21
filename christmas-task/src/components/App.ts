@@ -1,6 +1,6 @@
-import Header from './Header/Header';
+import Header from './header/header';
 import StartTab from './StartTab/StartTab';
-import Footer from './Footer/Footer';
+import Footer from './footer/footer';
 import { CONTENT_TAB } from './utils/constants';
 
 class App {

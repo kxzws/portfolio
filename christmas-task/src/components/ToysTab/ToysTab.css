@@ -13,7 +13,8 @@
 }
 
 .form {
-  padding: 20px;
+  padding: 20px 40px;
+  align-self: stretch;
   font-size: var(--large-font);
   font-weight: 300;
   background-color: var(--dark-color);
@@ -26,14 +27,26 @@
   font-size: calc(1.2*var(--large-font));
 }
 
+.form:nth-of-type(2) .form__title { /*range filter form*/
+  margin-bottom: 35px;
+}
+
 .form__cont {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
 }
 
+.form__cont:last-of-type {
+  margin-bottom: 0;
+}
+
 .form__subtitle {
   margin-right: 15px;
+}
+
+.form:nth-of-type(2) .form__subtitle { /*range filter form*/
+  margin-bottom: 40px;
 }
 
 .form__icon {
@@ -76,6 +89,37 @@
 .form__checkbox {
   height: 25px;
   width: 25px;
+}
+
+.form__slider {
+  height: 10px !important;
+  margin-bottom: 35px;
+}
+
+.form__slider,
+.form__slider .noUi-handle {
+  box-shadow: none;
+}
+
+.form__slider .noUi-connect {
+  background: var(--light-color);
+}
+
+.form__slider .noUi-handle {
+  height: 18px !important;
+  width: 18px !important;
+  top: -5px !important;
+  right: -9px !important;
+  border-radius: 9px !important;
+}
+
+.form__slider .noUi-handle::before,
+.form__slider .noUi-handle::after {
+    display: none;
+}
+
+.form__slider .noUi-tooltip {
+  font-size: var(--small-font);
 }
 
 .toy-tab__reset-btn {

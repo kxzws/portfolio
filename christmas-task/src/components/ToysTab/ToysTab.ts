@@ -3,13 +3,29 @@ import './ToysTab.css';
 import data from '../../assets/data';
 
 import { IFilter, toy, svgOption, colorOption, ballOption } from '../utils/interfaces';
-import { DEFAULT_FILTER, SHAPE_OPTION, COLOR_OPTION, SIZE_OPTION } from '../utils/constants';
+import { 
+  DEFAULT_FILTER,
+  SHAPE_OPTION,
+  COLOR_OPTION,
+  SIZE_OPTION,
+  MIN_AMOUNT,
+  MAX_AMOUNT,
+  MIN_YEAR,
+  MAX_YEAR } from '../utils/constants';
+
+import * as noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';
 
 class ToysTab {
   private tab: HTMLElement;
   private filter: IFilter;
   private toys: toy[];
   private toysContainer: HTMLElement;
+
+  private yearMin: number;
+  private yearMax: number;
+  private countMin: number;
+  private countMax: number;
 
   constructor() {
     this.tab = document.createElement('div');
@@ -19,6 +35,11 @@ class ToysTab {
     this.toys = data;
 
     this.toysContainer = document.createElement('div');
+
+    this.yearMin = MIN_YEAR;
+    this.yearMax = MAX_YEAR;
+    this.countMin = MIN_AMOUNT;
+    this.countMax = MAX_AMOUNT;
   }
 
   render(): HTMLElement {
@@ -108,6 +129,13 @@ class ToysTab {
     }
 
     // data from range filer
+    if (this.filter.range.amount !== [this.countMin, this.countMax]) {
+      this.filter.range.amount = [this.countMin, this.countMax];
+    }
+    if (this.filter.range.year !== [this.yearMin, this.yearMax]) {
+      this.filter.range.year = [this.yearMin, this.yearMax];
+    }
+
     // data from sort filter
   }
 
@@ -162,15 +190,15 @@ class ToysTab {
     });
 
     form.append(title);
-    form.append(this.createFilterCont('форма', SHAPE_OPTION));
-    form.append(this.createFilterCont('цвет', COLOR_OPTION));
-    form.append(this.createFilterCont('размер', SIZE_OPTION));
+    form.append(this.createValueFilterCont('форма', SHAPE_OPTION));
+    form.append(this.createValueFilterCont('цвет', COLOR_OPTION));
+    form.append(this.createValueFilterCont('размер', SIZE_OPTION));
     form.append(container);
 
     return form;
   }
 
-  private createFilterCont(sub: string, options: svgOption[] | colorOption[] | ballOption[]): HTMLElement {
+  private createValueFilterCont(sub: string, options: svgOption[] | colorOption[] | ballOption[]): HTMLElement {
     const container = document.createElement('div');
     container.classList.add('form__cont');
 
@@ -217,8 +245,57 @@ class ToysTab {
     const title = document.createElement('h3');
     title.classList.add('form__title');
     title.textContent = 'Фильтры по диапазону:';
+
+    form.append(title);
+    form.append(this.createRangeFilterCont('количество', 1, 12));
+    form.append(this.createRangeFilterCont('год приобретения', 1940, 2020));
     
     return form;
+  }
+
+  private createRangeFilterCont(sub: string, min: number, max: number): HTMLElement {
+    const container = document.createElement('div');
+
+    const subtitle = document.createElement('h4');
+    subtitle.classList.add('form__subtitle');
+    subtitle.textContent = sub;
+    container.append(subtitle);
+    
+    const slider = document.createElement('div');
+    slider.classList.add('form__slider');
+    const workSlider = noUiSlider.create(slider, {
+      start: [min, max],
+      connect: true,
+      tooltips: true,
+      range: {
+          'min': min,
+          'max': max
+      },
+      step: 1,
+    });
+
+    container.append(slider);
+
+    workSlider.on('update', (values, handle) => {
+      switch (sub) {
+        case 'количество':
+          this.countMin = Math.round(Number(values[0]));
+          this.countMax = Math.round(Number(values[1]));
+          console.log(this.countMin, this.countMax);
+          break;
+        case 'год приобретения':
+          this.yearMin = Math.round(Number(values[0]));
+          this.yearMax = Math.round(Number(values[1]));
+          break;
+      }
+    });
+    slider.addEventListener('click', () => {
+      this.updateFilter();
+      this.updateToysList();
+      this.renderToysCont();
+    });
+    
+    return container;
   }
 
   private createSortForm(): HTMLElement {

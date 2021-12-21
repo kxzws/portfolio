@@ -39,7 +39,7 @@ class StartTab {
     return btn;
   }
 
-  private dispatchClickOnToysTab() {
+  private dispatchClickOnToysTab(): void {
     let event = new Event('click');
     this.toysBtn.dispatchEvent(event);
   }

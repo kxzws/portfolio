@@ -21,6 +21,7 @@ class ToysTab {
   private filter: IFilter;
   private toys: toy[];
   private toysContainer: HTMLElement;
+  private selectedToys: toy[];
 
   private yearMin: number;
   private yearMax: number;
@@ -37,6 +38,7 @@ class ToysTab {
     this.toys = data;
 
     this.toysContainer = document.createElement('div');
+    this.selectedToys = [];
 
     this.yearMin = MIN_YEAR;
     this.yearMax = MAX_YEAR;
@@ -47,6 +49,9 @@ class ToysTab {
   }
 
   render(): HTMLElement {
+    //################################################
+    //################################################
+    //TODO: keep classes on filters and selected toys for go through the tabs
     this.tab.textContent = '';
 
     const valueForm = this.createValueFilterForm();
@@ -72,7 +77,16 @@ class ToysTab {
     this.toysContainer.append(this.createToysContainer());
   }
 
-  updateFilter() {
+  renderSelected(): HTMLElement {
+    const container = document.createElement('span');
+    container.classList.add('header__selected-toys');
+    container.id = 'selectedToys';
+    container.textContent = String(this.selectedToys.length);
+
+    return container;
+  }
+
+  updateFilter(): void {
     // data from search form
     const search = (document.querySelector('.search-form__input') as HTMLInputElement).value;
     if (search) { // add new value
@@ -146,7 +160,7 @@ class ToysTab {
     this.filter.sort = sortValue;
   }
 
-  updateToysList() {
+  updateToysList(): void {
     this.toys = [];
     data.forEach((unit) => {
       const isShapeCorrect = this.filter.value.shape.includes(unit.shape) || this.filter.value.shape.length === 0;
@@ -477,10 +491,51 @@ class ToysTab {
       favouriteSub.textContent = `Любимая: ${toy.favorite ? 'да' : 'нет'}`;
       card.append(favouriteSub);
 
+      card.addEventListener('click', () => {
+        this.toggleSelectedToy(toy, card);
+      });
+
       container.append(card);
     });
 
     return container;
+  }
+
+  private toggleSelectedToy(unit: toy, container: HTMLElement): void {
+    if (this.selectedToys.length === 20 && !container.classList.contains('card_selected')) {
+      this.showModalError();
+      return;
+    }
+
+    container.classList.toggle('card_selected');
+    if (container.classList.contains('card_selected')) {
+      this.selectedToys.push(unit);
+    } else {
+      const index = this.selectedToys.indexOf(unit);
+      this.selectedToys.splice(index, 1);
+    }
+    
+    (document.getElementById('selectedToys') as HTMLElement).textContent = String(this.selectedToys.length);
+  }
+
+  private showModalError(): void {
+    const modal = document.querySelector('.modal') as HTMLElement;
+    modal.classList.add('modal_open');
+
+    const overlay = document.querySelector('.overlay') as HTMLElement;
+    overlay.classList.add('overlay_visible');
+
+    modal.textContent = 'Извините, нельзя добавить больше 20-ти игрушек';
+
+    this.addListenerhideModal(modal, modal, overlay);
+    this.addListenerhideModal(overlay, modal, overlay);
+  }
+
+  private addListenerhideModal(element: HTMLElement, modal: HTMLElement, overlay: HTMLElement): void {
+    element.addEventListener('click', () => {
+      modal.classList.remove('modal_open');
+      overlay.classList.remove('overlay_visible');
+    });
   }
 }
 

@@ -49,6 +49,7 @@ class Header {
     this.header.append(logo);
     this.header.append(this.toysTabBtn);
     this.header.append(this.treeTabBtn);
+    this.header.append(this.toysTab.renderSelected());
     this.header.append(searchForm);
     
     return this.header;
@@ -90,7 +91,7 @@ class Header {
     return btn;
   }
 
-  private toggleSearchForm(isToysTab?: boolean) { // search form visible only on the toys tab
+  private toggleSearchForm(isToysTab?: boolean): void { // search form visible only on the toys tab
     const searchForm = document.querySelector('.search-form');
     if (isToysTab) {
       if (searchForm?.classList.contains('hidden')) searchForm?.classList.remove('hidden');

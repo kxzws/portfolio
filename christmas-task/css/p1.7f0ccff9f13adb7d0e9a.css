@@ -550,6 +550,7 @@ button {
 
 .form {
   padding: 20px 40px;
+  width: 28%;
   align-self: stretch;
   font-size: var(--large-font);
   font-weight: 300;
@@ -658,11 +659,44 @@ button {
   font-size: var(--small-font);
 }
 
+.form__select-sort {
+  margin-bottom: 120px;
+  padding: 0 10px;
+  height: 40px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--large-font);
+  font-weight: 300;
+  color: #fff;
+  background-color: var(--light-color);
+  border-radius: 25px;
+}
+
+.form__option-sort {
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--large-font);
+  font-weight: 300;
+}
+
 .toy-tab__reset-btn {
+  margin: 0 auto;
+  padding: 10px 15px;
+  display: block;
+  font-size: var(--large-font);
+  color: #fff;
   background-color: var(--dark-color);
-  opacity: .8;
+  opacity: .9;
   border: 4px solid var(--light-color);
   border-radius: 35px;
+  transition: all .5s ease-out;
+}
+
+.toy-tab__reset-btn:hover {
+  transform: scale(1.1);
+}
+
+.toy-tab__reset-btn:active {
+  transform: scale(.95);
 }
 
 .toy-tab__error {
@@ -1036,7 +1070,7 @@ button {
   text-align: center;
   background-color: var(--dark-color);
   opacity: .9;
-  border: 5px solid rgb(131, 130, 151);
+  border: 5px solid var(--light-color);
   border-radius: 25px;
 }
 
@@ -1049,7 +1083,7 @@ button {
   color: #fff;
   background-color: var(--dark-color);
   opacity: .9;
-  border: 4px solid rgb(131, 130, 151);
+  border: 4px solid var(--light-color);
   border-radius: 35px;
   transition: all .5s ease-out;
 }

@@ -1,16 +1,20 @@
 .toy-tab {
   padding: 20px 15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  row-gap: 35px;
   background: url('../../assets/images/toys-bg.jpg') no-repeat;
   background-attachment: fixed;
 }
 
+.toy-tab__forms {
+  margin-bottom: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .form {
-  padding: 20px;
+  padding: 20px 40px;
+  align-self: stretch;
   font-size: var(--large-font);
   font-weight: 300;
   background-color: var(--dark-color);
@@ -23,14 +27,26 @@
   font-size: calc(1.2*var(--large-font));
 }
 
+.form:nth-of-type(2) .form__title { /*range filter form*/
+  margin-bottom: 35px;
+}
+
 .form__cont {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
 }
 
+.form__cont:last-of-type {
+  margin-bottom: 0;
+}
+
 .form__subtitle {
   margin-right: 15px;
+}
+
+.form:nth-of-type(2) .form__subtitle { /*range filter form*/
+  margin-bottom: 40px;
 }
 
 .form__icon {
@@ -70,14 +86,62 @@
   width: 30px;
 }
 
-.toy-tab__reset-btn {
+.form__checkbox {
+  height: 25px;
+  width: 25px;
+}
 
+.form__slider {
+  height: 10px !important;
+  margin-bottom: 35px;
+}
+
+.form__slider,
+.form__slider .noUi-handle {
+  box-shadow: none;
+}
+
+.form__slider .noUi-connect {
+  background: var(--light-color);
+}
+
+.form__slider .noUi-handle {
+  height: 18px !important;
+  width: 18px !important;
+  top: -5px !important;
+  right: -9px !important;
+  border-radius: 9px !important;
+}
+
+.form__slider .noUi-handle::before,
+.form__slider .noUi-handle::after {
+    display: none;
+}
+
+.form__slider .noUi-tooltip {
+  font-size: var(--small-font);
+}
+
+.toy-tab__reset-btn {
+  background-color: var(--dark-color);
+  opacity: .8;
+  border: 4px solid var(--light-color);
+  border-radius: 35px;
+}
+
+.toy-tab__error {
+  padding: 20px;
+  font-size: var(--large-font);
+  font-weight: 300;
+  background-color: var(--dark-color);
+  opacity: .9;
+  border-radius: 10px;
 }
 
 .toy-cont {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   row-gap: 25px;
 }
 

@@ -57,7 +57,7 @@
   --title-font: 60px;
   --large-font: 20px;
   --med-font: 16px;
-  --small-font3: 12px;
+  --small-font: 12px;
 
   --dark-color: rgb(74, 73, 90);
   --light-color: rgb(131, 130, 151);
@@ -67,6 +67,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 body {

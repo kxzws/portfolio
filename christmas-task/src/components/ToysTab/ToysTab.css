@@ -1,12 +1,15 @@
 .toy-tab {
   padding: 20px 15px;
+  background: url('../../assets/images/toys-bg.jpg') no-repeat;
+  background-attachment: fixed;
+}
+
+.toy-tab__forms {
+  margin-bottom: 35px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  row-gap: 35px;
-  background: url('../../assets/images/toys-bg.jpg') no-repeat;
-  background-attachment: fixed;
 }
 
 .form {
@@ -85,7 +88,7 @@
 .toy-cont {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   row-gap: 25px;
 }
 

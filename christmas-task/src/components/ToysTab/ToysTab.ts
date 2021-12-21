@@ -28,9 +28,13 @@ class ToysTab {
     const rangeForm = this.createRangeFilterForm();
     const sortForm = this.createSortForm();
 
-    this.tab.append(valueForm);
-    this.tab.append(rangeForm);
-    this.tab.append(sortForm);
+    const forms = document.createElement('div');
+    forms.classList.add('toy-tab__forms');
+    forms.append(valueForm);
+    forms.append(rangeForm);
+    forms.append(sortForm);
+
+    this.tab.append(forms);
     this.renderToysCont();
     this.tab.append(this.toysContainer);
 
@@ -102,9 +106,6 @@ class ToysTab {
     } else {
       this.filter.value.favourite = false;
     }
-    //#####################################################################
-    //#####################################################################
-    //console.log(this.filter);
 
     // data from range filer
     // data from sort filter
@@ -123,29 +124,14 @@ class ToysTab {
       const isYearCorrect = Number(unit.year) >= this.filter.range.year[0] && Number(unit.year) <= this.filter.range.year[1];
       const isRangeFilterCorrect = isAmountCorrect && isYearCorrect;
 
-      const isSearchCorrect = this.filter.searchInp?.toLowerCase() === unit.name.toLowerCase() || !this.filter.searchInp;
+      const isSearchCorrect = !this.filter.searchInp || unit.name.toLowerCase().indexOf(this.filter.searchInp.toLowerCase()) > -1;
       if (isValueFilterCorrect && isRangeFilterCorrect && isSearchCorrect) {
         this.toys.push(unit);
       }
-
+      
       // sort
     });
   }
-
-  // interface IFilter {
-  //   value: {
-  //     shape: Array<string>, // 'шар' | 'колокольчик' | 'шишка' | 'снежинка' | 'фигурка'
-  //     color: Array<string>, // 'белый' | 'желтый' | 'красный' | 'синий' | 'зелёный'
-  //     size: Array<string>, // 'большой' | 'средний' | 'малый'
-  //     favourite: boolean
-  //   },
-  //   range: {
-  //     amount: [number, number],
-  //     year: [number, number]
-  //   },
-  //   sort: string, // 'increasing' | 'decreasing' | 'increasingAmount' | 'decreasingAmount'
-  //   searchInp: string | null
-  // }
 
   private createValueFilterForm(): HTMLElement {
     const form = document.createElement('div');

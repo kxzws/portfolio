@@ -27,6 +27,8 @@ class ToysTab {
   private countMin: number;
   private countMax: number;
 
+  private sliders: noUiSlider.API[];
+
   constructor() {
     this.tab = document.createElement('div');
     this.tab.classList.add('toy-tab');
@@ -40,6 +42,8 @@ class ToysTab {
     this.yearMax = MAX_YEAR;
     this.countMin = MIN_AMOUNT;
     this.countMax = MAX_AMOUNT;
+
+    this.sliders = [];
   }
 
   render(): HTMLElement {
@@ -273,6 +277,7 @@ class ToysTab {
       },
       step: 1,
     });
+    this.sliders.push(workSlider);
 
     container.append(slider);
 
@@ -281,7 +286,6 @@ class ToysTab {
         case 'количество':
           this.countMin = Math.round(Number(values[0]));
           this.countMax = Math.round(Number(values[1]));
-          console.log(this.countMin, this.countMax);
           break;
         case 'год приобретения':
           this.yearMin = Math.round(Number(values[0]));
@@ -305,6 +309,11 @@ class ToysTab {
     const title = document.createElement('h3');
     title.classList.add('form__title');
     title.textContent = 'Сортировка:';
+
+    const resetBtn = this.createResetBtn();
+
+    form.append(title);
+    form.append(resetBtn);
     
     return form;
   }
@@ -312,6 +321,7 @@ class ToysTab {
   private createResetBtn(): HTMLButtonElement {
     const btn = document.createElement('button');
     btn.classList.add('toy-tab__reset-btn');
+    btn.textContent = 'Сброс фильтров';
 
     btn.addEventListener('click', () => this.resetFilter());
     
@@ -319,7 +329,34 @@ class ToysTab {
   }
 
   private resetFilter(): void {
-    this.filter = DEFAULT_FILTER;
+    const search = document.querySelector('.search-form__input') as HTMLInputElement;
+    if (search.value) { // add new value
+      search.value = '';
+    }
+
+    document.querySelectorAll('.form__icon').forEach((icon) => {
+      if (icon.classList.contains('icon-active')) {
+        icon.classList.remove('icon-active');
+      }
+    });
+
+    const checkbox = document.getElementById('favourite') as HTMLInputElement;
+    if (checkbox.checked) {
+      checkbox.checked = false;
+    }
+
+    this.sliders.forEach((slider) => {
+      const values = slider.get(true);
+      if (values[0] >= MIN_AMOUNT && values[1] <= MAX_AMOUNT) {
+        slider.set([MIN_AMOUNT, MAX_AMOUNT]);
+      } else if (values[0] >= MIN_YEAR && values[1] <= MAX_YEAR) {
+        slider.set([MIN_YEAR, MAX_YEAR]);
+      }
+    });
+
+    this.updateFilter();
+    this.updateToysList();
+    this.renderToysCont();
   }
 
   private createToysContainer(): HTMLElement {

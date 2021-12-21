@@ -26,6 +26,7 @@ class Header {
     this.searchToys = document.createElement('input');
     this.searchToys.classList.add('search-form__input');
     this.searchToys.type = 'search';
+    this.searchToys.placeholder = 'Поиск по названию';
   }
 
   render(): HTMLElement {
@@ -83,6 +84,7 @@ class Header {
       btn.classList.add('tab-btn_active');
 
       this.toggleSearchForm(isToysTab);
+      this.searchToys.focus();
     });
 
     return btn;

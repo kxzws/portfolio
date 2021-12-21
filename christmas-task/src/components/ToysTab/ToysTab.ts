@@ -127,7 +127,7 @@ class ToysTab {
       const isSearchCorrect = !this.filter.searchInp || unit.name.toLowerCase().indexOf(this.filter.searchInp.toLowerCase()) > -1;
       if (isValueFilterCorrect && isRangeFilterCorrect && isSearchCorrect) {
         this.toys.push(unit);
-      }
+      } 
       
       // sort
     });
@@ -248,6 +248,15 @@ class ToysTab {
   private createToysContainer(): HTMLElement {
     const container = document.createElement('div');
     container.classList.add('toy-cont');
+
+    if (!this.toys.length) {
+      const errorMsg = document.createElement('h2');
+      errorMsg.classList.add('toy-tab__error');
+      errorMsg.textContent = 'Извините, игрушек не найдено';
+      container.append(errorMsg);
+
+      return container;
+    }
 
     this.toys.forEach((toy) => {
       const card = document.createElement('div');

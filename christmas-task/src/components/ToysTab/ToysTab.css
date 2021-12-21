@@ -85,6 +85,15 @@
   border-radius: 35px;
 }
 
+.toy-tab__error {
+  padding: 20px;
+  font-size: var(--large-font);
+  font-weight: 300;
+  background-color: var(--dark-color);
+  opacity: .9;
+  border-radius: 10px;
+}
+
 .toy-cont {
   display: flex;
   flex-wrap: wrap;

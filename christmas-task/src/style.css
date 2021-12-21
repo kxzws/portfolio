@@ -69,6 +69,11 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: var(--med-font);

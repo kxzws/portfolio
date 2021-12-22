@@ -73,6 +73,9 @@ class ToysTab {
   }
 
   renderToysCont(): void {
+    //################################################
+    //################################################
+    //TODO: keep classes on filters and selected toys for go through the tabs
     this.toysContainer.textContent = '';
     this.toysContainer.append(this.createToysContainer());
   }
@@ -192,12 +195,12 @@ class ToysTab {
           break;
         case 'increasingAmount': 
           this.toys.sort((prev, next) => {
-            return (+prev.count) - (+next.count);
+            return (+prev.year) - (+next.year);
           });
           break;
         case 'decreasingAmount': 
           this.toys.sort((prev, next) => {
-            return (+next.count) - (+prev.count);
+            return (+next.year) - (+prev.year);
           });
           break;
       }
@@ -366,8 +369,8 @@ class ToysTab {
 
     const increasing = this.createOption('increasing', 'название от А до Я');
     const decreasing = this.createOption('decreasing', 'название от Я до А');
-    const increasingAmount = this.createOption('increasingAmount', 'по возрастанию количества');
-    const decreasingAmount = this.createOption('decreasingAmount', 'по убыванию количества');
+    const increasingAmount = this.createOption('increasingAmount', 'по возрастанию года');
+    const decreasingAmount = this.createOption('decreasingAmount', 'по убыванию года');
 
     select.append(increasing);
     select.append(decreasing);

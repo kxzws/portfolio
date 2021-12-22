@@ -674,6 +674,7 @@ button {
   margin-bottom: 120px;
   padding: 0 10px;
   height: 40px;
+  width: 100%;
   font-family: 'Roboto', sans-serif;
   font-size: var(--large-font);
   font-weight: 300;

@@ -51,7 +51,7 @@ class ToysTab {
   render(): HTMLElement {
     //################################################
     //################################################
-    //TODO: keep classes on filters and selected toys for go through the tabs
+    //TODO: keep classes on filters for go through the tabs
     this.tab.textContent = '';
 
     const valueForm = this.createValueFilterForm();
@@ -73,9 +73,6 @@ class ToysTab {
   }
 
   renderToysCont(): void {
-    //################################################
-    //################################################
-    //TODO: keep classes on filters and selected toys for go through the tabs
     this.toysContainer.textContent = '';
     this.toysContainer.append(this.createToysContainer());
   }
@@ -229,6 +226,11 @@ class ToysTab {
     checkbox.type = 'checkbox';
     container.append(checkbox);
 
+    // keep 'active' appearance after switching the tabs
+    if (this.filter.value.favourite) { 
+      checkbox.checked = true;
+    }
+
     checkbox.addEventListener('change', () => {
       this.updateFilter();
       this.updateToysList();
@@ -269,6 +271,25 @@ class ToysTab {
 
       if (sub === 'размер') {
         icon.classList.add((option as ballOption).addClass);
+      }
+
+      // keep 'active' appearance after switching the tabs
+      switch (sub) {
+        case 'форма':
+          if (this.filter.value.shape.includes(icon.dataset.filter)) {
+            icon.classList.add('icon-active');
+          }
+          break;
+        case 'цвет':
+          if (this.filter.value.color.includes(icon.dataset.filter)) {
+            icon.classList.add('icon-active');
+          }
+          break;
+        case 'размер':
+          if (this.filter.value.size.includes(icon.dataset.filter)) {
+            icon.classList.add('icon-active');
+          }
+          break;
       }
 
       icon.addEventListener('click', () => {
@@ -320,6 +341,20 @@ class ToysTab {
       step: 1,
     });
     this.sliders.push(workSlider);
+
+    // keep 'active' appearance after switching the tabs
+    switch (sub) {
+      case 'количество':
+        if (this.filter.range.amount !== [min, max]) {
+          workSlider.set(this.filter.range.amount);
+        }
+        break;
+      case 'год приобретения':
+        if (this.filter.range.year !== [min, max]) {
+          workSlider.set(this.filter.range.year);
+        }
+        break;
+    }
 
     container.append(slider);
 
@@ -392,6 +427,11 @@ class ToysTab {
     option.textContent = title;
     option.value = value;
 
+    // keep 'active' appearance after switching the tabs
+    if (this.filter.sort !== 'increasing' && this.filter.sort === value) {
+      option.selected = true;
+    }
+
     return option;
   }
 
@@ -453,6 +493,11 @@ class ToysTab {
       const card = document.createElement('div');
       card.classList.add('card');
 
+      // keep 'active' appearance after switching the tabs
+      if (this.isSelected(toy)) {
+        card.classList.add('card_selected');
+      }
+
       const title = document.createElement('h4');
       title.classList.add('card__title');
       title.textContent = toy.name;
@@ -502,6 +547,14 @@ class ToysTab {
     });
 
     return container;
+  }
+
+  private isSelected(unit: toy): boolean {
+    if (this.selectedToys.includes(unit)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   private toggleSelectedToy(unit: toy, container: HTMLElement): void {

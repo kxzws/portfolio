@@ -464,9 +464,10 @@ class ToysTab {
 
     this.sliders.forEach((slider) => {
       const values = slider.get(true);
-      if (values[0] >= MIN_AMOUNT && values[1] <= MAX_AMOUNT) {
+      console.log(values);
+      if ((values as Array<number>)[0] >= MIN_AMOUNT && (values as Array<number>)[1] <= MAX_AMOUNT) {
         slider.set([MIN_AMOUNT, MAX_AMOUNT]);
-      } else if (values[0] >= MIN_YEAR && values[1] <= MAX_YEAR) {
+      } else if ((values as Array<number>)[0] >= MIN_YEAR && (values as Array<number>)[1] <= MAX_YEAR) {
         slider.set([MIN_YEAR, MAX_YEAR]);
       }
     });

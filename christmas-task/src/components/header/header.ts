@@ -1,5 +1,6 @@
 import './Header.css';
 
+import StartTab from '../StartTab/StartTab';
 import ToysTab from '../ToysTab/ToysTab';
 import TreeTab from '../TreeTab/TreeTab';
 import { imageOption } from '../utils/interfaces';
@@ -32,6 +33,14 @@ class Header {
   render(): HTMLElement {
     const logo = this.createImage({ className: 'header__logo', src: '../../assets/images/tree.svg', alt: 'logo: christmas tree decoration' });
     const searchForm = document.createElement('div');
+
+    logo.addEventListener('click', () => {
+      const startTab = new StartTab(this.getToysTabButton());
+      (CONTENT_TAB as HTMLElement).textContent = '';
+      CONTENT_TAB?.append(startTab.render());
+
+      this.deactivateTabBtn();
+    });
 
     searchForm.classList.add('search-form');
     this.searchToys.addEventListener('input', () => {
@@ -77,11 +86,7 @@ class Header {
       (CONTENT_TAB as HTMLElement).textContent = '';
       CONTENT_TAB?.append(tab.render());
 
-      document.querySelectorAll('.header__tab-btn').forEach((tabBtn) => {
-        if (tabBtn.classList.contains('tab-btn_active')) {
-          tabBtn.classList.remove('tab-btn_active');
-        }
-      });
+      this.deactivateTabBtn();
       btn.classList.add('tab-btn_active');
 
       this.toggleSearchForm(isToysTab);
@@ -89,6 +94,14 @@ class Header {
     });
 
     return btn;
+  }
+
+  private deactivateTabBtn() {
+    document.querySelectorAll('.header__tab-btn').forEach((tabBtn) => {
+      if (tabBtn.classList.contains('tab-btn_active')) {
+        tabBtn.classList.remove('tab-btn_active');
+      }
+    });
   }
 
   private toggleSearchForm(isToysTab?: boolean): void { // search form visible only on the toys tab

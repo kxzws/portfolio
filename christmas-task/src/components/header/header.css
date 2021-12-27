@@ -13,6 +13,7 @@
   filter: invert(100%) sepia(0%) saturate(7492%) hue-rotate(96deg)
     brightness(117%) contrast(100%);
   transform: rotate(-.02turn);
+  cursor: pointer;
   transition: all .3s ease-out;
 }
 

@@ -16,7 +16,7 @@ class Header {
 
   constructor() {
     this.toysTab = new ToysTab();
-    this.treeTab = new TreeTab();
+    this.treeTab = new TreeTab(this.toysTab);
 
     this.header = document.createElement('header');
     this.header.classList.add('header');
@@ -36,8 +36,7 @@ class Header {
 
     logo.addEventListener('click', () => {
       const startTab = new StartTab(this.getToysTabButton());
-      (CONTENT_TAB as HTMLElement).textContent = '';
-      CONTENT_TAB?.append(startTab.render());
+      this.setContentTab(startTab.render());
 
       this.deactivateTabBtn();
     });
@@ -83,8 +82,7 @@ class Header {
     btn.textContent = text;
 
     btn.addEventListener('click', () => {
-      (CONTENT_TAB as HTMLElement).textContent = '';
-      CONTENT_TAB?.append(tab.render());
+      this.setContentTab(tab.render());
 
       this.deactivateTabBtn();
       btn.classList.add('tab-btn_active');
@@ -94,6 +92,11 @@ class Header {
     });
 
     return btn;
+  }
+
+  private setContentTab(content: HTMLElement) {
+    (CONTENT_TAB as HTMLElement).textContent = '';
+    CONTENT_TAB?.append(content);
   }
 
   private deactivateTabBtn() {

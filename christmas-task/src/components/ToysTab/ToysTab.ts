@@ -49,9 +49,6 @@ class ToysTab {
   }
 
   render(): HTMLElement {
-    //################################################
-    //################################################
-    //TODO: keep classes on filters for go through the tabs
     this.tab.textContent = '';
 
     const valueForm = this.createValueFilterForm();
@@ -84,6 +81,10 @@ class ToysTab {
     container.textContent = String(this.selectedToys.length);
 
     return container;
+  }
+
+  getSelectedToys(): toy[] {
+    return this.selectedToys;
   }
 
   updateFilter(): void {
@@ -226,7 +227,7 @@ class ToysTab {
     checkbox.type = 'checkbox';
     container.append(checkbox);
 
-    // keep 'active' appearance after switching the tabs
+    // keep 'active' state while switching the tabs
     if (this.filter.value.favourite) { 
       checkbox.checked = true;
     }
@@ -273,7 +274,7 @@ class ToysTab {
         icon.classList.add((option as ballOption).addClass);
       }
 
-      // keep 'active' appearance after switching the tabs
+      // keep 'active' state while switching the tabs
       switch (sub) {
         case 'форма':
           if (this.filter.value.shape.includes(icon.dataset.filter)) {
@@ -342,7 +343,7 @@ class ToysTab {
     });
     this.sliders.push(workSlider);
 
-    // keep 'active' appearance after switching the tabs
+    // keep 'active' state while switching the tabs
     switch (sub) {
       case 'количество':
         if (this.filter.range.amount !== [min, max]) {
@@ -427,7 +428,7 @@ class ToysTab {
     option.textContent = title;
     option.value = value;
 
-    // keep 'active' appearance after switching the tabs
+    // keep 'active' state while switching the tabs
     if (this.filter.sort !== 'increasing' && this.filter.sort === value) {
       option.selected = true;
     }
@@ -494,7 +495,7 @@ class ToysTab {
       const card = document.createElement('div');
       card.classList.add('card');
 
-      // keep 'active' appearance after switching the tabs
+      // keep 'active' state while switching the tabs
       if (this.isSelected(toy)) {
         card.classList.add('card_selected');
       }

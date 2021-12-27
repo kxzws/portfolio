@@ -85,6 +85,8 @@ const SIZE_OPTION = [
   }
 ];
 
+const DEFAULT_TOYS_NUMBER = 19;
+
 export {
   IS_TOYS_TAB,
   CONTENT_TAB,
@@ -95,5 +97,6 @@ export {
   MIN_AMOUNT,
   MAX_AMOUNT,
   MIN_YEAR,
-  MAX_YEAR
+  MAX_YEAR,
+  DEFAULT_TOYS_NUMBER
 };

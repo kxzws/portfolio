@@ -50,11 +50,21 @@ type ballOption = {
   addClass: string
 };
 
+interface ITreeSettings {
+  audio: HTMLAudioElement,
+  isSnowFall: boolean,
+  snowInterval: NodeJS.Timer | null,
+  choosedTree: number,
+  choosedTheme: number,
+  choosedGarland: string | null, // 'multicolor' | 'red' | 'blue' | 'yellow' | 'green'
+}
+
 export {
   imageOption,
   IFilter,
   toy,
   svgOption,
   colorOption,
-  ballOption
+  ballOption,
+  ITreeSettings
 };

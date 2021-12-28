@@ -3,8 +3,8 @@ import './TreeTab.css';
 import data from '../../assets/data';
 
 import ToysTab from '../ToysTab/ToysTab';
-import { toy } from '../utils/interfaces';
-import { DEFAULT_TOYS_NUMBER } from '../utils/constants';
+import { toy, ITreeSettings } from '../utils/interfaces';
+import { DEFAULT_TOYS_NUMBER, TREE_AMOUNT, THEME_AMOUNT, DEFAULT_TREE_SETTINGS } from '../utils/constants';
 
 class TreeTab {
   private tab: HTMLElement;
@@ -12,9 +12,7 @@ class TreeTab {
   private selectedToys: toy[];
   private treeCont: HTMLElement;
 
-  private audio: HTMLAudioElement;
-  private snowInterval: NodeJS.Timer | null;
-  private isSnowFall: boolean;
+  private settings: ITreeSettings;
 
   constructor(toysTab: ToysTab) {
     this.tab = document.createElement('div');
@@ -26,9 +24,7 @@ class TreeTab {
     this.treeCont = document.createElement('div');
     this.treeCont.classList.add('tree-tab__tree-cont');
 
-    this.audio = new Audio('../../assets/audio/audio.mp3');
-    this.snowInterval = null;
-    this.isSnowFall = false;
+    this.settings = DEFAULT_TREE_SETTINGS;
   }
 
   render(): HTMLElement {
@@ -37,8 +33,6 @@ class TreeTab {
     const settingsCont = this.createSettingsCont();
     this.renderTreeCont();
     const selectedToysCont = this.createSelectedToysCont();
-
-    this.updateSelectedToys(); //спрятать в метод рендера выбранных
 
     this.tab.append(settingsCont);
     this.tab.append(this.treeCont);
@@ -53,12 +47,21 @@ class TreeTab {
 
     const title = document.createElement('h3');
     title.classList.add('tree-tab__title');
+    title.textContent = 'Настройки:';
 
     const volumeBtn = this.createSettingsBtn('volume', '../../assets/images/volume.svg');
     const snowBtn = this.createSettingsBtn('snow', '../../assets/images/filter-svg/snowflake.svg');
 
+    const treeChooseCont = this.createTreeChooseCont();
+    const themeChooseCont = this.createThemeChooseCont();
+    const garlandChooseCont = this.createGarlandChooseCont();
+
+    container.append(title);
     container.append(volumeBtn);
     container.append(snowBtn);
+    container.append(treeChooseCont);
+    container.append(themeChooseCont);
+    container.append(garlandChooseCont);
 
     return container;
   }
@@ -68,9 +71,11 @@ class TreeTab {
     btn.classList.add('tree-tab__settings-btn');
 
     btn.style.background = `center / contain no-repeat url(${src})`;
+    const isAudioPlay = !this.settings.audio.paused;
+    const isSnowFall = this.settings.isSnowFall;
     switch (type) {
       case 'volume':
-        if (!this.audio.paused) { // keep 'active' state while switching tabs
+        if (isAudioPlay) { // keep 'active' state while switching tabs
           btn.classList.add('settings-btn_active')
         }
 
@@ -80,7 +85,7 @@ class TreeTab {
         });
         break;
       case 'snow':
-        if (this.isSnowFall) { // keep 'active' state while switching tabs
+        if (isSnowFall) { // keep 'active' state while switching tabs
           btn.classList.add('settings-btn_active')
         }
 
@@ -95,10 +100,11 @@ class TreeTab {
   }
 
   private toggleAudio(): void {
-    if (this.audio.paused) {
-      this.audio.play();
+    const isAudioPause = this.settings.audio.paused;
+    if (isAudioPause) {
+      this.settings.audio.play();
     } else {
-      this.audio.pause();
+      this.settings.audio.pause();
     }
   }
 
@@ -119,14 +125,101 @@ class TreeTab {
     }, 5000);
   }
 
-  toggleSnow(button: HTMLButtonElement): void {
+  private toggleSnow(button: HTMLButtonElement): void {
     if (button.classList.contains('settings-btn_active')) {
-      this.isSnowFall = true;
-      this.snowInterval = setInterval(this.createSnowflakes, 50);
+      this.settings.isSnowFall = true;
+      this.settings.snowInterval = setInterval(this.createSnowflakes, 50);
     } else {
-      this.isSnowFall = false;
-      clearInterval(this.snowInterval as NodeJS.Timer);
+      this.settings.isSnowFall = false;
+      clearInterval(this.settings.snowInterval as NodeJS.Timer);
     }
+  }
+
+  private createTreeChooseCont(): HTMLElement {
+    const container = document.createElement('div');
+
+    const subtitle = document.createElement('h4');
+    subtitle.classList.add('tree-tab__subtitle')
+    subtitle.textContent = 'выбери ёлку';
+
+    const flexCont = document.createElement('div');
+    flexCont.classList.add('tree-tab__flex-cont');
+
+    for (let num = 0; num < TREE_AMOUNT; num++) {
+      const treeCard = document.createElement('div');
+      treeCard.classList.add('tree-tab__card');
+      treeCard.classList.add('tree-card');
+
+      const icon = document.createElement('img');
+      icon.classList.add('tree-tab__card-img');
+      icon.src = `../../assets/tree/${num}.png`;
+      icon.alt = 'icon: christmas tree choice';
+
+      treeCard.append(icon);
+
+      treeCard.addEventListener('click', () => {
+        // #############################################
+        // #############################################
+      });
+
+      flexCont.append(treeCard);
+    }
+    
+    container.append(subtitle);
+    container.append(flexCont);
+
+    return container;
+  }
+
+  private createThemeChooseCont(): HTMLElement {
+    const container = document.createElement('div');
+
+    const subtitle = document.createElement('h4');
+    subtitle.classList.add('tree-tab__subtitle')
+    subtitle.textContent = 'выбери фон';
+
+    const flexCont = document.createElement('div');
+    flexCont.classList.add('tree-tab__flex-cont');
+
+    for (let num = 0; num < THEME_AMOUNT; num++) {
+      const themeCard = document.createElement('div');
+      themeCard.classList.add('tree-tab__card');
+      themeCard.classList.add('theme-card');
+
+      const icon = document.createElement('img');
+      icon.classList.add('tree-tab__card-img');
+      icon.src = `../../assets/theme/${num}.jpg`;
+      icon.alt = 'icon: christmas theme choice';
+
+      themeCard.append(icon);
+
+      themeCard.addEventListener('click', () => {
+        this.treeCont.style.backgroundImage = `url('../../assets/theme/${num}.jpg')`;
+      });
+
+      flexCont.append(themeCard);
+    }
+
+    container.append(subtitle);
+    container.append(flexCont);
+
+    return container;
+  }
+
+  private createGarlandChooseCont(): HTMLElement {
+    const container = document.createElement('div');
+
+    const subtitle = document.createElement('h4');
+    subtitle.classList.add('tree-tab__subtitle')
+    subtitle.textContent = 'выбери гирлянду';
+
+    const flexCont = document.createElement('div');
+    flexCont.classList.add('tree-tab__flex-cont');
+
+    container.append(subtitle);
+    container.append(flexCont);
+
+    return container;
   }
 
   private renderTreeCont(): void {
@@ -134,14 +227,52 @@ class TreeTab {
   }
 
   private createSelectedToysCont(): HTMLElement {
+    this.updateSelectedToys(); 
+
     const container = document.createElement('div');
     container.classList.add('tree-tab__wrap');
+
+    const title = document.createElement('h3');
+    title.classList.add('tree-tab__title');
+    title.textContent = 'Игрушки:';
+
+    const flexCont = document.createElement('div');
+    flexCont.classList.add('tree-tab__flex-cont');
+
+    this.selectedToys.forEach((toy) => {
+      const toyCard = document.createElement('div');
+      toyCard.classList.add('tree-tab__card');
+      toyCard.classList.add('toy-card');
+
+      const icon = document.createElement('img');
+      icon.classList.add('tree-tab__card-img');
+      icon.src = `../../assets/toys/${toy.num}.png`;
+      icon.alt = 'icon: christmas toy';
+
+      const count = document.createElement('span');
+      count.classList.add('tree-tab__card-count');
+      count.textContent = toy.count;
+
+      toyCard.append(icon);
+      toyCard.append(count);
+
+      toyCard.addEventListener('click', () => {
+        // #############################################
+        // #############################################
+      });
+
+      flexCont.append(toyCard);
+    });
+
+    container.append(title);
+    container.append(flexCont);
 
     return container;
   }
 
   private updateSelectedToys(): void {
     const toys = this.toysTab.getSelectedToys();
+    this.selectedToys = [];
 
     if (toys.length > 0) {
       this.selectedToys = toys;

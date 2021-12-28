@@ -86,6 +86,16 @@ const SIZE_OPTION = [
 ];
 
 const DEFAULT_TOYS_NUMBER = 19;
+const TREE_AMOUNT = 6;
+const THEME_AMOUNT = 10;
+const DEFAULT_TREE_SETTINGS = {
+  audio: new Audio('../../assets/audio/audio.mp3'),
+  isSnowFall: false,
+  snowInterval: null,
+  choosedTree: 0,
+  choosedTheme: 6,
+  choosedGarland: null
+};
 
 export {
   IS_TOYS_TAB,
@@ -98,5 +108,8 @@ export {
   MAX_AMOUNT,
   MIN_YEAR,
   MAX_YEAR,
-  DEFAULT_TOYS_NUMBER
+  DEFAULT_TOYS_NUMBER,
+  TREE_AMOUNT,
+  THEME_AMOUNT,
+  DEFAULT_TREE_SETTINGS
 };

@@ -4,7 +4,12 @@ import data from '../../assets/data';
 
 import ToysTab from '../ToysTab/ToysTab';
 import { toy, ITreeSettings } from '../utils/interfaces';
-import { DEFAULT_TOYS_NUMBER, TREE_AMOUNT, THEME_AMOUNT, DEFAULT_TREE_SETTINGS } from '../utils/constants';
+import { 
+  DEFAULT_TOYS_NUMBER, 
+  TREE_AMOUNT, 
+  THEME_AMOUNT, 
+  DEFAULT_TREE_SETTINGS, 
+  AREA_COORDS } from '../utils/constants';
 
 class TreeTab {
   private tab: HTMLElement;
@@ -158,8 +163,9 @@ class TreeTab {
       treeCard.append(icon);
 
       treeCard.addEventListener('click', () => {
-        // #############################################
-        // #############################################
+        const tree = this.treeCont.querySelector('.tree-tab__tree') as HTMLImageElement;
+        tree.src = `../../assets/tree/${num}.png`;
+        this.settings.choosedTree = num;
       });
 
       flexCont.append(treeCard);
@@ -195,6 +201,7 @@ class TreeTab {
 
       themeCard.addEventListener('click', () => {
         this.treeCont.style.backgroundImage = `url('../../assets/theme/${num}.jpg')`;
+        this.settings.choosedTheme = num;
       });
 
       flexCont.append(themeCard);
@@ -223,7 +230,25 @@ class TreeTab {
   }
 
   private renderTreeCont(): void {
-    
+    this.treeCont.textContent = '';
+    this.treeCont.style.background = `center / cover no-repeat url('../../assets/theme/${this.settings.choosedTheme}.jpg')`;
+
+    const tree = document.createElement('img');
+    tree.classList.add('tree-tab__tree');
+    tree.src = `../../assets/tree/${this.settings.choosedTree}.png`;
+    tree.alt = 'picture: christmas tree';
+    tree.useMap = '#tree-map';
+
+    const map = document.createElement('map');
+    map.name = 'tree-map';
+    const area = document.createElement('area');
+    area.id = 'tree-map';
+    area.coords = AREA_COORDS;
+    area.shape = 'poly';
+    map.append(area);
+
+    this.treeCont.append(map);
+    this.treeCont.append(tree);
   }
 
   private createSelectedToysCont(): HTMLElement {

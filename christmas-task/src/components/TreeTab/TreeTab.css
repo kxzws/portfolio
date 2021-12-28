@@ -13,7 +13,6 @@
   font-weight: 300;
   background-color: var(--dark-color);
   opacity: .9;
-  border: 2px solid var(--light-color);
   border-radius: 10px;
 }
 
@@ -27,10 +26,15 @@
 }
 
 .tree-tab__tree-cont {
-  height: 100vh;
+  padding-top: 5%;
   width: 50vw;
-  background: #fff center / cover no-repeat url('../../assets/theme/6.jpg');
+  text-align: center;
+  background: #fff;
   border-radius: 10px;
+}
+
+.tree-tab__tree {
+  height: 100%;
 }
 
 .tree-tab__title {

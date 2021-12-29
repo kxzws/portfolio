@@ -75,6 +75,8 @@
 }
 
 body {
+  margin-bottom: 0;
+  padding-bottom: 0;
   font-family: "Roboto", sans-serif;
   font-size: var(--med-font);
   font-weight: normal;

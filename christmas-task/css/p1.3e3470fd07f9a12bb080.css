@@ -1209,6 +1209,93 @@ button {
   height: 100%;
 }
 
+.garland {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  position: relative;
+}
+
+.garland-off {
+  display: none;
+}
+
+.lightrope {
+  margin-left: -15px;
+  height: 22px;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  transform: rotate(-10deg);
+}
+
+.lightrope:nth-of-type(1) {
+  bottom: -200px;
+}
+
+.lightrope:nth-of-type(2) {
+  bottom: -286px;
+  
+}
+
+.lightrope:nth-of-type(3) {
+  bottom: -375px;
+}
+
+.lightrope:nth-of-type(4) {
+  bottom: -462px;
+}
+
+.lightrope:nth-of-type(5) {
+  bottom: -550px;
+}
+
+.lightrope li {
+  position: relative;
+  animation-fill-mode: both; 
+  animation-iteration-count: infinite;
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin: 5px;
+  display: inline-block;
+  background: rgba(135, 206, 235, 1);
+  box-shadow: 0 0 10px 3px rgba(135, 206, 235, 1);
+  animation-name: flash-blue;
+  animation-duration: 2s;
+}
+
+.lightrope li:nth-child(2n+1) {
+  background: rgba(178, 34, 34, 1);
+  box-shadow: 0 0 10px 3px rgba(178, 34, 34, .5);
+  animation-name: flash-red;
+  animation-duration: 0.4s;
+}
+
+.lightrope li:nth-child(4n+2) {
+  background: rgba(255, 255, 0, 1);
+  box-shadow: 0 0 10px 3px rgba(255, 255, 0, 1);
+  animation-name: flash-yellow;
+  animation-duration: 1.1s;
+}
+
+.lightrope li:nth-child(odd) {
+  animation-duration: 1.8s;
+}
+
+.lightrope li:nth-child(3n+1) {
+  background: rgba(0, 128, 0, 1);
+  box-shadow: 0 0 10px 3px rgba(0, 128, 0, .5);
+  animation-name: flash-green;
+  animation-duration: 1.4s;
+}
+
 .tree-tab__title {
   margin-bottom: 25px;
   font-size: calc(1.2*var(--large-font));
@@ -1291,6 +1378,121 @@ button {
 .theme-card {
   height: 60px;
   width: 60px;
+}
+
+.tree-tab__color-btn {
+  height: 25px;
+  width: 25px;
+  border: none;
+  border-radius: 50%;
+  transition: all .1s;
+}
+
+.tree-tab__color-btn:hover {
+  transform: scale(1.1)
+}
+
+.tree-tab__color-btn:active {
+  transform: scale(.95)
+}
+
+.color-none {
+  background-color: #fff;
+  opacity: .75;
+}
+
+.color-multi {
+  border: 1px solid #fff;
+  background: linear-gradient(45deg, pink, red, yellow, green, blue, darkblue);
+  box-shadow: 0 0 10px 3px #fff;
+}
+
+.color-red {
+  background-color: firebrick;
+  box-shadow: 0 0 10px 3px firebrick;
+}
+
+.color-green {
+  background-color: green;
+  box-shadow: 0 0 10px 3px green;
+}
+
+.color-yellow {
+  background-color: yellow;
+  box-shadow: 0 0 10px 3px yellow;
+}
+
+.color-blue {
+  background-color: skyblue;
+  box-shadow: 0 0 10px 3px skyblue;
+}
+
+.garland-red .lightrope li {
+  background-color: firebrick;
+  box-shadow: 0 0 10px 3px firebrick;
+  animation-name: flash-red;
+}
+
+.garland-green .lightrope li {
+  background-color: green;
+  box-shadow: 0 0 10px 3px green;
+  animation-name: flash-green;
+}
+
+.garland-yellow .lightrope li {
+  background-color: yellow;
+  box-shadow: 0 0 10px 3px yellow;
+  animation-name: flash-yellow;
+}
+
+.garland-blue .lightrope li {
+  background-color: skyblue;
+  box-shadow: 0 0 10px 3px skyblue;
+  animation-name: flash-blue;
+}
+
+@keyframes flash-red { 
+  0%, 100% { 
+    background: rgba(178, 34, 34, 1);
+    box-shadow: 0 0 10px 3px rgba(178, 34, 34, 1);
+  } 
+  50% { 
+    background: rgba(178, 34, 34, .4);
+    box-shadow: 0 0 10px 3px rgba(178, 34, 34, .2);
+  }
+}
+
+@keyframes flash-green { 
+  0%, 100% { 
+    background: rgba(0, 128, 0, 1);
+    box-shadow: 0 0 10px 3px rgba(0, 128, 0, 1);
+  } 
+  50% { 
+    background: rgba(0, 128, 0, .4);
+    box-shadow: 0 0 10px 3px rgba(0, 128, 0, .2);
+  }
+}
+
+@keyframes flash-yellow { 
+  0%, 100% { 
+    background: rgba(255, 255, 0, 1);
+    box-shadow: 0 0 10px 3px rgba(255, 255, 0, 1);
+  } 
+  50% { 
+    background: rgba(255, 255, 0, .4);
+    box-shadow: 0 0 10px 3px rgba(255, 255, 0, .2);
+  }
+}
+
+@keyframes flash-blue { 
+  0%, 100% { 
+    background: rgba(135, 206, 235, 1);
+    box-shadow: 0 0 10px 3px rgba(135, 206, 235, 1);
+  } 
+  50% { 
+    background: rgba(135, 206, 235, .4);
+    box-shadow: 0 0 10px 3px rgba(135, 206, 235, .2);
+  }
 }
 
 .toy-card {

@@ -25,6 +25,12 @@
   row-gap: 10px;
 }
 
+.toy-flex-cont {
+  justify-content: start;
+  column-gap: 12px;
+  row-gap: 10px;
+}
+
 .tree-tab__tree-cont {
   padding-top: 5%;
   width: 50vw;
@@ -108,11 +114,6 @@
 
 .tree-tab__card-img {
   height: 100%;
-  transition: all .3s;
-}
-
-.card-img_none {
-  visibility: hidden;
 }
 
 .tree-card {
@@ -130,6 +131,12 @@
   padding: 2% 0;
   height: 70px;
   width: 70px;
+}
+
+.toy-card-img {
+  max-height: 57px;
+  position: absolute;
+  z-index: 777;
 }
 
 .toy-card:active {

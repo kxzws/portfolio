@@ -263,28 +263,32 @@ class TreeTab {
 
     const flexCont = document.createElement('div');
     flexCont.classList.add('tree-tab__flex-cont');
+    flexCont.classList.add('toy-flex-cont');
 
     this.selectedToys.forEach((toy) => {
       const toyCard = document.createElement('div');
       toyCard.classList.add('tree-tab__card');
       toyCard.classList.add('toy-card');
 
-      const icon = document.createElement('img');
-      icon.classList.add('tree-tab__card-img');
-      icon.src = `../../assets/toys/${toy.num}.png`;
-      icon.alt = 'icon: christmas toy';
+      // create as many imgs as many toys there are for drag'n'drop
+      for(let i = 1; i <= Number(toy.count); i++) {
+        const icon = document.createElement('img');
+        icon.classList.add('tree-tab__card-img');
+        icon.classList.add('toy-card-img');
+        icon.src = `../../assets/toys/${toy.num}.png`;
+        icon.alt = 'icon: christmas toy';
+
+        toyCard.append(icon);
+
+        this.addDragNDropListener(toyCard, icon);
+      }
 
       const count = document.createElement('span');
       count.classList.add('tree-tab__card-count');
+      count.id = 'count';
       count.textContent = toy.count;
 
-      toyCard.append(icon);
       toyCard.append(count);
-
-      toyCard.addEventListener('click', () => {
-        // #############################################
-        // #############################################
-      });
 
       flexCont.append(toyCard);
     });
@@ -293,6 +297,65 @@ class TreeTab {
     container.append(flexCont);
 
     return container;
+  }
+
+  private addDragNDropListener(toyCard: HTMLElement, icon: HTMLImageElement): void {
+    icon.ondragstart = (): boolean => {
+      return false;
+    };
+
+    icon.onmousedown = (): void => {
+      const treeArea = document.getElementById('tree-map');
+
+      document.body.append(icon);
+
+      let isTreeArea = false;
+      const onMouseMove = (event: MouseEvent): void => {
+        icon.style.left = event.pageX - icon.offsetWidth / 2 + 'px';
+        icon.style.top = event.pageY - icon.offsetHeight / 2 + 'px';
+
+        icon.hidden = true;
+        let areaBelow = document.elementFromPoint(event.clientX, event.clientY);
+        icon.hidden = false;
+
+        if (!areaBelow) { // if the toy is outside of the window
+          this.returnToContainer(toyCard, icon);
+          icon.dispatchEvent(new Event('mouseup')); // remove all listeners
+          return;
+        }
+
+        if (areaBelow !== treeArea) { // if the toy is on the tree map
+          isTreeArea = false;
+        } else {
+          isTreeArea = true;
+        }
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+
+      icon.onmouseup = (): void => {
+        const treeArea = document.getElementById('tree-map');
+        const count = toyCard.querySelector('#count');
+        let num = Number(count?.textContent);
+
+        if (isTreeArea) {
+          treeArea?.append(icon);
+          (count as HTMLSpanElement).textContent = String(--num);
+        } else {
+          this.returnToContainer(toyCard, icon);
+          (count as HTMLSpanElement).textContent = String(++num);
+        }
+
+        document.removeEventListener('mousemove', onMouseMove);
+        icon.onmouseup = null;
+      };
+    };
+  }
+
+  private returnToContainer(cont: HTMLElement, object: HTMLImageElement): void {
+    cont.prepend(object);
+    object.style.top = 'initial';
+    object.style.left = 'initial';
   }
 
   private updateSelectedToys(): void {

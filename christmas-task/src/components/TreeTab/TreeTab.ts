@@ -9,13 +9,16 @@ import {
   TREE_AMOUNT, 
   THEME_AMOUNT, 
   DEFAULT_TREE_SETTINGS, 
-  AREA_COORDS } from '../utils/constants';
+  AREA_COORDS,
+  LIGHTROPE_COUNT,
+  LIGHTS_COUNT } from '../utils/constants';
 
 class TreeTab {
   private tab: HTMLElement;
   private toysTab: ToysTab;
   private selectedToys: toy[];
   private treeCont: HTMLElement;
+  private garland: HTMLElement;
 
   private settings: ITreeSettings;
 
@@ -28,6 +31,10 @@ class TreeTab {
 
     this.treeCont = document.createElement('div');
     this.treeCont.classList.add('tree-tab__tree-cont');
+
+    this.garland = document.createElement('div');
+    this.garland.classList.add('garland');
+    this.garland.classList.add('garland-off');
 
     this.settings = DEFAULT_TREE_SETTINGS;
   }
@@ -223,10 +230,42 @@ class TreeTab {
     const flexCont = document.createElement('div');
     flexCont.classList.add('tree-tab__flex-cont');
 
+    const none = this.createGarlandColorBtn('none');
+    const multi = this.createGarlandColorBtn('multi');
+    const red = this.createGarlandColorBtn('red');
+    const green = this.createGarlandColorBtn('green');
+    const yellow = this.createGarlandColorBtn('yellow');
+    const blue = this.createGarlandColorBtn('blue');
+
+    flexCont.append(none, multi, red, green, yellow, blue);
+
     container.append(subtitle);
     container.append(flexCont);
 
     return container;
+  }
+
+  private createGarlandColorBtn(color: string): HTMLButtonElement {
+    const btn = document.createElement('button');
+    btn.classList.add('tree-tab__color-btn');
+    btn.classList.add(`color-${color}`);
+
+    btn.addEventListener('click', () => {
+      switch (color) {
+        case 'none':
+          if (!this.garland.classList.contains('garland-off')) {
+            this.garland.classList.add('garland-off');
+          }
+          break;
+        case 'multi':
+          this.garland.className = 'garland';
+          break;
+        default:
+          this.garland.className = `garland garland-${color}`;
+      }
+    });
+
+    return btn;
   }
 
   private renderTreeCont(): void {
@@ -247,7 +286,21 @@ class TreeTab {
     area.shape = 'poly';
     map.append(area);
 
+    this.garland.textContent = '';
+    for (let num = 1; num <= LIGHTROPE_COUNT; num++) {
+      const lightrope = document.createElement('ul');
+      lightrope.classList.add('lightrope');
+
+      for (let i = 1; i <= Math.round(num * LIGHTS_COUNT); i++) {
+        const light = document.createElement('li');
+        lightrope.append(light);
+      }
+
+      this.garland.append(lightrope);
+    }
+
     this.treeCont.append(map);
+    this.treeCont.append(this.garland);
     this.treeCont.append(tree);
   }
 
@@ -307,6 +360,7 @@ class TreeTab {
     icon.onmousedown = (): void => {
       const treeArea = document.getElementById('tree-map');
 
+      const prevParent = icon.parentNode;
       document.body.append(icon);
 
       let isTreeArea = false;
@@ -339,11 +393,16 @@ class TreeTab {
         let num = Number(count?.textContent);
 
         if (isTreeArea) {
+          if (prevParent === toyCard) { // toy is from the card
+            (count as HTMLSpanElement).textContent = String(--num);
+          }
           treeArea?.append(icon);
-          (count as HTMLSpanElement).textContent = String(--num);
         } else {
           this.returnToContainer(toyCard, icon);
-          (count as HTMLSpanElement).textContent = String(++num);
+          console.log(icon.style.top);
+          if (prevParent === treeArea) { // toy is from the tree
+            (count as HTMLSpanElement).textContent = String(++num);
+          }
         }
 
         document.removeEventListener('mousemove', onMouseMove);

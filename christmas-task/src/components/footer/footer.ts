@@ -22,7 +22,6 @@ class Footer {
     const rssLogo = document.createElement('img');
     rssLogo.src = 'https://rs.school/images/rs_school_js.svg';
     rssLogo.alt = 'logo: rolling scopes school';
-    rssLogo.width = 100;
     rssLink.append(rssLogo);
 
     this.footer.append(gitLink);

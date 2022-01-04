@@ -88,15 +88,23 @@ class ToysTab {
   }
 
   updateFilter(): void {
-    // data from search form
+    this.updateSearchInputData();
+    this.updateValueFilterData();
+    this.updateRangeFilterData();
+    this.updateSortFilterData();
+  }
+
+  private updateSearchInputData(): void {
     const search = (document.querySelector('.search-form__input') as HTMLInputElement).value;
     if (search) { // add new value
       this.filter.searchInp = search;
     } else { // delete removed value
       this.filter.searchInp = null;
     }
+  }
 
-    // data from value filter
+  private updateValueFilterData(): void {
+    const { shape, color, size } = this.filter.value;
     document.querySelectorAll('.form__icon').forEach((icon) => {
       const iconName = (icon as HTMLButtonElement).dataset.name;
       const iconFilter = String((icon as HTMLButtonElement).dataset.filter);
@@ -104,39 +112,39 @@ class ToysTab {
       if (icon.classList.contains('icon-active')) { // add new values
         switch (iconName) {
           case 'форма':
-            if (this.filter.value.shape.indexOf(iconFilter) === -1) {
-              this.filter.value.shape.push(iconFilter);
+            if (shape.indexOf(iconFilter) === -1) {
+              shape.push(iconFilter);
             }
             break;
           case 'цвет':
-            if (this.filter.value.color.indexOf(iconFilter) === -1) {
-              this.filter.value.color.push(iconFilter);
+            if (color.indexOf(iconFilter) === -1) {
+              color.push(iconFilter);
             }
             break;
           case 'размер':
-            if (this.filter.value.size.indexOf(iconFilter) === -1) {
-              this.filter.value.size.push(iconFilter);
+            if (size.indexOf(iconFilter) === -1) {
+              size.push(iconFilter);
             }
             break;
         }
       } else { // delete removed values
         switch (iconName) {
           case 'форма':
-            if (this.filter.value.shape.indexOf(iconFilter) > -1) {
-              const index = this.filter.value.shape.indexOf(iconFilter);
-              this.filter.value.shape.splice(index, 1);
+            if (shape.indexOf(iconFilter) > -1) {
+              const index = shape.indexOf(iconFilter);
+              shape.splice(index, 1);
             }
             break;
           case 'цвет':
-            if (this.filter.value.color.indexOf(iconFilter) > -1) {
-              const index = this.filter.value.color.indexOf(iconFilter);
-              this.filter.value.color.splice(index, 1);
+            if (color.indexOf(iconFilter) > -1) {
+              const index = color.indexOf(iconFilter);
+              color.splice(index, 1);
             }
             break;
           case 'размер':
-            if (this.filter.value.size.indexOf(iconFilter) > -1) {
-              const index = this.filter.value.size.indexOf(iconFilter);
-              this.filter.value.size.splice(index, 1);
+            if (size.indexOf(iconFilter) > -1) {
+              const index = size.indexOf(iconFilter);
+              size.splice(index, 1);
             }
             break;
         }
@@ -147,34 +155,40 @@ class ToysTab {
     } else {
       this.filter.value.favourite = false;
     }
+  }
 
-    // data from range filer
+  private updateRangeFilterData(): void {
     if (this.filter.range.amount !== [this.countMin, this.countMax]) {
       this.filter.range.amount = [this.countMin, this.countMax];
     }
     if (this.filter.range.year !== [this.yearMin, this.yearMax]) {
       this.filter.range.year = [this.yearMin, this.yearMax];
     }
+  }
 
-    // data from sort filter
+  private updateSortFilterData(): void {
     const sortValue = (document.getElementById('sort') as HTMLSelectElement).value;
     this.filter.sort = sortValue;
   }
 
   updateToysList(): void {
     this.toys = [];
+    const { shape, color, size, favourite } = this.filter.value;
+    const { amount, year } = this.filter.range;
     data.forEach((unit) => {
-      const isShapeCorrect = this.filter.value.shape.includes(unit.shape) || this.filter.value.shape.length === 0;
-      const isColorCorrect = this.filter.value.color.includes(unit.color) || this.filter.value.color.length === 0;
-      const isSizeCorrect = this.filter.value.size.includes(unit.size) || this.filter.value.size.length === 0;
-      const isFavourite = !this.filter.value.favourite || this.filter.value.favourite === unit.favorite;
+      const isShapeCorrect = shape.includes(unit.shape) || shape.length === 0;
+      const isColorCorrect = color.includes(unit.color) || color.length === 0;
+      const isSizeCorrect = size.includes(unit.size) || size.length === 0;
+      const isFavourite = !favourite || favourite === unit.favorite;
       const isValueFilterCorrect = isShapeCorrect && isColorCorrect && isSizeCorrect && isFavourite;
 
-      const isAmountCorrect = Number(unit.count) >= this.filter.range.amount[0] && Number(unit.count) <= this.filter.range.amount[1];
-      const isYearCorrect = Number(unit.year) >= this.filter.range.year[0] && Number(unit.year) <= this.filter.range.year[1];
+      const isAmountCorrect = Number(unit.count) >= amount[0] && Number(unit.count) <= amount[1];
+      const isYearCorrect = Number(unit.year) >= year[0] && Number(unit.year) <= year[1];
       const isRangeFilterCorrect = isAmountCorrect && isYearCorrect;
 
-      const isSearchCorrect = !this.filter.searchInp || unit.name.toLowerCase().indexOf(this.filter.searchInp.toLowerCase()) > -1;
+      const toyName = unit.name.toLowerCase();
+      const searchInput = this.filter.searchInp?.toLowerCase();
+      const isSearchCorrect = !this.filter.searchInp || !searchInput || toyName.indexOf(searchInput) > -1;
       if (isValueFilterCorrect && isRangeFilterCorrect && isSearchCorrect) {
         this.toys.push(unit);
       } 
@@ -465,7 +479,6 @@ class ToysTab {
 
     this.sliders.forEach((slider) => {
       const values = slider.get(true);
-      console.log(values);
       if ((values as Array<number>)[0] >= MIN_AMOUNT && (values as Array<number>)[1] <= MAX_AMOUNT) {
         slider.set([MIN_AMOUNT, MAX_AMOUNT]);
       } else if ((values as Array<number>)[0] >= MIN_YEAR && (values as Array<number>)[1] <= MAX_YEAR) {
@@ -500,10 +513,14 @@ class ToysTab {
         card.classList.add('card_selected');
       }
 
+      const addClassAndTextContent = (element: HTMLElement, className: string, text: string): void => {
+        element.classList.add(className);
+        element.textContent = text;
+        card.append(element);
+      }
+
       const title = document.createElement('h4');
-      title.classList.add('card__title');
-      title.textContent = toy.name;
-      card.append(title);
+      addClassAndTextContent(title, 'card__title', toy.name);
 
       const image = document.createElement('img');
       image.classList.add('card__img');
@@ -512,34 +529,22 @@ class ToysTab {
       card.append(image);
 
       const countSub = document.createElement('h3');
-      countSub.classList.add('card__subtitle');
-      countSub.textContent = `Количество: ${toy.count}`;
-      card.append(countSub);
+      addClassAndTextContent(countSub, 'card__subtitle', `Количество: ${toy.count}`);
 
       const yearSub = document.createElement('h3');
-      yearSub.classList.add('card__subtitle');
-      yearSub.textContent = `Год покупки: ${toy.year}`;
-      card.append(yearSub);
+      addClassAndTextContent(yearSub, 'card__subtitle', `Год покупки: ${toy.year}`);
 
       const shapeSub = document.createElement('h3');
-      shapeSub.classList.add('card__subtitle');
-      shapeSub.textContent = `Форма: ${toy.shape}`;
-      card.append(shapeSub);
+      addClassAndTextContent(shapeSub, 'card__subtitle', `Форма: ${toy.shape}`);
 
       const colorSub = document.createElement('h3');
-      colorSub.classList.add('card__subtitle');
-      colorSub.textContent = `Цвет: ${toy.color}`;
-      card.append(colorSub);
+      addClassAndTextContent(colorSub, 'card__subtitle', `Цвет: ${toy.color}`);
 
       const sizeSub = document.createElement('h3');
-      sizeSub.classList.add('card__subtitle');
-      sizeSub.textContent = `Размер: ${toy.size}`;
-      card.append(sizeSub);
+      addClassAndTextContent(sizeSub, 'card__subtitle', `Размер: ${toy.size}`);
 
       const favouriteSub = document.createElement('h3');
-      favouriteSub.classList.add('card__subtitle');
-      favouriteSub.textContent = `Любимая: ${toy.favorite ? 'да' : 'нет'}`;
-      card.append(favouriteSub);
+      addClassAndTextContent(favouriteSub, 'card__subtitle', `Любимая: ${toy.favorite ? 'да' : 'нет'}`);
 
       card.addEventListener('click', () => {
         this.toggleSelectedToy(toy, card);

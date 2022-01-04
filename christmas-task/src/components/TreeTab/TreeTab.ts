@@ -291,7 +291,8 @@ class TreeTab {
       const lightrope = document.createElement('ul');
       lightrope.classList.add('lightrope');
 
-      for (let i = 1; i <= Math.round(num * LIGHTS_COUNT); i++) {
+      const LIGHTS_COUNT_OF_LIGHTROPE = Math.round(num * LIGHTS_COUNT);
+      for (let i = 1; i <= LIGHTS_COUNT_OF_LIGHTROPE; i++) {
         const light = document.createElement('li');
         lightrope.append(light);
       }
@@ -399,7 +400,6 @@ class TreeTab {
           treeArea?.append(icon);
         } else {
           this.returnToContainer(toyCard, icon);
-          console.log(icon.style.top);
           if (prevParent === treeArea) { // toy is from the tree
             (count as HTMLSpanElement).textContent = String(++num);
           }

@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /*подключить шрифты*/
+  background-color: #000;
+}
+
+:root {
+  --large-font: 80px;
+}

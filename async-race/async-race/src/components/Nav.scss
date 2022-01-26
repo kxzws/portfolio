@@ -33,14 +33,12 @@
   }
   
   .nav__btn:hover {
-    background: #22F17B;
     transform: translate(0, 0.25em);
   }
   .nav__btn:hover::before {
     transform: translate3d(0, 0.25em, -1em);
   }
   .nav__btn:active {
-    background: #22F17B;
     transform: translate(0em, 0.5em);
   }
   .nav__btn:active::before {

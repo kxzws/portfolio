@@ -4,10 +4,14 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
-  background-color: #000;
+  background-color: #131313;
 }
 
 input:disabled {
@@ -19,6 +23,5 @@ input:disabled::placeholder {
 }
 
 #root {
-  margin: 0 auto;
-  max-width: 1400px;
+  margin: 0 60px;
 }

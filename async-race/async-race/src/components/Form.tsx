@@ -4,9 +4,9 @@ import { IFormProps } from "./utils/interfaces";
 
 function Form(props: IFormProps) {
   const [newName, setNewName] = useState<string>('');
-  const [newColor, setNewColor] = useState<string>('#000');
+  const [newColor, setNewColor] = useState<string>('#b4ceff');
   const [updName, setUpdName] = useState<string>('');
-  const [updColor, setUpdColor] = useState<string>('#000');
+  const [updColor, setUpdColor] = useState<string>('#b4ceff');
 
   return (
     <div className="form">
@@ -44,7 +44,7 @@ function Form(props: IFormProps) {
           onChange={onChangeInput}
           disabled
         />
-        <button className="form__btn">Update</button>
+        <button className="form__btn" disabled>Update</button>
       </div>
       <div className="form__row">
         <button className="form__btn btn_race">Race</button>

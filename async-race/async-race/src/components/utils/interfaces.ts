@@ -22,6 +22,7 @@ interface IGarageProps extends ITabProps {
 }
 
 interface IFormProps {
+  ref: React.RefObject<unknown>,
   handleCreateClick: (name: string, color: string) => void
 }
 
@@ -33,8 +34,11 @@ type car = {
 
 interface ICarProps {
   key: number,
+  num: number,
   name: string,
-  color: string
+  color: string,
+  handleRemoveClick: (id: number) => void
+  handleSelectClick: (id: number) => void
 }
 
 interface IWinnersProps extends ITabProps {

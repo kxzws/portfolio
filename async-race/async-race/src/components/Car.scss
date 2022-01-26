@@ -1,0 +1,68 @@
+@import "../App";
+
+.controls {
+  margin-bottom: 14px;
+
+  .controls__btn {
+    @extend %big-btn;
+    margin-bottom: 4px;
+    background-color: #dff1ff;
+
+    &::before {
+      background-color: #b4ceff;
+    }
+
+    &:last-of-type {
+      margin-right: 22px;
+    }
+  }
+
+  .controls__name {
+    font-size: 19px;
+    color: goldenrod;
+  }
+}
+
+.track {
+  margin-bottom: 30px;
+  display: flex;
+  height: 60px;
+  border-bottom: 3.5px dashed #fff;
+
+  .track__pedal {
+    margin-right: 7px;
+    height: 34px;
+    font: inherit;
+    font-size: 20px;
+    color: #12b558;
+    background-color: transparent;
+    border: 2px solid #12b558;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:disabled {
+      color: #8b8b8b;
+      border-color: #8b8b8b;
+      transform: scale(0.95);
+    }
+  }
+
+  .track__car {
+    
+  }
+
+  .track__finish {
+    margin-left: auto;
+    width: 54px;
+    fill: red;
+  }
+}

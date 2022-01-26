@@ -1,3 +1,38 @@
+@import '../App';
+
 .garage {
   color: #fff;
+
+  %garage-font {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .garage__title {
+    @extend %garage-font;
+  }
+
+  .garage__subtitle {
+    @extend %garage-font;
+    font-size: 24px;
+    letter-spacing: normal;
+  }
+
+  .garage__btn {
+    @extend %big-btn;
+    background-color: #e4ffdf;
+
+    &::before {
+      background-color: #bdffb4;
+    }
+  }
+
+  .car {
+    margin-bottom: 30px;
+
+    &:last-of-type {
+      margin-bottom: 50px;
+    }
+  }
 }

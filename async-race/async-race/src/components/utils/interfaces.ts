@@ -21,6 +21,22 @@ interface IGarageProps extends ITabProps {
   
 }
 
+interface IFormProps {
+  handleCreateClick: (name: string, color: string) => void
+}
+
+type car = {
+  name: string,
+  color: string,
+  id: number
+};
+
+interface ICarProps {
+  key: number,
+  name: string,
+  color: string
+}
+
 interface IWinnersProps extends ITabProps {
 
 }
@@ -31,5 +47,8 @@ export type {
   openTab,
   INavProps,
   IGarageProps,
+  IFormProps,
+  car,
+  ICarProps,
   IWinnersProps
 };

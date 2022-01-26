@@ -1,0 +1,19 @@
+$large-font: 80px;
+$med-font: 24px;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #000;
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 1400px;
+}

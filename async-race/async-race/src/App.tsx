@@ -1,12 +1,60 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
+import Garage from "./components/Garage";
+import Winners from "./components/Winners";
+import Nav from "./components/Nav";
+import { IAppProps, IAppState } from "./components/utils/interfaces";
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends React.Component<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
+    super(props);
+
+    this.state = {
+      openTab: {
+        isGarageOpen: true,
+        isWinnersOpen: false,
+      }
+    };
+
+    this.handleTabClick = this.handleTabClick.bind(this);
+  }
+
+  render() {
+    return (
+      <>
+        <Nav onClick={this.handleTabClick} />
+        <Garage
+          isOpen={this.state.openTab.isGarageOpen}
+        />
+        <Winners
+          isOpen={this.state.openTab.isWinnersOpen}
+        />
+      </>
+    );
+  }
+
+  handleTabClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    const idName = e.currentTarget.id;
+    switch (idName) {
+      case 'garage':
+        this.setState({
+          openTab: {
+            isGarageOpen: true,
+            isWinnersOpen: false,
+          }
+        });
+        break;
+      case 'winners':
+        this.setState({
+          openTab: {
+            isGarageOpen: false,
+            isWinnersOpen: true,
+          }
+        });
+        break;
+    }
+  }
 }
 
 export default App;

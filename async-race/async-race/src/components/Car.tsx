@@ -1,7 +1,14 @@
+import React, { useState } from "react";
+import axios from "axios";
 import "./Car.scss";
 import { ICarProps } from "./utils/interfaces";
+import { API_URL } from "./utils/constants";
 
 function Car(props: ICarProps) {
+  const [isStart, setIsStart] = useState<boolean>(false);
+
+  const carId = `car${props.num}`;
+
   return (
     <>
       <svg display="none">
@@ -38,18 +45,22 @@ function Car(props: ICarProps) {
       </svg>
 
       <div className="controls">
-        <button className="controls__btn" onClick={onSelectClick}>Select</button>
-        <button className="controls__btn" onClick={onRemoveClick}>Remove</button>
+        <button className="controls__btn" onClick={onSelectClick}>
+          Select
+        </button>
+        <button className="controls__btn" onClick={onRemoveClick}>
+          Remove
+        </button>
         <span className="controls__name">{props.name}</span>
       </div>
       <div className="track">
-        <button id="start" className="track__pedal">
+        <button id="start" className="track__pedal" onClick={onStartClick} disabled={isStart}>
           A
         </button>
-        <button id="stop" className="track__pedal" disabled>
+        <button id="stop" className="track__pedal" onClick={onStopClick} disabled={!isStart}>
           B
         </button>
-        <svg className="track__car" fill={props.color}>
+        <svg id={carId} className="track__car" fill={props.color}>
           <use xlinkHref="#car"></use>
         </svg>
         <svg className="track__finish">
@@ -67,6 +78,55 @@ function Car(props: ICarProps) {
   function onSelectClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     props.handleSelectClick(props.num);
+  }
+
+  function onStartClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    setIsStart(!isStart);
+
+    const car = document.getElementById(carId);
+
+    const startUrl = `${API_URL}/engine?id=${props.num}&status=started`;
+    axios
+      .patch(startUrl)
+      .then((response) => {
+        const velocity = response.data.velocity;
+        const distance = response.data.distance;
+        const driveTime = distance / velocity;
+
+        const start = performance.now();
+        let left = 0;
+        let timerId = requestAnimationFrame(function animateCar() {
+        const interval = performance.now() - start;
+        (car as HTMLElement).style.left = `${left}%`;
+        left += 1420 / driveTime;
+
+        if (interval <= driveTime) {
+          timerId = requestAnimationFrame(animateCar);
+        }
+        });
+
+        const driveUrl = `${API_URL}/engine?id=${props.num}&status=drive`;
+        axios
+          .patch(driveUrl)
+          .catch((error) => {    
+            cancelAnimationFrame(timerId);
+          });
+      });
+  }
+
+  function onStopClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    setIsStart(!isStart);
+
+    const car = document.getElementById(carId);
+
+    const startUrl = `${API_URL}/engine?id=${props.num}&status=stopped`;
+    axios
+      .patch(startUrl)
+      .then((response) => {
+        (car as HTMLElement).style.left = `initial`;
+      });
   }
 }
 

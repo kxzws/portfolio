@@ -21,8 +21,6 @@ function Garage(props: IGarageProps) {
     });
   }, [setCarsState]);
 
-  const pageNum = 1;
-
   if (!props.isOpen) {
     return <></>;
   }
@@ -32,7 +30,7 @@ function Garage(props: IGarageProps) {
       <Form handleCreateClick={handleCreateClick} handleUpdateClick={handleUpdateClick} isUpdateDisable={isUpdateDisable} />
       <div className="garage">
         <h2 className="garage__title">Garage ({carsAmount})</h2>
-        <h3 className="garage__subtitle">Page #{pageNum}</h3>
+        <h3 className="garage__subtitle">Page #1</h3>
 
         {carsState?.map((item: car) => (
           <Car 

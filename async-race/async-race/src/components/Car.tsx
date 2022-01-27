@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Car.scss";
 import { ICarProps } from "./utils/interfaces";
-import { API_URL } from "./utils/constants";
+import { API_URL, START_POINT, END_POINT } from "./utils/constants";
 
 function Car(props: ICarProps) {
   const [isStart, setIsStart] = useState<boolean>(false);
@@ -95,11 +95,11 @@ function Car(props: ICarProps) {
         const driveTime = distance / velocity;
 
         const start = performance.now();
-        let left = 0;
+        let left = START_POINT;
         let timerId = requestAnimationFrame(function animateCar() {
         const interval = performance.now() - start;
         (car as HTMLElement).style.left = `${left}%`;
-        left += 1420 / driveTime;
+        left += END_POINT / driveTime;
 
         if (interval <= driveTime) {
           timerId = requestAnimationFrame(animateCar);

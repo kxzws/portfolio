@@ -3,10 +3,10 @@ import "./Form.scss";
 import { IFormProps } from "./utils/interfaces";
 
 function Form(props: IFormProps) {
-  const [newName, setNewName] = useState<string>('');
-  const [newColor, setNewColor] = useState<string>('#b4ceff');
-  const [updName, setUpdName] = useState<string>('');
-  const [updColor, setUpdColor] = useState<string>('#b4ceff');
+  const [newName, setNewName] = useState<string>("");
+  const [newColor, setNewColor] = useState<string>("#000");
+  const [updName, setUpdName] = useState<string>("");
+  const [updColor, setUpdColor] = useState<string>("#000");
 
   return (
     <div className="form">
@@ -35,16 +35,22 @@ function Form(props: IFormProps) {
           className="form__input"
           placeholder="Car model"
           onChange={onChangeInput}
-          disabled
+          disabled={props.isUpdateDisable}
         />
         <input
           id="updColor"
           type="color"
           className="form__input input_color"
           onChange={onChangeInput}
-          disabled
+          disabled={props.isUpdateDisable}
         />
-        <button className="form__btn" disabled>Update</button>
+        <button
+          className="form__btn"
+          onClick={onUpdateClick}
+          disabled={props.isUpdateDisable}
+        >
+          Update
+        </button>
       </div>
       <div className="form__row">
         <button className="form__btn btn_race">Race</button>
@@ -60,16 +66,16 @@ function Form(props: IFormProps) {
     const target = e.target.id;
     const value = e.target.value;
     switch (target) {
-      case 'newName':
+      case "newName":
         setNewName(value);
         break;
-      case 'newColor':
+      case "newColor":
         setNewColor(value);
         break;
-      case 'updName':
+      case "updName":
         setUpdName(value);
         break;
-      case 'updColor':
+      case "updColor":
         setUpdColor(value);
         break;
     }
@@ -78,6 +84,11 @@ function Form(props: IFormProps) {
   function onCreateClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     props.handleCreateClick(newName, newColor);
+  }
+
+  function onUpdateClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    props.handleUpdateClick(updName, updColor);
   }
 }
 

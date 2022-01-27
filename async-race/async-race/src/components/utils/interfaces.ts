@@ -22,8 +22,9 @@ interface IGarageProps extends ITabProps {
 }
 
 interface IFormProps {
-  ref: React.RefObject<unknown>,
   handleCreateClick: (name: string, color: string) => void
+  handleUpdateClick: (newName: string, newColor: string) => void
+  isUpdateDisable: boolean;
 }
 
 type car = {

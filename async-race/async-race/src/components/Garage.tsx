@@ -9,8 +9,8 @@ import { API_URL } from "./utils/constants";
 function Garage(props: IGarageProps) {
   const [carsState, setCarsState] = useState<car[]>();
   const [carsAmount, setCarsAmount] = useState<number>();
-
-  const FormRef = React.createRef();
+  const [updCarId, setUpdCarId] = useState<number>();
+  const [isUpdateDisable, setIsUpdateDisable] = useState<boolean>(true);
 
   useEffect(() => {
     const url = `${API_URL}/garage`;
@@ -29,7 +29,7 @@ function Garage(props: IGarageProps) {
 
   return (
     <>
-      <Form ref={FormRef} handleCreateClick={handleCreateClick} />
+      <Form handleCreateClick={handleCreateClick} handleUpdateClick={handleUpdateClick} isUpdateDisable={isUpdateDisable} />
       <div className="garage">
         <h2 className="garage__title">Garage ({carsAmount})</h2>
         <h3 className="garage__subtitle">Page #{pageNum}</h3>
@@ -81,7 +81,28 @@ function Garage(props: IGarageProps) {
   }
 
   function handleSelectClick(id: number) {
-    // FormRef.current.selectUpdateCar(id);
+    setUpdCarId(id);
+    setIsUpdateDisable(!isUpdateDisable);
+  }
+
+  function handleUpdateClick(newName: string, newColor: string) {
+    const url = `${API_URL}/garage/${updCarId}`;
+    axios
+      .put(url, {
+        name: newName,
+        color: newColor,
+      })
+      .then((response) => {
+        const allCars = carsState;
+        allCars?.forEach((item) => {
+          if (item.id === updCarId) {
+            item.color = response.data.color;
+            item.name = response.data.name;
+          }
+        });
+        setCarsState(allCars);
+        setIsUpdateDisable(!isUpdateDisable);
+      });
   }
 }
 

@@ -8,6 +8,37 @@ function Form(props: IFormProps) {
   const [updName, setUpdName] = useState<string>("");
   const [updColor, setUpdColor] = useState<string>("#000");
 
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const target = e.target.id;
+    const value = e.target.value;
+    switch (target) {
+      case "newName":
+        setNewName(value);
+        break;
+      case "newColor":
+        setNewColor(value);
+        break;
+      case "updName":
+        setUpdName(value);
+        break;
+      case "updColor":
+        setUpdColor(value);
+        break;
+    }
+  }
+
+  const onCreateClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    props.handleCreateClick(newName, newColor);
+  }
+
+  const onUpdateClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    props.handleUpdateClick(updName, updColor);
+  }
+
   return (
     <div className="form">
       <div className="form__row">
@@ -59,37 +90,6 @@ function Form(props: IFormProps) {
       </div>
     </div>
   );
-
-  function onChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
-    e.preventDefault();
-
-    const target = e.target.id;
-    const value = e.target.value;
-    switch (target) {
-      case "newName":
-        setNewName(value);
-        break;
-      case "newColor":
-        setNewColor(value);
-        break;
-      case "updName":
-        setUpdName(value);
-        break;
-      case "updColor":
-        setUpdColor(value);
-        break;
-    }
-  }
-
-  function onCreateClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-    props.handleCreateClick(newName, newColor);
-  }
-
-  function onUpdateClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-    props.handleUpdateClick(updName, updColor);
-  }
 }
 
 export default Form;

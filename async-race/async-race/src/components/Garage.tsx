@@ -1,35 +1,67 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "./Garage.scss";
 import Form from "./Form";
 import Car from "./Car";
 import { IGarageProps, car } from "./utils/interfaces";
-import { API_URL } from "./utils/constants";
+import { getCars, createCar, deleteCar, updateCar } from "./api/async-race-api";
 
 function Garage(props: IGarageProps) {
   const [carsState, setCarsState] = useState<car[]>();
-  const [carsAmount, setCarsAmount] = useState<number>();
   const [updCarId, setUpdCarId] = useState<number>();
   const [isUpdateDisable, setIsUpdateDisable] = useState<boolean>(true);
 
   useEffect(() => {
-    const url = `${API_URL}/garage`;
-    axios.get(url).then((response) => {
-      const allCars = response.data;
-      setCarsState(allCars);
-      setCarsAmount(allCars.length);
-    });
-  }, [setCarsState]);
+    handleGetCarsRequest();
+  }, []);
+
+  const handleGetCarsRequest = async () => {
+    const allCars = await getCars();
+    setCarsState(allCars);
+  }
 
   if (!props.isOpen) {
     return <></>;
+  }
+
+  const handleCreateClick = async (name: string, color: string) => {
+    let allCars = carsState;
+    const newCar = await createCar(name, color);
+    allCars?.push(newCar);
+    // allCars = [...allCars, newCar];
+    // allCars?.splice(allCars.length, 0, newCar);
+    setCarsState(allCars);
+  }
+
+  const handleRemoveClick = (id: number) => {
+    deleteCar(id);
+    let allCars = carsState;
+    allCars = allCars?.filter((item) => item.id !== id);
+    setCarsState(allCars);
+  }
+
+  const handleSelectClick = (id: number) => {
+    setUpdCarId(id);
+    setIsUpdateDisable(!isUpdateDisable);
+  }
+
+  const handleUpdateClick = async (newName: string, newColor: string) => {
+    const allCars = carsState;
+    const updCar = await updateCar(newName, newColor, updCarId);
+    for (const item of allCars as car[]) {
+      if (item.id === updCarId) {
+        item.color = updCar.color;
+        item.name = updCar.name;
+      }
+    }
+    setCarsState(allCars);
+    setIsUpdateDisable(!isUpdateDisable); 
   }
 
   return (
     <>
       <Form handleCreateClick={handleCreateClick} handleUpdateClick={handleUpdateClick} isUpdateDisable={isUpdateDisable} />
       <div className="garage">
-        <h2 className="garage__title">Garage ({carsAmount})</h2>
+        <h2 className="garage__title">Garage ({carsState?.length})</h2>
         <h3 className="garage__subtitle">Page #1</h3>
 
         {carsState?.map((item: car) => (
@@ -52,56 +84,6 @@ function Garage(props: IGarageProps) {
       </div>
     </>
   );
-
-  function handleCreateClick(name: string, color: string) {
-    const url = `${API_URL}/garage`;
-    axios
-      .post(url, {
-        name: name,
-        color: color,
-      })
-      .then((response) => {
-        const allCars = carsState;
-        allCars?.push(response.data);
-        setCarsState(allCars);
-        setCarsAmount(allCars?.length);
-      });
-  }
-
-  function handleRemoveClick(id: number) {
-    const url = `${API_URL}/garage/${id}`;
-    axios.delete(url).then((response) => {
-      let allCars = carsState;
-      allCars = allCars?.filter((item) => item.id !== id);
-      setCarsState(allCars);
-      setCarsAmount(allCars?.length);
-    });
-  }
-
-  function handleSelectClick(id: number) {
-    setUpdCarId(id);
-    setIsUpdateDisable(!isUpdateDisable);
-  }
-
-  function handleUpdateClick(newName: string, newColor: string) {
-    const url = `${API_URL}/garage/${updCarId}`;
-    axios
-      .put(url, {
-        name: newName,
-        color: newColor,
-      })
-      .then((response) => {
-        const allCars = carsState;
-        allCars?.forEach((item) => {
-          if (item.id === updCarId) {
-            item.color = response.data.color;
-            item.name = response.data.name;
-          }
-        });
-        setCarsState(allCars);
-        setIsUpdateDisable(!isUpdateDisable);
-      });
-  }
 }
 
 export default Garage;

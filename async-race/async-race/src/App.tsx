@@ -19,20 +19,6 @@ class App extends React.Component<IAppProps, IAppState> {
     this.handleTabClick = this.handleTabClick.bind(this);
   }
 
-  render() {
-    return (
-      <>
-        <Nav onClick={this.handleTabClick} />
-        <Garage
-          isOpen={this.state.openTab.isGarageOpen}
-        />
-        <Winners
-          isOpen={this.state.openTab.isWinnersOpen}
-        />
-      </>
-    );
-  }
-
   handleTabClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     const idName = e.currentTarget.id;
@@ -54,6 +40,20 @@ class App extends React.Component<IAppProps, IAppState> {
         });
         break;
     }
+  }
+
+  render() {
+    return (
+      <>
+        <Nav onClick={this.handleTabClick} />
+        <Garage
+          isOpen={this.state.openTab.isGarageOpen}
+        />
+        <Winners
+          isOpen={this.state.openTab.isWinnersOpen}
+        />
+      </>
+    );
   }
 }
 

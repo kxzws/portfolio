@@ -6,7 +6,7 @@ import { IGarageProps, car } from "./utils/interfaces";
 import { getCars, createCar, deleteCar, updateCar } from "./api/async-race-api";
 
 function Garage(props: IGarageProps) {
-  const [carsState, setCarsState] = useState<car[]>();
+  const [carsState, setCarsState] = useState<car[]>([]);
   const [updCarId, setUpdCarId] = useState<number>();
   const [isUpdateDisable, setIsUpdateDisable] = useState<boolean>(true);
 
@@ -24,12 +24,8 @@ function Garage(props: IGarageProps) {
   }
 
   const handleCreateClick = async (name: string, color: string) => {
-    let allCars = carsState;
     const newCar = await createCar(name, color);
-    allCars?.push(newCar);
-    // allCars = [...allCars, newCar];
-    // allCars?.splice(allCars.length, 0, newCar);
-    setCarsState(allCars);
+    setCarsState(prev => [...prev, newCar])
   }
 
   const handleRemoveClick = (id: number) => {

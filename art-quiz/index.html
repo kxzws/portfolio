@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art-quiz</title>
+    <link rel="icon" href="assets/img/icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <ul class="header__menu">
+        <li class="header__menu-item">
+          <button id="mainPage" class="header__btn btn-main-page"></button>
+        </li>
+        <li class="header__menu-item">
+          <button id="categories" class="header__btn btn-categories"></button>
+        </li>
+      </ul>
+    </header>
+
+    <main class="main">
+      <section class="main-page">
+        <h1 class="main-page__title">Art-quiz</h1>
+        <div class="main-page__container">
+          <button id="authorQuiz" class="main-page__btn">Художники</button>
+          <button id="pictureQuiz" class="main-page__btn">Картины</button>
+          <button id="settings" class="main-page__btn">
+            Настройки
+            <span class="main-page__settings-pic"></span>
+          </button>
+        </div>
+        <div class="main-page__img"></div>
+      </section>
+
+      <section class="settings hide">
+        <div class="settings__row">
+          <p class="settings__subtitle">Звуки:</p>
+          <div class="settings__icon icon-volume"></div>
+          <div class="settings__icon icon-volume-mute hide"></div>
+          <input
+            id="volume"
+            type="range"
+            class="settings__inp inp-volume"
+            value="50"
+            min="0"
+            max="100"
+            step="1"
+          />
+        </div>
+        <div class="settings__row">
+          <p class="settings__subtitle">Таймер:</p>
+          <div class="settings__icon icon-timer"></div>
+          <input
+            id="timer"
+            type="range"
+            class="settings__inp inp-timer"
+            value="20"
+            min="5"
+            max="30"
+            step="5"
+          />
+          <span class="settings__timer-value">20</span>
+          <div>
+            <button id="onTimer" class="settings__btn">Включить</button>
+            <button id="offTimer" class="settings__btn">Выключить</button>
+          </div>
+        </div>
+        <div class="settings__row">
+          <button id="saveSettings" class="settings__btn">Сохранить</button>
+        </div>
+      </section>
+
+      <section class="categories hide"></section>
+
+      <div class="overlay hide"></div>
+      <div class="modal">
+        <div class="modal__symbol symbol-true hide"></div>
+        <div class="modal__symbol symbol-false hide"></div>
+
+        <img src="/" alt="picture: correct answer" class="modal__pic" />
+        <p id="modalAuthor" class="modal__subtitle"></p>
+        <p class="modal__subtitle">"<span id="modalName"></span>"</p>
+        <p id="modalYear" class="modal__subtitle"></p>
+
+        <div class="here-is-button"></div>
+      </div>
+
+      <section class="quiz hide"></section>
+    </main>
+
+    <footer class="footer">
+      <a href="https://github.com/kxzws" class="footer-link" target="_blank"
+        >me on github</a
+      >
+      <time datetime="2021-10-24">© 2021</time>
+      <a
+        href="https://rs.school/js/"
+        class="footer-link rss-link"
+        target="_blank"
+        ><img
+          src="https://rs.school/images/rs_school_js.svg"
+          alt="logo: rolling scopes school"
+          width="100"
+      /></a>
+    </footer>
+
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>

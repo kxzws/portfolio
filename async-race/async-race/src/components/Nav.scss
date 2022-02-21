@@ -1,0 +1,10 @@
+@import '../App';
+
+.nav {
+  padding-top: 15px;
+  margin-bottom: 40px;
+
+  .nav__btn {
+    @extend %big-btn;
+  }
+}

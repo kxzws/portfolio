@@ -1,0 +1,50 @@
+@import '../App';
+
+.form {
+  margin-bottom: 50px;
+
+  .form__row {
+    margin-bottom: 15px;
+    max-width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .form__input {
+    padding: 0 10px;
+    padding-top: 4px;
+    height: 30px;
+    width: 60%;
+    border: none;
+    border-bottom: 4px solid #b4ceff;
+    border-radius: 5px;
+  }
+
+  .form__input::placeholder {
+    font: inherit;
+  }
+
+  .input_color {
+    padding: 0;
+    width: 10%;
+  }
+
+  .form__btn {
+    @extend %big-btn;
+    background-color: #dff1ff;
+
+    &::before {
+      background-color: #b4ceff;
+    }
+  }
+
+  .btn_race {
+    width: 25%;
+    background-color: #22f17b;
+  }
+
+  .btn_race::before {
+    background-color: #12b558;
+  }
+}

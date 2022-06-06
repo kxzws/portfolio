@@ -25,8 +25,48 @@ or my e-mail kxzws54@gmail.com
 <img align="left" alt="GitHub" width="26px" src="https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png" style="padding-right:10px;" />
 <img align="left" alt="Cplusplus" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" style="padding-right:10px;" />
 
-<br /><br />
+<br /><br /><hr />
 
 ### Pet-project:
+<img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/preserves3k6s/master/src/assets/svg/bird.svg" style="padding-right:4px;" /> **Help service for ornithology preserves**
+- *[main repository](https://github.com/kxzws/preserves3k6s)* and *[server repository](https://github.com/kxzws/preserves3k6s-server)*
+- technologies: *HTML, SASS, TS, React, Redux Toolkit, Redux-thunks, Node JS, Express.js*
+
+### Team projects:
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/AnastasiyaPoleshuk/project-management-app/master/public/favicon.ico" style="padding-right:4px;" /> **Project Management App Goodie**
+  - *[deploy](https://rs-goodie.netlify.app/welcome)* and *[repository](https://github.com/AnastasiyaPoleshuk/project-management-app)*
+
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/alexpataman/rslang/main/public/favicon.ico" style="padding-right:4px;" /> **RSLang**
+  - *[deploy](https://rolling-scopes-school.github.io/alexpataman-JSFE2021Q3/rslang/)* and *[repository](https://github.com/alexpataman/rslang)*
 
 #### Other projects:
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/portfolio/async-race/async-race/async-race/public/favicon.ico" style="padding-right:4px;" /> **Async race** *not finished yet*
+  - *[deploy](https://rolling-scopes-school.github.io/kxzws-JSFE2021Q3/async-race/)* and *[server repository](https://github.com/mikhama/async-race-api)* (the server was provided by courses, have to be local hosted for project correct work)
+  - technologies: *HTML, SASS, TS, React, axios*
+
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/portfolio/christmas-task/christmas-task/src/assets/images/omela-icon.ico" style="padding-right:4px;" /> **Grandmother's Christmas toys**
+  - *[deploy](https://rolling-scopes-school.github.io/kxzws-JSFE2021Q3/christmas-task/)*
+  - technologies: *HTML, CSS, TS, ESLint, Webpack*
+  - feature: _**drag'n'drop**_ algorithm
+
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/portfolio/art-quiz/art-quiz/assets/img/icon.ico" style="padding-right:4px;" /> **Art-quiz**
+  - *[deploy](https://rolling-scopes-school.github.io/kxzws-JSFE2021Q3/art-quiz/)*
+  - technologies: *HTML, CSS, JS*
+
+- **HTML-builder**
+  - *[repository](https://github.com/kxzws/HTML-builder)*
+  - technologies: *HTML, CSS, NodeJS*
+
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/portfolio/momentum/momentum/assets/favicon.ico" style="padding-right:4px;" /> **Momentum analog**
+  - *[deploy](https://rolling-scopes-school.github.io/kxzws-JSFE2021Q3/momentum/)*
+  - technologies: *HTML, CSS, JS*
+  - APIs: *weather API*
+
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/portfolio/museum-dom/museum-dom/assets/favicon.ico" style="padding-right:4px;" /> **Louvre Museum Site**
+  - *[deploy](https://rolling-scopes-school.github.io/kxzws-JSFE2021Q3/museum-dom/)*
+  - technologies: *HTML, CSS, JS*
+  - APIs: *mapboxAPI*
+
+- <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/rsschool-cv/gh-pages/styles/img/page-icon.ico" style="padding-right:4px;" /> **CV** *relevant for August, 2021*
+  - *[deploy](https://kxzws.github.io/rsschool-cv/)* and *[repository](https://github.com/kxzws/rsschool-cv)*
+  - technologies: *HTML, CSS*

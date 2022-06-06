@@ -30,14 +30,16 @@ or my e-mail kxzws54@gmail.com
 ### Pet-project:
 <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/preserves3k6s/master/src/assets/svg/bird.svg" style="padding-right:4px;" /> **Help service for ornithology preserves**
 - *[main repository](https://github.com/kxzws/preserves3k6s)* and *[server repository](https://github.com/kxzws/preserves3k6s-server)*
-- technologies: *HTML, SASS, TS, React, Redux Toolkit, Redux-thunks, Node JS, Express.js*
+- technologies: *HTML, SASS, TS, React, React Router, Redux Toolkit, Redux-thunks, Node JS, Express.js*
 
 ### Team projects:
 - <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/AnastasiyaPoleshuk/project-management-app/master/public/favicon.ico" style="padding-right:4px;" /> **Project Management App Goodie**
   - *[deploy](https://rs-goodie.netlify.app/welcome)* and *[repository](https://github.com/AnastasiyaPoleshuk/project-management-app)*
+  - technologies: *HTML, SASS, TS, React, React Router, Redux Toolkit, React-thunks*
 
 - <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/alexpataman/rslang/main/public/favicon.ico" style="padding-right:4px;" /> **RSLang**
   - *[deploy](https://rolling-scopes-school.github.io/alexpataman-JSFE2021Q3/rslang/)* and *[repository](https://github.com/alexpataman/rslang)*
+  - technologies: *HTML, SASS, TS, React, React Router, Redux Toolkit, React Apexcharts, Axios, MUI (React UI framework)*
 
 #### Other projects:
 - <img align="left" alt="Cplusplus" width="26px" src="https://raw.githubusercontent.com/kxzws/portfolio/async-race/async-race/async-race/public/favicon.ico" style="padding-right:4px;" /> **Async race** *not finished yet*

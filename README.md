@@ -1,7 +1,7 @@
 # Hi there, I'm ✨Aliona✨
 
 ## I'm a Front-end developer and [BSUIR](https://www.bsuir.by/) full-time student
-I have already completed following The Rolling Scopes School courses: [JavaScript/Front-end 2021Q3](https://app.rs.school/certificate/tx8t0n0y) and [React 2022Q1](https://app.rs.school/certificate/b732mr08)
+I have already completed following The Rolling Scopes School courses: [JavaScript/Front-end 2021Q3](https://app.rs.school/certificate/tx8t0n0y) and [React 2022Q1](https://app.rs.school/certificate/k73f0n75)
 
 ### Contact me:
 [<img align="left" alt="Telegram" width="26px" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" style="padding-right:6px;" />](https://t.me/kxzws)

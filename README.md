@@ -1,3 +1,5 @@
+<!-- TODO: поменять порядок технологий и добавить описания в репозитории -->
+
 ### Pet-projects:
 - <img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/preserves3k6s/master/src/assets/svg/bird.svg" style="padding-right:4px;" /> **Help service for ornithology preserves**
   - *[main repository](https://github.com/kxzws/preserves3k6s)* and *[server repository](https://github.com/kxzws/preserves3k6s-server)*
@@ -6,6 +8,10 @@
 - <img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/pexels/main/src/assets/logo.svg" style="padding-right:4px;" /> **Pexels traitor**
   - *[deploy](https://pexels-traitor.netlify.app/)* and *[repository](https://github.com/kxzws/pexels)*
   - technologies: *HTML, SASS, TS, React, React Router, Redux Toolkit, Redux-thunks, Axios, MUI (React UI framework), React Infinite Scroll Component*
+
+- <img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/finance/main/public/favicon.ico" style="padding-right:4px;" /> **[Test task] Finance**
+  - *[deploy](https://finance-traitor.netlify.app/)* and *[repository](https://github.com/kxzws/finance)*
+  - technologies: *HTML, SASS, TS, React, React Router, Redux Toolkit, Redux-thunks, Axios, MUI (React UI framework), recharts*
 
 ### Team projects:
 - <img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/AnastasiyaPoleshuk/project-management-app/master/public/favicon.ico" style="padding-right:4px;" /> **Project Management App Goodie**
@@ -17,6 +23,10 @@
   - technologies: *HTML, SASS, TS, React, React Router, Redux Toolkit, React Apexcharts, Axios, MUI (React UI framework)*
 
 #### Other projects:
+- <img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/agsr-traitor/main/public/favicon.ico" style="padding-right:4px;" /> **[Test task] Agsr-traitor**
+  - *[repository](https://github.com/kxzws/agsr-traitor)*
+  - technologies: *HTML, SASS, TS, React, React Router, Redux Toolkit, Redux-thunks, Axios, MUI (React UI framework), json-server, json-server-auth*
+
 - <img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/portfolio/async-race/async-race/async-race/public/favicon.ico" style="padding-right:4px;" /> **Async race** *not finished yet*
   - *[deploy](https://rolling-scopes-school.github.io/kxzws-JSFE2021Q3/async-race/)* and *[server repository](https://github.com/mikhama/async-race-api)* (the server was provided by courses, have to be local hosted for project correct work)
   - technologies: *HTML, SASS, TS, React, axios*

@@ -3,6 +3,10 @@
   - *[main repository](https://github.com/kxzws/preserves3k6s)* and *[server repository](https://github.com/kxzws/preserves3k6s-server)*
   - technologies: *React, React Router, Redux Toolkit, Redux-thunks, TypeScript, ExpressJS, SASS, MUI, HTML*
 
+<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/notes-with-tags/main/public/favicon.ico" style="padding-right:4px;" /> **Notes with tags**
+  - *[deploy](https://kxzws-note-with-tags.netlify.app/)* and *[repository](https://github.com/kxzws/notes-with-tags)*
+  - technologies: *React, Redux Toolkit, TypeScript, Dexie, uuid, Styled Components, MUI, HTML*
+
 <img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/pexels/main/src/assets/logo.svg" style="padding-right:4px;" /> **Pexels traitor**
   - *[deploy](https://pexels-traitor.netlify.app/)* and *[repository](https://github.com/kxzws/pexels)*
   - technologies: *React, React Router, Redux Toolkit, Redux-thunks, TypeScript, Axios, react-infinite-scroll-component, SASS, MUI, HTML*

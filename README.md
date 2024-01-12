@@ -3,17 +3,21 @@
   - *[main repository](https://github.com/kxzws/preserves3k6s)* and *[server repository](https://github.com/kxzws/preserves3k6s-server)*
   - technologies: *React, React Router, Redux Toolkit, Redux-thunks, TypeScript, ExpressJS, SASS, MUI, HTML*
 
-<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/notes-with-tags/main/public/favicon.ico" style="padding-right:4px;" /> **Notes with tags**
+<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/star-wars/main/public/favicon.ico" style="padding-right:4px;" /> [Test assignment] **Star wars characters explorer**
+  - *[deploy](https://star-wars-kxzws.netlify.app/)* and *[repository](https://github.com/kxzws/star-wars)*
+  - technologies: *React, Redux Toolkit, TypeScript, Styled Components, MUI, HTML*
+
+<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/notes-with-tags/main/public/favicon.ico" style="padding-right:4px;" /> [Test assignment] **Notes with tags**
   - *[deploy](https://kxzws-note-with-tags.netlify.app/)* and *[repository](https://github.com/kxzws/notes-with-tags)*
   - technologies: *React, Redux Toolkit, TypeScript, Dexie, uuid, Styled Components, MUI, HTML*
 
-<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/pexels/main/src/assets/logo.svg" style="padding-right:4px;" /> **Pexels traitor**
+<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/pexels/main/src/assets/logo.svg" style="padding-right:4px;" /> [Test assignment] **Pexels traitor**
   - *[deploy](https://pexels-traitor.netlify.app/)* and *[repository](https://github.com/kxzws/pexels)*
   - technologies: *React, React Router, Redux Toolkit, Redux-thunks, TypeScript, Axios, react-infinite-scroll-component, SASS, MUI, HTML*
   - APIs: *pexels API*
   - feature: _**infinite scroll**_
 
-<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/finance/main/public/favicon.ico" style="padding-right:4px;" /> [Test task] **Finance**
+<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/finance/main/public/favicon.ico" style="padding-right:4px;" /> [Test assignment] **Finance**
   - *[deploy](https://finance-traitor.netlify.app/)* and *[repository](https://github.com/kxzws/finance)*
   - technologies: *React, React Router, Redux Toolkit, Redux-thunks, TypeScript, Axios, recharts, Styled Components, MUI, HTML*
   - APIs: *coincap v2 API*
@@ -28,7 +32,7 @@
   - technologies: *React, React Router, Redux Toolkit, React Apexcharts, TypeScript, Axios, SASS, MUI, HTML*
 
 ### Other projects:
-<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/agsr-traitor/main/public/favicon.ico" style="padding-right:4px;" /> [Test task] **Agsr-traitor**
+<img align="left" alt="icon" width="26px" src="https://raw.githubusercontent.com/kxzws/agsr-traitor/main/public/favicon.ico" style="padding-right:4px;" /> [Test assignment] **Agsr-traitor**
   - *[repository](https://github.com/kxzws/agsr-traitor)*
   - technologies: *React, React Router, Redux Toolkit, Redux-thunks, TypeScript, Axios, json-server, json-server-auth, SASS, MUI, HTML*
 
